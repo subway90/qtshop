@@ -339,6 +339,12 @@ if(!empty($_SESSION['dangnhap']))
         case "testcode":
                 include "./../View/user/testcode.php";
                 break;
+        case "testcode3":
+                include "./../View/user/testcode3.php";
+                break;
+        case "testcode4":
+                include "./../View/user/testcode4.php";
+                break;
         default:
                 $_SESSION['active_home'] = "active";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";
                 include "./../View/user/header2.php";
