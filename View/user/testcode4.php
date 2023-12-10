@@ -1,5 +1,4 @@
 <?php
-echo"Source code của chức năng testcode4";
 ?>
 <!DOCTYPE html>
 <html lang="en">
