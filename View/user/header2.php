@@ -4,6 +4,7 @@
     include "./../Model/xl_giohang.php";
     include "./../Model/xl_thanhtoan.php";
     include "./../Model/xl_search.php";
+    $info = select_infomation_web();
     if (isset($_POST['text-search']))
     {
     $text_search = $_POST["text-search"];

@@ -264,7 +264,7 @@ if(!empty($_SESSION['dangnhap']))
                 $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "active";$_SESSION['active_contact'] = "";
                 include "./../View/user/header2.php";
                 include "./../View/user/giohang2.php";
-                include "./../View/user/footer.php";
+                include "./../View/user/footer2.php";
                 break;
         case "yeuthich":
                 $_SESSION['active_home'] = "";$_SESSION['active_product'] = "active";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";
@@ -297,9 +297,9 @@ if(!empty($_SESSION['dangnhap']))
         case "contact":
                 $_SESSION['alert'] = "";
                 $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "active";
-                include "./../View/user/header.php";
-                include "./../View/user/contact.php";
-                include "./../View/user/footer.php";
+                include "./../View/user/header2.php";
+                include "./../View/user/contact2.php";
+                include "./../View/user/footer2.php";
         case "taouser":
                 include "./../View/user/taouser.php";
                 break;
