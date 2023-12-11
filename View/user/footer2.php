@@ -4,13 +4,13 @@
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
                 <h5 class="text-secondary text-uppercase mb-4"><span class="text-primary">QT</span> FASHION</h5>
                 <p class="mb-4">
-                    Chuyên cung cấp đồ thời trang sỉ và lẻ trên toàn quốc. Mẫu mã đa dạng về thời trang và lứa tuổi từ 4+ đến 65.
+                    <?=$info['web_introduce']?>
                 </p>
                 <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>
-                    102/5/4 TTN 1, p TTN, q 12, tp Hồ Chí Minh
+                <?=$info['web_address']?>
                 </p>
                 <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>
-                    info@qt-fashion.com
+                <?=$info['web_email']?>
             </p>
                 <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>
                 0<?=number_format(965279041,0,' ',' ')?>
@@ -52,18 +52,20 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
-                        <h5 class="text-secondary text-uppercase mb-4">TRUYỀN THÔNG</h5>
-                        <p>Đã thông báo Bộ công thương.</p>
-                        <p>GPKD: CP/BCT-0010124835</p>
-                        <img src="../View/img/bocongthuong.png" height="15%" width="74%" alt="bộ công thương">
-                        <h6 class="text-secondary text-uppercase mt-4 mb-3">Theo dõi</h6>
+                        <h5 class="text-secondary text-uppercase mb-4">CHÍNH SÁCH</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-secondary mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Chính sách mua hàng</a>
+                            <a class="text-secondary mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Chính sách vận chuyển</a>
+                            <a class="text-secondary mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Chính sách hoàn trả</a>
+                        </div>
+                        <h6 class="text-secondary text-uppercase mt-3 mb-3">Theo dõi</h6>
                         <div class="d-flex">
 
-                            <a class="btn btn-primary btn-square mr-2" href="https://fb.com/ngmh3105"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-square mr-2" href="<?=$info['link_fanpage']?>"><i class="fab fa-facebook-f"></i></a>
                         
-                            <a class="btn btn-primary btn-square mr-2" href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-primary btn-square mr-2" href="<?=$info['link_instagram']?>"><i class="fab fa-instagram"></i></a>
                             
-                            <a class="btn btn-primary btn-square" href="https://x.com"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-primary btn-square" href="<?=$info['link_twitter']?>"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
