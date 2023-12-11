@@ -163,7 +163,7 @@ for($i=0;$i<$count_orders;$i++)
                                                             }else
                                                             {
                                                                 ?>
-                                                                <span class="badge badge-sa-warning">Đã hủy</span>
+                                                                <span class="badge badge-sa-dark">Đã hủy</span>
                                                                 <?php
                                                             }
                                                             ?>

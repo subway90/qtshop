@@ -149,7 +149,7 @@
                                     <a class="btn btn-outline-dark btn-square" href="index.php?act=giohang&id=<?=$rc['id_sp']?>&tensp=<?=$rc['Name']?>&dongia=<?=$rc['Price']?>&hinh=<?=$rc['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                         <i class="fa fa-shopping-cart"></i>
                                     </a>
-                                    <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&id=<?=$rc['id_sp']?>&tensp=<?=$rc['Name']?>&dongia=<?=$rc['Price']?>&hinh=<?=$rc['image']?>">
+                                    <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&id=<?=$rc['id_sp']?>&tensp=<?=$rc['Name']?>&dongia=<?=$rc['Price']?>&giagoc=<?=$rc['Price']?>&hinh=<?=$rc['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                         <i class="far fa-heart"></i>
                                     </a>
                                     <a class="btn btn-outline-dark btn-square" href="index.php?act=detail&edit=0&id=<?= $rc["id_sp"]?>">

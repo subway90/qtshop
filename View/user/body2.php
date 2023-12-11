@@ -190,7 +190,7 @@
                             if($bool_heart == false)
                             {
                                 ?>
-                                <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&id=<?=$pro_hot['id']?>&tensp=<?=$pro_hot['tensp']?>&dongia=<?=$pro_hot['sale']?>&hinh=<?=$pro_hot['image']?>">
+                                <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&id=<?=$pro_hot['id']?>&tensp=<?=$pro_hot['tensp']?>&dongia=<?=$pro_hot['sale']?>&giagoc=<?=$pro_hot['giasp']?>&hinh=<?=$pro_hot['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                     <i class="far fa-heart"></i>
                                 </a>
 
@@ -257,7 +257,7 @@
                             <a class="btn btn-outline-dark btn-square" href="index.php?act=giohang&id=<?=$pro_hot['id']?>&tensp=<?=$pro_hot['tensp']?>&dongia=<?=$pro_hot['sale']?>&hinh=<?=$pro_hot['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
-                            <a class="btn btn-outline-dark btn-square" href="">
+                            <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&id=<?=$pro_hot['id']?>&tensp=<?=$pro_hot['tensp']?>&dongia=<?=$pro_hot['sale']?>&giagoc=<?=$pro_hot['giasp']?>&hinh=<?=$pro_hot['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                 <i class="far fa-heart"></i>
                             </a>
                             <a class="btn btn-outline-dark btn-square" href="index.php?act=detail&edit=0&id=<?=$pro_hot['id']?>">
@@ -352,7 +352,7 @@
                             <a class="btn btn-outline-dark btn-square" href="index.php?act=giohang&id=<?=$pro_new['id']?>&tensp=<?=$pro_new['tensp']?>&dongia=<?=$pro_new['sale']?>&hinh=<?=$pro_new['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
-                            <a class="btn btn-outline-dark btn-square" href="">
+                            <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&id=<?=$pro_new['id']?>&tensp=<?=$pro_new['tensp']?>&dongia=<?=$pro_new['sale']?>&giagoc<?=$pro_new['giasp']?>&hinh=<?=$pro_new['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                 <i class="far fa-heart"></i>
                             </a>
                             <a class="btn btn-outline-dark btn-square" href="index.php?act=detail&edit=0&id=<?=$pro_new['id']?>">
@@ -415,7 +415,7 @@
                             <a class="btn btn-outline-dark btn-square" href="index.php?act=giohang&id=<?=$pro_view['id']?>&tensp=<?=$pro_view['tensp']?>&dongia=<?=$pro_view['sale']?>&hinh=<?=$pro_view['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
-                            <a class="btn btn-outline-dark btn-square" href="">
+                            <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&id=<?=$pro_view['id']?>&tensp=<?=$pro_view['tensp']?>&dongia=<?=$pro_view['sale']?>&giagoc=<?=$pro_view['giasp']?>&hinh=<?=$pro_view['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                 <i class="far fa-heart"></i>
                             </a>
                             <a class="btn btn-outline-dark btn-square" href="index.php?act=detail&edit=0&id=<?=$pro_view['id']?>">

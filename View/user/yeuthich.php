@@ -1,12 +1,14 @@
 <?php
-include "./../Model/xl_giohang.php";
     if(isset($_REQUEST['id']) && isset($_REQUEST['tensp']))
     {
         $id = $_REQUEST['id'];
         $tensp = $_REQUEST['tensp'];
         $dongia = $_REQUEST['dongia'];
+        $giagoc = $_REQUEST['giagoc'];
         $hinh = $_REQUEST['hinh'];
-        $sp = [$id,$tensp,$dongia,1 ,$hinh];
+        $size = $_REQUEST['size'];
+        $color = $_REQUEST['color'];
+        $sp = [$id,$tensp,$dongia,$giagoc,$hinh,$size,$color];
         $vitri = kiemtra_2($sp);
         if($vitri === -1){
             $_SESSION['yeuthich'][] = $sp;
@@ -29,13 +31,6 @@ include "./../Model/xl_giohang.php";
         array_splice($_SESSION['yeuthich'],$vitri,1);
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $sl = $_REQUEST['sl'];
-        $id = $_REQUEST['id'];
-        $sp = [$id,$sl];
-        $vitri = kiemtra_2($sp);
-        $_SESSION['yeuthich'][$vitri][3]=$sl;
-    }
 ?>
 <!-- Breadcrumb Start -->
 <div class="container-fluid">
@@ -71,7 +66,7 @@ include "./../Model/xl_giohang.php";
                             <div class="product-img position-relative overflow-hidden">
                                 <img class="img-fluid w-100" src="../View/img/<?=$pro_heart[4]?>" alt="">
                                 <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="index.php?act=giohang&id=<?=$pro_heart[0]?>&tensp=<?=$pro_heart[1]?>&dongia=<?=$pro_heart[2]?>&hinh=<?=$pro_heart[4]?>">
+                                    <a class="btn btn-outline-dark btn-square" href="index.php?act=giohang&id=<?=$pro_heart[0]?>&tensp=<?=$pro_heart[1]?>&dongia=<?=$pro_heart[2]?>&hinh=<?=$pro_heart[4]?>&size=<?=$pro_heart[5]?>&color=<?=$pro_heart[6]?>">
                                         <i class="fa fa-shopping-cart"></i>
                                     </a>
                                     <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&del=<?=$pro_heart[0]?>">
@@ -85,8 +80,15 @@ include "./../Model/xl_giohang.php";
                             <div class="text-center py-4">
                                 <a  style="white-space: unset" class="h6 text-decoration-none text-truncate" href="index.php?act=detail&edit=0&id=<?= $pro_heart[0]?>"><?=$pro_heart[1]?></a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5><?=number_format($pro_heart[2],0,',','.')?></h5>
-                                    <h6 class="text-muted ml-2"><del><?=number_format($pro_heart[3],0,',','.')?> đ</del></h6>
+                                    <h5><?=number_format($pro_heart[2],0,',','.')?> đ</h5>
+                                    <?php
+                                    if($pro_heart[2]!==$pro_heart[3])
+                                    {
+                                    ?>
+                                    <h6 class="text-muted ml-2"><del><?=number_format($pro_heart[3],0,',','.')?></del></h6>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
 
                                  <!-- rating review start -->

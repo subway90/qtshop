@@ -267,7 +267,7 @@ if(!empty($_SESSION['dangnhap']))
                 include "./../View/user/footer.php";
                 break;
         case "yeuthich":
-                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "active";$_SESSION['active_contact'] = "";
+                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "active";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";
                 include "./../View/user/header2.php";
                 include "./../View/user/yeuthich.php";
                 include "./../View/user/footer.php";

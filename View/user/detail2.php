@@ -68,7 +68,7 @@ if($count_review == 0)
                         </div>
                         <?php
 
-                        // colection image product
+                        // gallery image product
                         for($i=0;$i<4;$i++)
                         {
                             ?>
@@ -103,11 +103,12 @@ if($count_review == 0)
                     <p class="mb-4">
                         <?=$sp[0][5]?>
                     </p>
-                    <form action="index.php" method="post">
-                        <input hidden name="id" value="<?=$sp[0][0]?>">
-                        <input hidden name="tensp" value="<?=$sp[0][1]?>">
-                        <input hidden name="dongia" value="<?=$sp[0][2]?>">
-                        <input hidden name="hinh" value="<?=$sp[0][8]?>">
+                    <form action="index.php?act=giohang" method="post">
+                        <input hidden name="id" type="text" value="<?=$sp[0][0]?>">
+                        <input hidden name="name" type="text" value="<?=$sp[0][1]?>">
+                        <input hidden name="price" type="number" value="<?=$sp[0][2]?>">
+                        <input hidden name="sl" type="number" value="1">
+                        <input hidden name="image" type="text" value="<?=$sp[0][8]?>">
 
                     <!-- check size start -->
                     <div class="d-flex mb-3">
@@ -118,7 +119,7 @@ if($count_review == 0)
                             {
                                 ?>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input checked type="radio" class="custom-control-input" id="size-<?=$i+1?>" name="size" value="<?=$array_size_sp[$i]?>">
+                                    <input checked type="radio" class="custom-control-input" id="size-<?=$i+1?>" name="size" value="<?=strtoupper($array_size_sp[$i])?>">
                                     <label  class="custom-control-label" for="size-<?=$i+1?>"><?=strtoupper($array_size_sp[$i])?></label>
                                 </div>
                                 <?php
