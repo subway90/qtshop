@@ -21,6 +21,19 @@ $f_alert = '</div>
         include "./../Model/xl_sanpham.php";
         include "./../Model/xl_search.php";
         $load_user = load_user($_SESSION['dangnhap'][0][1]);
+        if (isset($_REQUEST['feedback'])) 
+        {
+            $user = $_REQUEST['user'];
+            $id_dh = $_REQUEST['dh'];
+            $all_detail_checkout = detail_of_order($id_dh);
+            $count_feedback = count($all_detail_checkout);
+            for($i=0;$i<$count_feedback;$i++)
+            {
+                $id_ct = $all_detail_checkout[$i]['id_ct'];
+                $id_sp = $all_detail_checkout[$i]['id_sp'];
+                upload_new_feedback($user,$id_sp,$id_ct,$id_dh);
+            }
+        }
         if (isset($_REQUEST['update'])) 
         {
             $update = $_REQUEST['update'];

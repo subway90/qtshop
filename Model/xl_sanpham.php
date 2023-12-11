@@ -127,7 +127,7 @@
     }
     function detail_of_order($id){
         $conn = connection_database();
-        $sql = "SELECT ct.soluong as soluong, ct.tong_dh as tong, ct.size as size, ct.color as color, sp.Name as tensp, sp.Sale as giasp, sp.id_sp as id_sp, sp.image as image, sp.id_loai as id_loai 
+        $sql = "SELECT ct.soluong as soluong, ct.tong_dh as tong, ct.size as size, ct.color as color, sp.Name as tensp, sp.Sale as giasp, sp.id_sp as id_sp, sp.image as image, sp.id_loai as id_loai, ct.id_chitiet as id_ct
         FROM dh_chitiet ct
         JOIN sanpham sp
         ON ct.id_sp = sp.id_sp
@@ -488,5 +488,20 @@
             $result = $conn->query($sql);
             $date = $result->fetch();
             return $date;
+        }
+        function upload_new_feedback($user,$id_sp,$id_ct,$id_dh)
+    {
+        $conn = connection_database();
+        $sql = " INSERT INTO review VALUES 
+        (NULL,".$user.",".$id_sp.",".$id_ct.",".$id_dh.",NULL,NULL,NULL,1,current_timestamp,NULL)";
+        $conn->query($sql);
+    }
+    function select_all_feedback($id)
+        {
+            $conn = connection_database();
+            $sql = "SELECT * FROM review WHERE id_dh=".$id;
+            $result = $conn->query($sql);
+            $list = $result->fetchAll();
+            return $list;
         }
 ?>
