@@ -15,6 +15,11 @@
         }else{
             $_SESSION['yeuthich'][$vitri][3]++;
         }
+        if(isset($_REQUEST['search']))
+        {
+            header('Location:index.php?act=search-product');
+        }else
+        {
             ?>
                 <script>
                     history.back();
@@ -22,6 +27,8 @@
                     alert('Đã thêm "<?=$tensp?>" vào danh sách yêu thích !');
                 </script>
             <?php
+        }
+            
     }
     if(isset($_REQUEST['del']))
     {

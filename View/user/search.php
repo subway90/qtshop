@@ -36,10 +36,10 @@ else
                             <div class="product-img position-relative overflow-hidden">
                                 <img class="img-fluid w-100" src="../View/img/<?=$rc['image']?>" alt="">
                                 <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="index.php?act=giohang&id=<?=$rc['id_sp']?>&tensp=<?=$rc['Name']?>&dongia=<?=$rc['Price']?>&hinh=<?=$rc['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
+                                    <a class="btn btn-outline-dark btn-square" href="index.php?act=giohang&id=<?=$rc['id_sp']?>&tensp=<?=$rc['Name']?>&dongia=<?=$rc['Sale']?>&hinh=<?=$rc['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                         <i class="fa fa-shopping-cart"></i>
                                     </a>
-                                    <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&id=<?=$rc['id_sp']?>&tensp=<?=$rc['Name']?>&dongia=<?=$rc['Price']?>&hinh=<?=$rc['image']?>">
+                                    <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&id=<?=$rc['id_sp']?>&tensp=<?=$rc['Name']?>&dongia=<?=$rc['Sale']?>&giagoc=<?=$rc['Price']?>&hinh=<?=$rc['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>&search">
                                         <i class="far fa-heart"></i>
                                     </a>
                                     <a class="btn btn-outline-dark btn-square" href="index.php?act=detail&edit=0&id=<?= $rc["id_sp"]?>">
@@ -48,7 +48,7 @@ else
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href=""><?=$rc['Name']?></a>
+                                <a style="white-space: unset" class="h6 text-decoration-none text-truncate" href=""><?=$rc['Name']?></a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5><?=number_format($rc['Sale'],0,',','.')?></h5>
                                     <?php
