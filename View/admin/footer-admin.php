@@ -6,8 +6,8 @@ if(!defined('_CODE'))
 ?>
 <!-- sa-app__footer -->
             <div class="sa-app__footer d-block d-md-flex">
-                <!-- copyright -->Power by HGroup Copyright C 2023<div class="m-auto"></div>
-                <div>H-fashion<a href="https://phaibois.shop">.com</a>
+                <!-- copyright --><div class="m-auto">Một sản phẩm của nhóm QUYẾT TÂM</div>
+                <div>Trang chủ <a href="https://thoitrangqt.shop">thoitrangqt.shop</a>
                 </div>
                 <!-- copyright / end -->
             </div>

@@ -348,9 +348,9 @@ $f_alert = '</div>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no" />
-    <title>Quản lí H-Fashion</title>
+    <title>THỜI TRANG QT | Quản lí</title>
     <!-- icon -->
-    <link rel="icon" type="image/png" href="./../template/admin_t/images/favicon.png" />
+    <link rel="icon" type="image/png" href="./../View/img/logo520x520.png" />
     <!-- fonts -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" />
@@ -380,8 +380,8 @@ $f_alert = '</div>
                     <a class="sa-sidebar__logo" href="index.php?act=admin-dashboard">
                         <!-- logo -->
                         <div class="sa-sidebar-logo">
-                            <span class="h5 mb-0 text-uppercase text-primary bg-dark px-2">H</span>
-                            <span class="h5 mb-0 text-uppercase text-dark bg-white px-2 ml-n1">Fashion</span>
+                            <span class="h5 mb-0 text-uppercase text-primary bg-dark px-2">Thời trang</span>
+                            <span class="h5 mb-0 text-uppercase text-dark bg-white px-2 ml-n1">QT</span>
                         </div>
                         <!-- logo / end -->
                     </a>
@@ -476,7 +476,7 @@ $f_alert = '</div>
                         </button>
                     </div>
                     <div class="sa-toolbar__item">
-                        Hệ thống quản lí H-Fashion
+                        Hệ thống quản lí QT
                     </div>
                     <div class="mx-auto"></div>
 

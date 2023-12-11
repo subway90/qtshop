@@ -507,7 +507,7 @@
         function select_user_feedback($id)
         {
             $conn = connection_database();
-            $sql = "SELECT * FROM review WHERE id_user=".$id." AND status =1";
+            $sql = "SELECT * FROM review WHERE id_user=".$id." AND status >0";
             $result = $conn->query($sql);
             $list = $result->fetchAll();
             return $list;

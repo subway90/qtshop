@@ -16,10 +16,30 @@
                     $feedback = $list_feedback[$i];
                 ?>
                 <tr>
-                    <th scope="row"><?=$i+1?></th>
-                    <td>Đánh giá sản phẩm của hóa đơn chi tiết <strong>#<?=$feedback['id_ct']?></strong></td>
-                    <td><a href="index.php?act=review&id_review=<?=$feedback['id_review']?>"><span class="badge badge-sa-warning me-2">Click để đánh giá</span></a></td>
-                    <td><?=$feedback['date_create']?></td>
+                    <th scope="row">
+                        <?=$i+1?>
+                    </th>
+                    <td>
+                        Đánh giá sản phẩm của hóa đơn chi tiết <strong>#<?=$feedback['id_ct']?></strong>
+                    </td>
+                    <td>
+                        <?php 
+                        if($feedback['status']==1)
+                        {
+                        ?>
+                        <a href="index.php?act=review&id_review=<?=$feedback['id_review']?>"><span class="badge badge-sa-warning me-2">Click để đánh giá</span></a>
+                        <?php
+                        }else
+                        {
+                        ?>
+                            <a href="#"><span class="badge badge-sa-warning me-2">Đã đánh giá</span></a>
+                            <?php
+                            }
+                        ?>
+                    </td>
+                    <td>
+                        <?=$feedback['date_create']?>
+                    </td>
                 </tr>
                 <?php
                 }
