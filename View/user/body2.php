@@ -6,7 +6,7 @@
     ?>
     <div class="container-fluid mb-3">
         <div class="row px-xl-5">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
                 <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
@@ -59,26 +59,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <!-- slide 2 start -->
-                <div class="product-offer mb-30" style="height: 200px;">
-                    <img class="img-fluid" src="./../View/img/<?=$slide_2[0]['image']?>" alt="">
-                    <div class="offer-text">
-                        <h6 class="text-white text-uppercase"><?=$slide_2[0]['title2']?></h6>
-                        <h3 class="text-white mb-3"><?=$slide_2[0]['title1']?></h3>
-                        <a href="<?=$slide_2[0]['link']?>" class="btn btn-primary">Mua ngay</a>
-                    </div>
-                </div>
-                <div class="product-offer mb-30" style="height: 200px;">
-                    <img class="img-fluid" src="./../View/img/<?=$slide_2[1]['image']?>" alt="">
-                    <div class="offer-text">
-                        <h6 class="text-white text-uppercase"><?=$slide_2[1]['title2']?></h6>
-                        <h3 class="text-white mb-3"><?=$slide_2[1]['title1']?></h3>
-                        <a href="<?=$slide_2[1]['link']?>" class="btn btn-primary">Mua ngay</a>
-                    </div>
-                </div>
-                <!-- slide 2 end -->
-            </div>
+            
         </div>
     </div>
     <!-- Carousel End -->

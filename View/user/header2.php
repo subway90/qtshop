@@ -28,6 +28,8 @@
             </div>';
     if(!empty($_SESSION['dangnhap']))
     {
+        $list_feedback = select_user_feedback($_SESSION['dangnhap'][0][0]);
+        $count_feedback = count($list_feedback);
         $user = load($_SESSION['dangnhap'][0][0]);
         if(($_SESSION['dangnhap'][0][7]) == 1)
         {
@@ -61,6 +63,10 @@
                     </div>
             </div>';
         }
+    }else
+    {
+        $count_feedback = 0;
+        
     }
 
     //filter shop
@@ -250,7 +256,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="../View/img/logo520x520.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -293,9 +299,9 @@
                 </div>
                 <div class="d-inline-flex align-items-center d-block d-lg-none">
                                 <!-- Mobile button heart and button carrt Mobile -->
-                    <a href="index.php?act=giohang" class="btn px-0 ml-2">
+                    <a href="index.php?act=notification" class="btn px-0 ml-2">
                         <i class="fas fa-bell text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">5</span>
+                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;"><?=$count_feedback?></span>
                     </a>
                     <a href="index.php?act=yeuthich" class="btn px-0 ml-2">
                         <i class="fas fa-heart text-dark"></i>
@@ -312,8 +318,10 @@
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
                 <a href="index.php" class="text-decoration-none">
-                    <span class="h1 text-uppercase text-primary bg-dark px-2">QT</span>
-                    <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">fashion</span>
+                    <span class="h1">
+                    <img class="h1 mb-30" src="../View/img/logo520x520.png" width="88px" height="88px" alt="">
+                    </span>
+                    <span class="h1 text text-dark bg-light">Thời Trang <span class="h1 text-danger">QT</span></span>
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
@@ -330,8 +338,10 @@
             </div>
             <div class="col-lg-4 col-6 text-right">
                 <p class="m-0">Hotline đặt hàng</p>
-                <h5 class="m-0">0965 279 041</h5>
+                <h5 class="m-0"><?=$info['web_phone']?></h5>
+                <h6 class="m-0 mt-2">06H - 20H mỗi ngày</h6>
             </div>
+            
         </div>
     </div>
     <!-- Topbar End -->
@@ -400,8 +410,8 @@
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
                     <a href="index.php" class="text-decoration-none d-block d-lg-none">
-                        <span class="h1 text-uppercase text-dark bg-light px-2">QT</span>
-                        <span class="h1 text-uppercase bg-primary px-2 ml-n1">fashion</span>
+                        <span class="h1 text text-dark bg-light px-2">Thời Trang</span>
+                        <span class="h1 text-uppercase bg-primary px-2 ml-n1">QT</span>
                     </a>
                     <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                         <span class="navbar-toggler-icon"></span>
@@ -423,9 +433,9 @@
 
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="index.php?act=giohang" class="btn px-0 ml-3">
+                            <a href="index.php?act=notification" class="btn px-0 ml-3">
                                 <i class="fas fa-bell text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">5</span>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><?=$count_feedback?></span>
                             </a>
                             <a href="index.php?act=yeuthich" class="btn px-0 ml-3">
                                 <i class="fas fa-heart text-primary"></i>

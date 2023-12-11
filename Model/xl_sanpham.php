@@ -94,7 +94,7 @@
     }
     function list_review($id){
         $conn = connection_database();
-        $sql = "SELECT tk.fullname as name, tk.image as image, rv.id_user id_user, rv.id_sp as id_sp, rv.noidung as noidung, rv.rating as rating, rv.date as time
+        $sql = "SELECT tk.fullname as name, tk.image as image, rv.id_user id_user, rv.id_sp as id_sp, rv.noidung as noidung, rv.rating as rating, rv.date_submit as time
         FROM review rv JOIN taikhoan as tk
         ON rv.id_user = tk.id_user
         WHERE rv.id_sp =".$id;
@@ -496,10 +496,18 @@
         (NULL,".$user.",".$id_sp.",".$id_ct.",".$id_dh.",NULL,NULL,NULL,1,current_timestamp,NULL)";
         $conn->query($sql);
     }
-    function select_all_feedback($id)
+    function select_one_feedback($id)
         {
             $conn = connection_database();
-            $sql = "SELECT * FROM review WHERE id_dh=".$id;
+            $sql = "SELECT id_user FROM review WHERE id_dh=".$id;
+            $result = $conn->query($sql);
+            $one = $result->fetch();
+            return $one;
+        }
+        function select_user_feedback($id)
+        {
+            $conn = connection_database();
+            $sql = "SELECT * FROM review WHERE id_user=".$id." AND status =1";
             $result = $conn->query($sql);
             $list = $result->fetchAll();
             return $list;

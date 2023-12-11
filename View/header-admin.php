@@ -21,7 +21,7 @@ $f_alert = '</div>
         include "./../Model/xl_sanpham.php";
         include "./../Model/xl_search.php";
         $load_user = load_user($_SESSION['dangnhap'][0][1]);
-        if (isset($_REQUEST['feedback'])) 
+        if(isset($_REQUEST['feedback'])) 
         {
             $user = $_REQUEST['user'];
             $id_dh = $_REQUEST['dh'];

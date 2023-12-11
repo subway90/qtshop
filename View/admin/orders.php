@@ -146,7 +146,7 @@ $rc = $result[$i];
                                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="order-context-menu-0">
                                                     <?php
                                                     $status_feedback = "<span class='text-danger'> (Chưa gửi)  </span>";
-                                                    $select_stt_feedaback = select_all_feedback($rc['id_dh']);
+                                                    $select_stt_feedaback = select_one_feedback($rc['id_dh']);
                                                     if(!empty(($select_stt_feedaback)))
                                                     {
                                                         $status_feedback = "<span class='text-success'> (Đã gửi)  </span>";

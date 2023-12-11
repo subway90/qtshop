@@ -74,8 +74,8 @@
         <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
             <div class="col-md-6 px-xl-0">
                 <p class="mb-md-0 text-center text-md-left text-secondary">
-                    &copy; <a class="text-primary" href="#">H-GROUP</a>. Copyright and power by 
-                    <a class="text-primary" href="#">qt-fashion.com</a> 2023
+                    &copy; Dự án được phát triển bởi 
+                    <a class="text-primary" href="<?=$info['link_fanpage']?>">nhóm QUYẾT TÂM</a>
                 </p>
             </div>
             <div class="col-md-6 px-xl-0 text-center text-md-right">

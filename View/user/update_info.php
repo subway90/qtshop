@@ -1,29 +1,4 @@
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr" data-scompiler-id="0">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="format-detection" content="telephone=no" />
-    <title>Quản lí H-Fashion</title>
-    <!-- icon -->
-    <link rel="icon" type="image/png" href="./../template/admin_t/images/favicon.png" />
-    <!-- fonts -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" />
-    <!-- css -->
-    <link rel="stylesheet" href="./../template/admin_t/vendor/bootstrap/css/bootstrap.ltr.css" />
-    <link rel="stylesheet" href="./../template/admin_t/vendor/highlight.js/styles/github.css" />
-    <link rel="stylesheet" href="./../template/admin_t/vendor/simplebar/simplebar.min.css" />
-    <link rel="stylesheet" href="./../template/admin_t/vendor/quill/quill.snow.css" />
-    <link rel="stylesheet" href="./../template/admin_t/vendor/air-datepicker/css/datepicker.min.css" />
-    <link rel="stylesheet" href="./../template/admin_t/vendor/select2/css/select2.min.css" />
-    <link rel="stylesheet" href="./../template/admin_t/vendor/datatables/css/dataTables.bootstrap5.min.css" />
-    <link rel="stylesheet" href="./../template/admin_t/vendor/nouislider/nouislider.min.css" />
-    <link rel="stylesheet" href="./../template/admin_t/vendor/fullcalendar/main.min.css" />
-    <link rel="stylesheet" href="./../template/admin_t/css/style.css" />
-</head>
 <body>
 <form action="index.php?act=update_info&update=1" method="post" enctype="multipart/form-data">
 <div id="top" class="sa-app__body">

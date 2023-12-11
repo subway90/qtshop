@@ -84,4 +84,11 @@ function mot_user($username){
     //    header ('Location: index.php?act=update_info');
        
       }
+      function all_in_feedback($id_review){
+        $conn = connection_database();
+        $sql = "SELECT rv2.id_ct as id_ct, rv2.id_sp as id_sp, rv2.soluong as soluong, rv2.size as size, rv2.color as color, rv2.date_ct as date, rv2.tensp as temsp, rv2.anhsp as anhsp FROM review rv JOIN (SELECT ct.id_chitiet as id_ct, ct.id_sp as id_sp, ct.soluong as soluong, ct.size as size, ct.color as color, ct.date_create as date_ct, sp.Name as tensp, sp.image as anhsp FROM dh_chitiet ct JOIN sanpham sp ON ct.id_sp = sp.id_sp) rv2 ON rv.id_ct = rv2.id_ct WHERE rv.id_review = ".$id_review;
+        $r_c_u = $conn->query($sql);
+        $result = $r_c_u->fetch();
+        return $result;
+    }
 ?>

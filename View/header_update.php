@@ -50,6 +50,3 @@
 
 </head>
 <body>
-    
-</body>
-</html>

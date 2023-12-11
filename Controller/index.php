@@ -256,6 +256,10 @@ if(!empty($_SESSION['dangnhap']))
                 include "./../View/header_update.php";
                 include "./../View/user/update_info.php";
                 break;
+        case "review":
+                include "./../View/header_update.php";
+                include "./../View/user/review.php";
+                break;
         case "change_pass":
                 // include "./../View/user/header-active.php";
                 include "./../View/user/doimatkhau.php";
@@ -339,9 +343,12 @@ if(!empty($_SESSION['dangnhap']))
         case "testcode":
                 include "./../View/user/testcode.php";
                 break;
-        case "testcode3":
-                include "./../View/user/testcode3.php";
+        case "notification":
+                include "./../View/user/header2.php";
+                include "./../View/user/notification.php";
+                include "./../View/user/footer2.php";
                 break;
+        
         case "testcode4":
                 include "./../View/user/testcode4.php";
                 break;
