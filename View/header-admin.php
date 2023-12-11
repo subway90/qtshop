@@ -26,15 +26,15 @@ $f_alert = '</div>
             $update = $_REQUEST['update'];
             $stt = $_REQUEST['stt'];
             $dh = $_REQUEST['dh'];
-            if($update==0)
+            if($update==0)//thay đổi trạng thái thanh toán
             {
                 update_order_checkout($stt,$dh);
             }
-            if($update==1)
+            if($update==1)//thay đổi trạng thái đơn hàng
             {
                 update_order_delivery($stt,$dh);
             }
-            if($update==2)
+            if($update==2)//hủy đơn/ khôi phục đơn
             {
                 update_order_status($stt,$dh);
             }

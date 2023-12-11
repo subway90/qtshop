@@ -45,19 +45,19 @@
     }
     function update_order_checkout($stt,$dh){
         $conn = connection_database();
-        $sql = " UPDATE donhang SET thanhtoan=".$stt." WHERE id_dh =".$dh;
+        $sql = " UPDATE donhang SET thanhtoan=".$stt.",date_update_thanhtoan = current_timestamp WHERE id_dh =".$dh;
         $conn->query($sql);
         header('Location: index.php?act=admin-orders'); 
     }
     function update_order_delivery($stt,$dh){
         $conn = connection_database();
-        $sql = " UPDATE donhang SET giaohang=".$stt." WHERE id_dh =".$dh;
+        $sql = " UPDATE donhang SET giaohang=".$stt.",date_update_giaohang = current_timestamp WHERE id_dh =".$dh;
         $conn->query($sql);
         header('Location: index.php?act=admin-orders'); 
     }
     function update_order_status($stt,$dh){
         $conn = connection_database();
-        $sql = " UPDATE donhang SET giaohang=".$stt.", thanhtoan=".$stt." WHERE id_dh =".$dh;
+        $sql = " UPDATE donhang SET giaohang=".$stt.", thanhtoan=".$stt.",date_update_giaohang = current_timestamp,date_update_thanhtoan = current_timestamp WHERE id_dh =".$dh;
         $conn->query($sql);
         header('Location: index.php?act=admin-orders'); 
     }
@@ -480,5 +480,13 @@
             $result = $conn->query($sql);
             $info = $result->fetch();
             return $info;
+        }
+        function select_date_update($id)
+        {
+            $conn = connection_database();
+            $sql = "SELECT date_update_thanhtoan, date_update_giaohang FROM donhang WHERE id_dh=".$id;
+            $result = $conn->query($sql);
+            $date = $result->fetch();
+            return $date;
         }
 ?>

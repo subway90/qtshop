@@ -14,7 +14,7 @@
         { $zipcode = 1;}
         if($facebook == "")
         { $facebook = "trống";}
-        $sql =  "INSERT into donhang VALUES (null,'".$id_user."','".$total_product."',current_timestamp,".$pay.",'".$name."',".$phone.",'".$email."','".$address."',2,2,".$area.",".$zipcode.",'".$facebook."',".$voucher.",".$ebanking.")";
+        $sql =  "INSERT into donhang VALUES (null,'".$id_user."','".$total_product."',current_timestamp,".$pay.",'".$name."',".$phone.",'".$email."','".$address."',2,2,".$area.",".$zipcode.",'".$facebook."',".$voucher.",".$ebanking.",current_timestamp,current_timestamp)";
         $conn->query($sql);
     }
     function them_ebanking($id_user,$id_donhang,$total_product)

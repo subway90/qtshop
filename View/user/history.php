@@ -1,5 +1,13 @@
 
 <?php
+if(!defined('_CODE'))
+{
+    require_once('404.html'); exit;
+}
+if(empty($_SESSION['dangnhap']))
+{
+    header('Location: index.php?act=dangnhap');
+}
 include './../Model/xl_sanpham.php';
 $orders = order_of_user($_SESSION['dangnhap'][0]['id_user']);
 $count_orders = count($orders);

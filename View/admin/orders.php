@@ -52,7 +52,7 @@ $rc = $result[$i];
                                     <tr>
                                         <td><input type="checkbox" class="form-check-input m-0 fs-exact-16 d-block"
                                                 aria-label="..." /></td>
-                                        <td><a href="index.php?act=donhang-chitiet&edit=3&id_ct=<?=$rc['id_dh']?>&name=<?=$rc['hoten']?>&phone=<?=$rc['phone']?>&e=<?=$rc['email']?>&add=<?=$rc['address']?>&t=<?=$rc['tongdh']?>&id_user=<?=$rc['id_user']?>" class="text-reset">#<?=$rc['id_dh']?></a></td>
+                                        <td><a href="index.php?act=donhang-chitiet&edit=3&id_ct=<?=$rc['id_dh']?>&name=<?=$rc['hoten']?>&phone=<?=$rc['phone']?>&e=<?=$rc['email']?>&add=<?=$rc['address']?>&t=<?=$rc['tongdh']?>&id_user=<?=$rc['id_user']?>&pay=<?=$rc['pay']?>&area_ship=<?=$rc['area_ship']?>&zipcode=<?=$rc['zipcode']?>&facebook=<?=$rc['facebook']?>&id_voucher=<?=$rc['id_voucher']?>&id_ebanking=<?=$rc['id_ebanking']?>&date_update_thanhtoan=<?=$rc['date_update_thanhtoan']?>&date_update_giaohang=<?=$rc['date_update_giaohang']?>" class="text-reset">#<?=$rc['id_dh']?></a></td>
                                         <td><?=$rc['ngaydat']?></td>
                                         <td>
                                         <div class="d-flex fs-6">

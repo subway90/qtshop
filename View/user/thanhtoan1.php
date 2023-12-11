@@ -408,7 +408,7 @@ $alert_name = ""; $alert_phone = ""; $alert_street = ""; $alert_village = ""; $a
                             <div class="mb-2">
                                 <i class="fa fa-check"></i>
                             </div>
-                            Đơn hàng đã được xác nhận, vui lòng kiểm tra <a class="text-primary" href="index.php?act=history">Lịch sử mua hàng</a>
+                            Đơn hàng đang được xác nhận, vui lòng kiểm tra <a class="text-primary" href="index.php?act=history">Lịch sử mua hàng</a>
                         </div>
                         <?php
                         }else

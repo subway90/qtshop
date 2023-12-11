@@ -31,6 +31,7 @@
     }
     $detail_order = detail_of_order($id);
     $info = select_infomation_web();
+    $date_update = select_date_update($id);
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-scompiler-id="0">
@@ -248,10 +249,15 @@
                                             ?>
                                             <span class="badge badge-sa-danger">Chưa giao hàng</span>
                                             <?php
-                                            }else
+                                            }elseif($gh==3)
                                             {
                                             ?>
                                             <span class="badge badge-sa-warning">Đang giao hàng</span>
+                                            <?php
+                                            }else
+                                            {
+                                            ?>
+                                            <span class="badge badge-sa-dark">Đã hủy</span>
                                             <?php
                                             }
                                             ?>
@@ -305,7 +311,7 @@
                                                             {
                                                         ?>
                                                         <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã được giao, cảm ơn quý khách ! Thời gian cập nhật trạng thái Giao hàng : <strong>0000-00-00 00:00:00</strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã được giao, cảm ơn quý khách ! Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
                                                         </tr>
                                                         <?php
                                                             }
@@ -320,7 +326,7 @@
                                                             {
                                                         ?>
                                                         <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đang được giao đến cho bạn. Thời gian cập nhật trạng thái Giao hàng : <strong>0000-00-00 00:00:00</strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đang được giao đến cho bạn. Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
                                                         </tr>
                                                         <?php
                                                             }
@@ -328,7 +334,7 @@
                                                         {
                                                         ?>
                                                         <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Quý khách vui lòng thannh toán để được nhận hàng.</span></td>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Quý khách vui lòng thanh toán để được nhận hàng.</span></td>
                                                         </tr>
                                                         <?php
                                                         }
@@ -338,7 +344,7 @@
                                                         {
                                                     ?>
                                                         <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã được <span class="text-success">Giao thành công</span>, cảm ơn quý khách ! Thời gian cập nhật trạng thái Giao hàng : <strong>0000-00-00 00:00:00</strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã được <span class="text-success">Giao thành công</span>, cảm ơn quý khách ! Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
                                                         </tr>
                                                         
                                                     <?php
@@ -353,14 +359,14 @@
                                                         {
                                                     ?>
                                                         <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng <span class="text-warning">Đang được giao</span> đến cho bạn. Thời gian cập nhật trạng thái Giao hàng : <strong>0000-00-00 00:00:00</strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng <span class="text-warning">Đang được giao</span> đến cho bạn. Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
                                                         </tr>
                                                     <?php
                                                         }else
                                                         {
                                                     ?>
                                                         <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã hủy vì bạn chưa được xác nhận. Thời gian cập nhật trạng thái: <strong>0000-00-00 00:00:00</strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã hủy vì bạn chưa được xác nhận. Thời gian cập nhật trạng thái: <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
                                                         </tr>
                                                     <?php
                                                         }
@@ -380,6 +386,11 @@
                                             {
                                             ?>
                                             <span class="badge badge-sa-success">Đã thanh toán</span>
+                                            <?php
+                                            }elseif($tt==4)
+                                            {
+                                            ?>
+                                            <span class="badge badge-sa-dark">Đã hủy</span>
                                             <?php
                                             }else
                                             {
@@ -493,7 +504,7 @@
                                                 </tr>
                                             <tbody>
                                                 <tr>
-                                                    <td colSpan="2" style="text-align:center"><span class="text-muted">Quý khách đã thanh toán hóa đơn. Mã thanh toán <strong class="text-muted"><?='QTE'.$id_eb?></strong>. Thời gian cập nhật trạng thái: <strong>0000-00-00 00:00:00</strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                    <td colSpan="2" style="text-align:center"><span class="text-muted">Quý khách đã thanh toán hóa đơn. Mã thanh toán <strong class="text-muted"><?='QTE'.$id_eb?></strong>. Thời gian cập nhật trạng thái: <strong><?=$date_update['date_update_thanhtoan']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
                                                 </tr>
                                             </tbody>
                                             <?php
@@ -524,7 +535,7 @@
                                                     {
                                                     ?>
                                                     <tr>
-                                                        <td style="text-align: center" colSpan="2">Quý khách đã <span class="text-success">Thanh toán Hóa đơn</span>. Thời gian cập nhật trạng thái: <strong>0000-00-00 00:00:00</strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                        <td style="text-align: center" colSpan="2">Quý khách đã <span class="text-success">Thanh toán Hóa đơn</span>. Thời gian cập nhật trạng thái: <strong><?=$date_update['date_update_thanhtoan']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
                                                     </tr>
                                                     <?php
                                                     }elseif($tt==2)
