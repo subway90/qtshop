@@ -94,12 +94,72 @@
 
         $f_color = $_REQUEST['color'];
         if($f_color >=2 && $f_color <=12){
-            $select_product .= " AND color = $f_color";
+            if($f_color == 2)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu đen</button>";
+                $select_product .= " AND color like '%đen%' ";
+            }
+            if($f_color == 3)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu trắng</button>";
+                $select_product .= " AND color like '%trắng%' ";
+            }
+            if($f_color == 4)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu xám</button>";
+                $select_product .= " AND color like '%xám%' ";
+            }
+            if($f_color == 5)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu be</button>";
+                $select_product .= " AND color like '%be%' ";
+            }
+            if($f_color == 6)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu đỏ</button>";
+                $select_product .= " AND color like '%đỏ%' ";
+            }
+            if($f_color == 7)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu xanh dương</button>";
+                $select_product .= " AND color like '%xanh dương%' ";
+            }
+            if($f_color == 8)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu xanh lá</button>";
+                $select_product .= " AND color like '%xanh lá%' ";
+            }
+            if($f_color == 9)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu hồng</button>";
+                $select_product .= " AND color like '%hồng%' ";
+            }
+            if($f_color == 10)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu vàng</button>";
+                $select_product .= " AND color like '%vàng%' ";
+            }
+            if($f_color == 11)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu cam</button>";
+                $select_product .= " AND color like '%cam%' ";
+            }
+            if($f_color == 12)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu tím</button>";
+                $select_product .= " AND color like '%tím%' ";
+            }
+            if($f_color == 13)
+            {
+                $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> màu khác</button>";
+                $select_product .= " AND color like '%khác%' ";
+            }
         }else{
             $select_product .= "";
         }
         $f_size = $_REQUEST['size'];
-        if($f_size >=2 && $f_size <=11){
+        if($f_size >=2 && $f_size <=11)
+        {
             if($f_size == 2)
             {
                 $_SESSION['filter_list'] .= "<button class='ml-2 btn-sm bg-secondary text-dark'> SIZE S</button>";
@@ -166,7 +226,6 @@
             $_SESSION['filter_list'] = "";
         }
         $listitems = danhsachsp($select_product);
-        
     }else
     {
         $select_product = "";
