@@ -16,48 +16,50 @@
     $list_search = search($text_search);
     }
     $info_user = '
-    <div class="btn-group mx-2">
-                        <img src="../View/img/user_default.png" width="30px" height="30px" alt="image_user">
+    <div>
+                <img src="../View/img/user_default.png" width="30px" height="30px" alt="image_user">
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="text-dark">Tài khoản của tôi</span></a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="index.php?act=dangnhap" class="dropdown-item">Đăng nhập</a>
+                        <a href="index.php?act=taouser" class="dropdown-item">Đăng kí</a>
                     </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Tài khoản của tôi</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a href="index.php?act=dangnhap" class="dropdown-item">Đăng nhập</a>
-                            <a href="index.php?act=taouser" class="dropdown-item">Đăng kí</a>
-                        </div>
-                    </div>';
+            </div>';
     if(!empty($_SESSION['dangnhap']))
     {
         $user = load($_SESSION['dangnhap'][0][0]);
         if(($_SESSION['dangnhap'][0][7]) == 1)
         {
             $info_user = '
-            <div class="btn-group mx-2">
-                        <img src="../View/img/'.$user[0][8].'" width="30px" height="30px" alt="image_user">
-                    </div>
+            <div>
+                <img src="../View/img/'.$user[0][8].'" width="30px" height="30px" alt="image_user">
+            </div>
             <div class="nav-item dropdown">
-            
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span style="color: black">Xin chào</span> <span style="font-weight: bold">'.$user[0][3].'</span></a>
-                                    <div class="dropdown-menu rounded-0 m-0">
-                                        <a href="index.php?act=update_info" class="dropdown-item">Chỉnh sửa</a>
-                                        <a href="index.php?act=history" class="dropdown-item">Lịch sử mua hàng</a>
-                                        <a href="index.php?act=change_pass" class="dropdown-item">Đổi mật khẩu</a>
-                                        <a href="index.php?act=logout" class="dropdown-item text-danger">Đăng xuất</a>
-                                    </div>
-                            </div>';
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span style="color: black">Xin chào</span> <span style="font-weight: bold">'.$user[0][3].'</span></a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="index.php?act=update_info" class="dropdown-item">Chỉnh sửa</a>
+                        <a href="index.php?act=history" class="dropdown-item">Lịch sử mua hàng</a>
+                        <a href="index.php?act=change_pass" class="dropdown-item">Đổi mật khẩu</a>
+                        <a href="index.php?act=logout" class="dropdown-item text-danger">Đăng xuất</a>
+                    </div>
+            </div>';
         }else
         {
             $info_user = '
+            <div>
+                <img src="../View/img/'.$user[0][8].'" width="30px" height="30px" alt="image_user">
+            </div>
             <div class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span style="color: black">Xin chào</span> <span style="font-weight: bold">'.$user[0][3].'</span></a>
-                                    <div class="dropdown-menu rounded-0 m-0">
-                                        <a href="index.php?act=admin-dashboard" class="dropdown-item text-warning">Quản lí</a>
-                                        <a href="index.php?act=history" class="dropdown-item">Lịch sử mua hàng</a>
-                                        <a href="index.php?act=update_info" class="dropdown-item">Chỉnh sửa</a>
-                                        <a href="index.php?act=change_pass" class="dropdown-item">Đổi mật khẩu</a>
-                                        <a href="index.php?act=logout" class="dropdown-item text-danger">Đăng xuất</a>
-                                    </div>
-                            </div>';
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><span style="color: black">Xin chào</span> <span style="font-weight: bold">'.$user[0][3].'</span></a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="index.php?act=admin-dashboard" class="dropdown-item text-warning">Quản lí</a>
+                        <a href="index.php?act=history" class="dropdown-item">Lịch sử mua hàng</a>
+                        <a href="index.php?act=update_info" class="dropdown-item">Chỉnh sửa</a>
+                        <a href="index.php?act=change_pass" class="dropdown-item">Đổi mật khẩu</a>
+                        <a href="index.php?act=logout" class="dropdown-item text-danger">Đăng xuất</a>
+                    </div>
+            </div>';
         }
     }
 
@@ -291,6 +293,10 @@
                 </div>
                 <div class="d-inline-flex align-items-center d-block d-lg-none">
                                 <!-- Mobile button heart and button carrt Mobile -->
+                    <a href="index.php?act=giohang" class="btn px-0 ml-2">
+                        <i class="fas fa-bell text-dark"></i>
+                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;">5</span>
+                    </a>
                     <a href="index.php?act=yeuthich" class="btn px-0 ml-2">
                         <i class="fas fa-heart text-dark"></i>
                         <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;"><?=count($_SESSION['yeuthich'])?></span>
@@ -299,6 +305,7 @@
                         <i class="fas fa-shopping-cart text-dark"></i>
                         <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;"><?=count($_SESSION['giohang'])?></span>
                     </a>
+                    
                 </div>
             </div>
         </div>
@@ -416,7 +423,10 @@
 
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-
+                            <a href="index.php?act=giohang" class="btn px-0 ml-3">
+                                <i class="fas fa-bell text-primary"></i>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">5</span>
+                            </a>
                             <a href="index.php?act=yeuthich" class="btn px-0 ml-3">
                                 <i class="fas fa-heart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><?=count($_SESSION['yeuthich'])?></span>
@@ -426,6 +436,7 @@
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><?=count($_SESSION['giohang'])?></span>
                             </a>
+                            
                         </div>
                     </div>
                 </nav>
