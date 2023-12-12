@@ -1,6 +1,13 @@
 <?php
 $id_review = $_REQUEST['id_review'];
 $info_review = all_in_feedback($id_review);
+if($info_review['status'] == 1)
+{
+    $status_button = "";
+}else
+{
+    $status_button = "style='display:none'";
+}
 ?>
 <body>
 <div id="top" class="sa-app__body">
@@ -8,20 +15,22 @@ $info_review = all_in_feedback($id_review);
                     <div class="container">
                         <div class="py-5">
                             <div class="row g-4 align-items-center">
+                                
                                 <div class="col">
                                     <h1 class="h3 m-0">Đánh giá sản phẩm</h1>
                                 </div>
+<form action="index.php?act=review&id_review=<?=$id_review?>&sendfeedback" method="post" enctype="multipart/form-data">
+                                <input name="id_review" hidden type="number" value="<?=$id_review?>">
                                 <div class="col-auto d-flex">
-                                    <a href="#" class="btn btn-secondary me-3">Quay về</a>
-                                    <a href="#" class="btn btn-primary">Gửi</a>
+                                    <a href="index.php?act=notification" class="btn btn-secondary me-3">Quay về</a>
+                                    <button <?=$status_button?> type="submit" class="btn btn-primary">Gửi</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="sa-entity-layout"
-                            data-sa-container-query="{&quot;920&quot;:&quot;sa-entity-layout--size--md&quot;,&quot;1100&quot;:&quot;sa-entity-layout--size--lg&quot;}">
-                            <div class="sa-entity-layout__body">
-                                <div class="sa-entity-layout__main">
-                                    <div class="card">
+                        <div>
+                            <?=$_SESSION['alert']?>
+                        </div>
+                                    <div class="card mt-5">
                                         <div class="card-body p-5">
                                             <div class="mb-5">
                                                 <h2 class="mb-0 fs-exact-18">Đánh giá sản phẩm</h2>
@@ -64,37 +73,46 @@ $info_review = all_in_feedback($id_review);
                                                     </table>
                                                 </div>
                                             </div>
-                                            <div class="row g-4">
-                                            <div class="col-sm-4">
-                                            <div class="mb-4">
-                                            <label for="rating" class="form-label">Điểm sao</label>
-                                            <select id="rating" class="sa-select2 form-select">
-                                                <option select>5 sao (RẤT TỐT)</option>
-                                                <option>4 sao (TỐT)</option>
-                                                <option>3 sao (BÌNH THƯỜNG)</option>
-                                                <option>2 sao (TỆ)</option>
-                                                <option>1 sao (RẤT TỆ)</option>
-                                            </select>
-                                            </div>
-                                            <div class="mb-4">
-                                                    <label for="formFile-3-normal" class="form-label">Upload ảnh đánh giá</label>
-                                                <input type="file" class="form-control" id="formFile-3-normal" />
-                                            </div>
-                                            </div>
-                                            <div class="col-sm-8">
-                                            <div class="mb-4">
-                                                <label for="form-product/description"
-                                                    class="form-label">Nội dung đánh giá</label>
-                                                <textarea id="form-product/description"
-                                                    class="sa-quill-control form-control" rows="5"></textarea>
-                                            </div>
-                                            </div>
-                                            </div>
+                                                <div class="row g-4">
+                                                    <div class="col-sm-4">
+                                                        <div class="mb-4">
+                                                            <label for="rating" class="form-label">Điểm sao <span class="text-danger">(*)</span></label>
+                                                                <select name="rating" id="rating" class="sa-select2 form-select <?=$valid_rating?>">
+                                                                <?php
+                                                                $option_rating = array('1 sao (RẤT TỆ)','2 sao (TỆ)','3 sao (BÌNH THƯỜNG)','4 sao (TỐT)','5 sao (RẤT TỐT)');
+                                                                for($i=0;$i<count($option_rating);$i++)
+                                                                {
+                                                                    if($i==($rating-1))
+                                                                    {
+                                                                ?>
+                                                                        <option selected value="<?=$i+1?>"><?=$option_rating[$i]?></option>
+                                                                <?php
+                                                                    }else
+                                                                    {
+                                                                ?>
+                                                                    <option value="<?=$i+1?>"><?=$option_rating[$i]?></option>
+                                                                <?php
+                                                                    }
+                                                                }
+                                                                ?>
+                                                                </select>
+                                                        </div>
+                                                        <div class="mb-4">
+                                                                <label for="formFile-3-normal" class="form-label">Upload ảnh đánh giá</label>
+                                                                <input name="image" value="image" type="file" class="form-control <?=$valid_image?>" id="formFile-3-normal"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="mb-4">
+                                                            <label for="form-product/description" class="form-label">Nội dung đánh giá  <span class="text-danger">(*)</span></label>
+                                                            <textarea  name="noidung" id="form-product/description" class="sa-quill-control form-control <?=$valid_noidung?>" rows="5"><?=$noidung?></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
                         </div>
+</form> 
                     </div>
                 </div>
             </div>

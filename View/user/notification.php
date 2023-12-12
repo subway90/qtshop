@@ -32,7 +32,7 @@
                         }else
                         {
                         ?>
-                            <a href="#"><span class="badge badge-sa-warning me-2">Đã đánh giá</span></a>
+                            <span class="badge badge-sa-success">Đã đánh giá lúc <?=$feedback['date_submit']?></span>
                             <?php
                             }
                         ?>

@@ -257,6 +257,7 @@ if(!empty($_SESSION['dangnhap']))
                 include "./../View/user/update_info.php";
                 break;
         case "review":
+                $_SESSION['alert'] = "";
                 include "./../View/header_update.php";
                 include "./../View/user/review.php";
                 break;

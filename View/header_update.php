@@ -2,7 +2,8 @@
  include "./../Model/xl_user.php";
  $update;
  $load_user = mot_user($_SESSION['dangnhap'][0][1]);
- if(isset($_REQUEST['update'])){
+ if(isset($_REQUEST['update']))
+ {
     $update = $_REQUEST['update'];
     if($update == 1)
     {
@@ -27,6 +28,75 @@
         $_SESSION['alert'] = '<div class="alert alert-success" role="alert">Cập nhật thông tin thành công!</div>
         ';
     }
+}
+    $rating = 5;
+    $noidung = "";
+    $valid_image = "";
+    $valid_rating = "";
+    $valid_noidung = "";
+    $step_sent_feedback = 0;
+if(isset($_REQUEST['sendfeedback']))
+ {
+    $id_review = $_POST['id_review'];
+    if(!empty($_POST['noidung']))
+    {
+        ++$step_sent_feedback;
+        $noidung = $_POST['noidung'];
+        $valid_noidung = "is-valid";
+    }else
+    {
+        $valid_noidung = "is-invalid";
+        $_SESSION['alert'] = '<div class="alert alert-danger" role="alert">Bạn chưa nhập nội dung đánh giá!</div><br>';
+    }
+    if(!empty($_POST['rating']))
+    {
+        ++$step_sent_feedback;
+        $rating = $_POST['rating'];
+        $valid_rating = "is-valid";
+    }else
+    {
+        $rating = 5;
+    }
+    if(isset($_FILES['image']))
+        {
+            if($_FILES['image']['name'] !== "")
+            {
+                $verify_type = array('image/jpeg','image/jpg', 'image/png');
+                if(in_array($_FILES['image']['type'],$verify_type) === false)
+                {
+                    --$step_sent_feedback;
+                    $valid_image = "is-invalid";
+                    $_SESSION['alert'] .= '<div class="alert alert-danger" role="alert">Vui lòng chọn đúng định dạng ảnh!</div><br>';
+                }else
+                {
+                    if($_FILES['image']['size'] > 5120000) // đơn vị: byte (>5MB)
+                    {
+                        --$step_sent_feedback;
+                        $valid_image = "is-invalid";
+                        $_SESSION['alert'] .= '<div class="alert alert-danger" role="alert">Vui lòng chọn ảnh có kích thước dưới 5MB.</div><br>';
+                    }else
+                    {
+                        ++$step_sent_feedback;
+                        $image = basename($_FILES['image']['name']) ;
+                        $path = __DIR__ . './../View/img/';
+                        $target_file = $path . $image;
+                        move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+                        $valid_image = "is-valid";
+                    }
+                }
+            }else
+            {
+                $image="trống";
+            }
+        }else
+        {
+            $image="trống";
+        }
+        if($step_sent_feedback>=2)
+        {
+            send_feedback($id_review,$noidung,$rating,$image);
+            $_SESSION['alert'] = '<div class="alert alert-success" role="alert">Đánh giá sản phẩm thành công!</div>';
+        }
 }
 
 ?>
