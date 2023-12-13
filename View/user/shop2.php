@@ -7,7 +7,7 @@
 //lây danh sach san pham
     $listitems = danhsachsp($select_product);
     $tongsp = count($listitems);
-     $mode = $tongsp%$records; //mode = phần dư của bội 3 (bội của số sản phẩm trên 1 trang)
+     $mode = $tongsp%$records; //mode = phần dư (bội của số sản phẩm trên 1 trang)
     if($mode>0){
         $pages=floor($tongsp/$records)+1; //hàm floor: chia lấy số nguyên
     }else{

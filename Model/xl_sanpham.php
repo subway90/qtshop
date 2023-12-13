@@ -63,7 +63,7 @@
     }
     function danhsachsp_all(){
         $conn = connection_database();
-        $sql = "SELECT sp.id_sp as id_sp, sp.Name as Name, sp.Price as Price, sp.Date_import as Ngay, sp.Viewsp as View, sp.Decribe as Decribe, sp.Mount as Mount, sp.Sale as Sale, sp.`%sale` as `%sale`, sp.image as image, sp.status as status, l.name as name FROM sanpham as sp JOIN loaihang as l ON sp.id_loai = l.id_loaihang order by sp.id_sp asc;";
+        $sql = "SELECT sp.id_sp as id_sp, sp.Name as Name, sp.Price as Price, sp.Sale as Sale, sp.Date_import as Ngay, sp.Viewsp as View, sp.Decribe as Decribe, sp.Mount as Mount, sp.Sale as Sale, sp.`%sale` as `%sale`, sp.image as image, sp.status as status, l.name as name FROM sanpham as sp JOIN loaihang as l ON sp.id_loai = l.id_loaihang order by sp.id_sp asc;";
         $result = $conn->query($sql);
         $danhsach = $result->fetchAll();
         return $danhsach;
@@ -183,7 +183,7 @@
     function themloaiv1($name,$level,$decribe,$image)
     {
         $conn = connection_database();
-        $sql = " INSERT INTO loaihang  VALUES (NULL,'".$name."','".$decribe."',current_timestamp,".$level.",1,'".$image."')";
+        $sql = " INSERT INTO cate_v1  VALUES (NULL,'".$name."','".$decribe."',current_timestamp,".$level.",1,'".$image."')";
         $conn->query($sql);
         echo '<script type="text/javascript">
 

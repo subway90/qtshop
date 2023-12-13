@@ -3,9 +3,16 @@
 $select_code_banking = select_code_ebanking();
 $code_banking = ++$select_code_banking[0];
 //value input
+if(!empty($_SESSION['dangnhap']))
+{
 $id_user = $_SESSION['dangnhap'][0][0];
+}else
+{
+    $id_user = 1;
+}
+$email ="";
+$phone = "";
 $name = "";
-$phone = $_SESSION['dangnhap'][0][5];
 $street = "";
 $village = "";
 $district = "";
@@ -13,7 +20,6 @@ $city = "";
 $showphone = "";
 $area = 1;
 $zipcode = null;
-$email = $_SESSION['dangnhap'][0][4];
 $facebook = null;
 $address = null;
 $bill_pay = ["checked",""];
@@ -110,11 +116,12 @@ $alert_name = ""; $alert_phone = ""; $alert_street = ""; $alert_village = ""; $a
                 $id_dh = select_id_dh();
                 $id_chitiet = ++$id_ct[0];
                 $id_donhang = ++$id_dh[0];
+
                 if($pay == 2)
                 {
                     $ebanking = $_POST['ebanking'];
                     them_ebanking($id_user,$id_donhang,$total_product);
-                }else
+                }elseif($pay ==1 )
                 {
                     $ebanking = 1;
                 }
@@ -133,7 +140,13 @@ $alert_name = ""; $alert_phone = ""; $alert_street = ""; $alert_village = ""; $a
             $_SESSION['giohang'] = [];  //khởi tạo lại session giỏ hàng
             $_SESSION['voucher'] = [];  //khởi tạo lại session voucher
             echo'<script>alert("Thanh toán thành công");</script>';
-            define('_SC_CHECKOUT',1);
+            if(!empty($_SESSION['dangnhap']))
+            {
+            define('_MEM_CHECKOUT',1);
+            }else
+            {
+            define('_GUESS_CHECKOUT',1);
+            }
             }
         }
 ?>
@@ -401,7 +414,7 @@ $alert_name = ""; $alert_phone = ""; $alert_street = ""; $alert_village = ""; $a
                             </div>
                         </div>
                         <?php
-                        if(defined('_SC_CHECKOUT'))
+                        if(defined('_MEM_CHECKOUT'))
                         {
                         ?>
                         <div class="btn btn-block btn-success font-weight-bold py-3">
@@ -409,6 +422,17 @@ $alert_name = ""; $alert_phone = ""; $alert_street = ""; $alert_village = ""; $a
                                 <i class="fa fa-check"></i>
                             </div>
                             Đơn hàng đang được xác nhận, vui lòng kiểm tra <a class="text-primary" href="index.php?act=history">Lịch sử mua hàng</a>
+                        </div>
+                        <?php
+                        }elseif(defined('_GUESS_CHECKOUT'))
+                        {
+                        ?>
+                        <div class="btn btn-block btn-success font-weight-bold py-3">
+                            <div class="mb-2">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            Đơn hàng đang được xác nhận, bạn sẽ nhận được cuộc gọi hỗ trợ bên SHOP (trễ nhất 24h từ lúc này) <br>
+                            <small>Hãy <a href="index.php?act=dangnhap">Đăng nhập</a> hoặc <a href="index.php?act=taouser">Đăng kí</a> để biết Lịch sử, trạng thái của đơn hàng !</small>
                         </div>
                         <?php
                         }else

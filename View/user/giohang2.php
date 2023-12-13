@@ -373,20 +373,12 @@ if(!empty($_GET['code']))
                             </div>
                     <?php
                     }
-                            if(!empty($_SESSION['dangnhap']))
-                            {
-                            ?>
-                                <a href="index.php?act=thanhtoan" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Thanh toán</a>
-                            <?php
-                            }else
-                            {
-                            ?>
-                                <a href="index.php?act=dangnhap" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Vui lòng đăng nhập để thanh toán</a>
-                            <?php
-                            }
-                        }else
-                        {
-                            ?>
+                    ?>
+                        <a href="index.php?act=thanhtoan" class="btn btn-block btn-primary font-weight-bold my-3 py-3">Thanh toán</a>
+                    <?php
+                }else
+                {
+                    ?>
                             <div class="d-flex justify-content-center mb-3">
                                 <h6 style="text-align:center">
                                     Không có sản phẩm

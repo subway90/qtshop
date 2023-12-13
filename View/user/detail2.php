@@ -226,28 +226,77 @@ if($count_review == 0)
             <div class="col">
                 <div class="bg-light p-30">
                     <div class="nav nav-tabs mb-4">
-                        <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Bình luận (<?=$count_cmt?>)</a>
+                        <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Chi tiết sản phẩm</a>
                         <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Đánh giá (<?=$count_review?>)</a>
-                        <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Chi tiết sản phẩm</a>
+                        <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Bình luận (<?=$count_cmt?>)</a>
                     </div>
                     <div class="tab-content">
 
-                        <!-- bình luận sản phẩm start -->
                         <div class="tab-pane fade show active" id="tab-pane-1">
-                        <div class="row">
-                                <div class="col-md-6">
-                                    <h4 class="mb-4"><?=$count_cmt?> đánh giá của sản phẩm " <?=$sp[0][1]?> "</h4>
+                            <div class="row">
+                                <table>
+                                    <thead>
+                                    <h4 class="mb-3">Chi tiết sản phẩm</h4>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        <?=$sp[0][5]?>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
 
+                        <div class="tab-pane fade" id="tab-pane-2">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="mb-4"><?=$count_review?> đánh giá của sản phẩm "<?=$sp[0][1]?>"</h4>
                                     <?php
-            $result = danhsachcmt($id);
-            $id = $sp[0][0];
-            $count_cmt = count($result);
-            if(count($result) <= 0){
-                echo("BÌNH LUẬN TRỐNG");
-            }else{
-                for ($i = 0; $i < count($result); $i++) {
-                    $rc = $result[$i];
-                    ?>
+                                    $count_cmt = count($result_l_r);
+                                    if(count($result_l_r) <= 0){
+                                        echo("<div class='text-primary'>Chưa có đánh giá cho sản phẩm này.</div>");
+                                    }else
+                                    {
+                                        for($i = 0; $i < count($result_l_r); $i++)
+                                        {
+                                            $r_v = $result_l_r[$i];
+                                        ?>
+                                    <div class="media mb-4">
+                                        <img src="../View/img/<?=$r_v['image']?>" alt="image user" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                        <div class="media-body">
+                                            <h6><?=$r_v['name']?><small> - <i><?=$r_v['time']?></i></small></h6>
+                                            <div class="text-primary mb-2">
+                                                <?=$r_v['rating']?>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <p><?=$r_v['noidung']?></p>
+                                        </div>
+                                    </div>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="tab-pane-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="mb-4"><?=$count_cmt?> bình luận của sản phẩm " <?=$sp[0][1]?> "</h4>
+                                    <?php
+                                    $result = danhsachcmt($id);
+                                    $id = $sp[0][0];
+                                    $count_cmt = count($result);
+                                    if(count($result) <= 0){
+                                        echo("<div class='text-primary'>Chưa có bình luận. Hãy trở thành người bình luận đầu tiên</div>");
+                                    }else
+                                    {
+                                        for($i = 0; $i < count($result); $i++)
+                                        {
+                                            $rc = $result[$i];
+                                    ?>
                                     <div class="media mb-4">
                                         <img src="../View/img/<?=$rc["image"]?>" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                         <div class="media-body">
@@ -256,11 +305,10 @@ if($count_review == 0)
                                             <p><?=$rc["noidung"]?></p>
                                         </div>
                                     </div>
-<?php
-                }
-            }
-                    ?>
-
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                 </div>
                                 <?php
                                 if(!empty($_SESSION['dangnhap']))
@@ -308,89 +356,6 @@ if($count_review == 0)
                                 ?>
                             </div>
                         </div>
-                        <!-- bình luận sản phẩm start -->
-
-
-                        <!-- đánh giá sản phẩm start -->
-                        <div class="tab-pane fade" id="tab-pane-2">
-                        <div class="row">
-                                <div class="col-md-6">
-                                    <h4 class="mb-4"><?=$count_review?> đánh giá "<?=$sp[0][1]?>
-"</h4>
-                                    <?php
-            $count_cmt = count($result_l_r);
-            if(count($result_l_r) <= 0){
-                echo("BÌNH LUẬN TRỐNG");
-            }else{
-                for ($i = 0; $i < count($result_l_r); $i++) {
-                    $r_v = $result_l_r[$i];
-                    ?>
-                                    <div class="media mb-4">
-                                        <img src="../View/img/<?=$r_v['image']?>" alt="image user" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                        <div class="media-body">
-                                            <h6><?=$r_v['name']?><small> - <i><?=$r_v['time']?></i></small></h6>
-                                            <div class="text-primary mb-2">
-                                                <?=$r_v['rating']?>
-                                                <i class="fas fa-star"></i>
-                                            </div>
-                                            <p><?=$r_v['noidung']?></p>
-                                        </div>
-                                    </div>
-                                    <?php
-                }
-            }
-                    ?>
-
-                                </div>
-                                <div class="col-md-6">
-                                    <h4 class="mb-4">Leave a review</h4>
-                                    <small>Your email address will not be published. Required fields are marked *</small>
-                                    <div class="d-flex my-3">
-                                        <p class="mb-0 mr-2">Your Rating * :</p>
-                                        <div class="text-primary">
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="message">Your Review *</label>
-                                            <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="name">Your Name *</label>
-                                            <input type="text" class="form-control" id="name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Your Email *</label>
-                                            <input type="email" class="form-control" id="email">
-                                        </div>
-                                        <div class="form-group mb-0">
-                                            <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- đánh giá sản phẩm end -->
-
-                        <!-- chi tiết sản phẩm start -->
-
-                        <div class="tab-pane fade" id="tab-pane-3">
-                        <h4 class="mb-3">Chi tiết sản phẩm</h4>
-                            <h6>Kích thước</h6>
-                            <h6>màu</h6>
-                            <h6>Loại</h6>
-                            <h6>Tên sản phẩm</h6>
-                            <h6>Giới tính</h6>
-                            <h6>Trọng lượng</h6>
-                            
-                        <!-- chi tiết sản phẩm end -->
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -400,7 +365,7 @@ if($count_review == 0)
 
 
     <!-- Products Start -->
-    <div class="container-fluid py-5">
+    <!-- <div class="container-fluid py-5">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">You May Also Like</span></h2>
         <div class="row px-xl-5">
             <div class="col">
@@ -533,5 +498,5 @@ if($count_review == 0)
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Products End -->

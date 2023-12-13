@@ -37,7 +37,8 @@ if(!defined('_CODE'))
                                         <th>Loại hàng</th>
                                         <th>Số lượng</th>
                                         <th>Trạng thái</th>
-                                        <th>Giá</th>
+                                        <th>Giá gốc</th>
+                                        <th>Giá sale</th>
                                         <th class="w-min" data-orderable="false"></th>
                                     </tr>
                                 </thead>
@@ -104,6 +105,10 @@ if(!defined('_CODE'))
                                         </td>
                                         <td>
                                             <div class="sa-price"><?=number_format($rc['Price'],0,'.',',')?>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="sa-price"><?=number_format($rc['Sale'],0,'.',',')?>
                                             </div>
                                         </td>
                                         <td>

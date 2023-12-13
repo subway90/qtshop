@@ -62,7 +62,7 @@ if(!defined('_CODE'))
                                                 <table class="sa-table">
                                                     <tbody>
                                                         <div style="display:flex; justify-content: center; height: 100%">
-                                                        <img style="text-align: center" id="image" height="10%" width="50%" src="../view/img/product_default.png" >
+                                                        <img style="text-align: center" id="image" height="10%" width="50%" src="../View/img/product_default.png" >
                                                         </div>
                                                     </tbody>
                                                 </table>
