@@ -127,8 +127,8 @@ if(isset($_REQUEST['success']))
                     if($length_password >= 8)
                     {
                         $start_password = substr($_POST["password"],0,1);
-                        if($start_password == strtoupper($start_password))
-                        {
+                            if($start_password == strtoupper($start_password))
+                            {
                             $verify_valid_sign_up ++;
                             $valid_up_password = "is-valid";
                             //pass confirm

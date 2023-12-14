@@ -13,14 +13,12 @@ if(!defined('_CODE'))
                                 <div class="col">
                                     <nav class="mb-2" aria-label="breadcrumb">
                                         <ol class="breadcrumb breadcrumb-sa-simple">
-                                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                                            <li class="breadcrumb-item"><a href="index.php?act=admin-dashboard">Quản lí</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Quản lí hóa đơn</li>
                                         </ol>
                                     </nav>
-                                    <h1 class="h3 m-0">Orders</h1>
+                                    <h1 class="h3 m-0">Danh sách hóa đơn</h1>
                                 </div>
-                                <div class="col-auto d-flex"><a href="app-order.html" class="btn btn-primary">New
-                                        order</a></div>
                             </div>
                         </div>
                         <div class="card">

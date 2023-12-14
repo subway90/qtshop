@@ -43,6 +43,24 @@
         $conn->query($sql);
         header('Location: index.php?act=admin-category-v1'); 
     }
+    function on_review($id){
+        $conn = connection_database();
+        $sql = " UPDATE review SET status = 2 where id_review =" . $id;
+        $conn->query($sql);
+        header('Location: index.php?act=admin-review'); 
+    }
+    function off_review($id){
+        $conn = connection_database();
+        $sql = " UPDATE review SET status = 3 where id_review =" . $id;
+        $conn->query($sql);
+        header('Location: index.php?act=admin-review'); 
+    }
+    function restart_review($id){
+        $conn = connection_database();
+        $sql = " UPDATE review SET status = 1 where id_review =" . $id;
+        $conn->query($sql);
+        header('Location: index.php?act=admin-review'); 
+    }
     function update_order_checkout($stt,$dh){
         $conn = connection_database();
         $sql = " UPDATE donhang SET thanhtoan=".$stt.",date_update_thanhtoan = current_timestamp WHERE id_dh =".$dh;
@@ -64,6 +82,28 @@
     function danhsachsp_all(){
         $conn = connection_database();
         $sql = "SELECT sp.id_sp as id_sp, sp.Name as Name, sp.Price as Price, sp.Sale as Sale, sp.Date_import as Ngay, sp.Viewsp as View, sp.Decribe as Decribe, sp.Mount as Mount, sp.Sale as Sale, sp.`%sale` as `%sale`, sp.image as image, sp.status as status, l.name as name FROM sanpham as sp JOIN loaihang as l ON sp.id_loai = l.id_loaihang order by sp.id_sp asc;";
+        $result = $conn->query($sql);
+        $danhsach = $result->fetchAll();
+        return $danhsach;
+    }
+    function admin_list_review(){
+        $conn = connection_database();
+        $sql = "SELECT rv3.*, ct.size as size, ct.color as color
+        FROM dh_chitiet ct
+        JOIN
+        (
+        SELECT rv2.*, sp.Name as tensp, sp.image as anhsp
+        FROM sanpham sp
+        JOIN
+        (
+        SELECT rv.*, tk.fullname as hoten, tk.image as image_user, tk.email as email_user
+        FROM review rv
+        JOIN taikhoan tk
+        ON rv.id_user = tk.id_user
+        ) rv2
+        ON sp.id_sp = rv2.id_sp
+        ) rv3
+        ON ct.id_chitiet = rv3.id_ct";
         $result = $conn->query($sql);
         $danhsach = $result->fetchAll();
         return $danhsach;
@@ -372,7 +412,7 @@
         function sum_total_month($month){
             $date_year = getdate();
             $conn = connection_database();
-            $sql = "SELECT sum(tongdh) as sum, count(tongdh) as count FROM donhang WHERE ngaydat LIKE '".$date_year['year']."-".$month."%'";
+            $sql = "SELECT sum(tongdh) as sum, count(tongdh) as count FROM donhang WHERE ngaydat LIKE '".$date_year['year']."-".$month."%' AND thanhtoan = 2";
             $result = $conn->query($sql);
             $total = $result->fetch();
             return $total;

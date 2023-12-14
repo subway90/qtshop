@@ -25,6 +25,17 @@ if(!empty($_SESSION['dangnhap']))
         switch($act)
         {
         // chuc nang admin
+        case "admin-review":
+                if(defined('_ADMIN'))
+                {
+                include "./../View/header-admin.php";
+                include "./../View/admin/admin-review.php";
+                include "./../View/admin/footer-admin.php";
+                break;
+        }
+        else{
+                require_once('404.html'); exit;
+        }
         case "admin-slide":
                 if(defined('_ADMIN'))
                 {

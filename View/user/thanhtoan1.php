@@ -51,12 +51,15 @@ $alert_name = ""; $alert_phone = ""; $alert_street = ""; $alert_village = ""; $a
     {
         if($_SESSION['voucher'][6]==2)
         {
-            $total_product -= $_SESSION['voucher'][2];
+            $total_checkout = $total_product - $_SESSION['voucher'][2];
         }
         if($_SESSION['voucher'][6]==3)
         {
-             $total_product -= $_SESSION['voucher'][8];
+            $total_checkout = $total_product - $_SESSION['voucher'][8];
         }
+    }else
+    {
+        $total_checkout = $total_product;
     }
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
@@ -120,13 +123,13 @@ $alert_name = ""; $alert_phone = ""; $alert_street = ""; $alert_village = ""; $a
                 if($pay == 2)
                 {
                     $ebanking = $_POST['ebanking'];
-                    them_ebanking($id_user,$id_donhang,$total_product);
+                    them_ebanking($id_user,$id_donhang,$total_checkout);
                 }elseif($pay ==1 )
                 {
                     $ebanking = 1;
                 }
                 $voucher = $_POST['voucher'];
-                them_donhang($id_user,$name,$phone,$address,$area,$zipcode,$email,$facebook,$pay,$total_product,$voucher,$ebanking);
+                them_donhang($id_user,$name,$phone,$address,$area,$zipcode,$email,$facebook,$pay,$total_checkout,$voucher,$ebanking);
             for($i=0 ;$i<count($_SESSION['thanhtoan']);$i++)
             {
                 $id_chitiet += $i;
@@ -372,7 +375,7 @@ $alert_name = ""; $alert_phone = ""; $alert_street = ""; $alert_village = ""; $a
                     <div class="pt-2">
                         <div class="d-flex justify-content-between mt-2">
                             <h5>Tổng hóa đơn</h5>
-                            <h5><?=number_format($total_product,0,',','.')?> đ</h5>
+                            <h5><?=number_format($total_checkout,0,',','.')?> đ</h5>
                         </div>
                     </div>
                 </div>

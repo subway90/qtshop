@@ -10,7 +10,7 @@ if(!defined('_CODE'))
         $price = $_REQUEST['price'];
         $image = $_REQUEST['image'];
         $sl = $_REQUEST['sl'];
-        $size = $_REQUEST['size'];
+        $size = strtoupper($_REQUEST['size']);
         $color = $_REQUEST['color'];
         $sp_u = [$id,$name,$price,$sl,$image,$size,$color];
         $vitri = kiemtra_update($sp_u); //vị trí id
@@ -143,7 +143,7 @@ if(!defined('_CODE'))
                                     <?php
                                     for($j=0;$j<count($arr_kichthuoc);$j++)
                                     {
-                                        if($arr_kichthuoc[$j] == $pr[5])
+                                        if(strtoupper($arr_kichthuoc[$j]) == $pr[5])
                                         {
                                         ?>
                                     <option selected value="<?=$pr[5]?>"><?=strtoupper($pr[5])?></option>

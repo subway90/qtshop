@@ -13,19 +13,6 @@ $date = getdate();
                                 <h1 class="h3 m-0">Quản lí doanh thu</h1>
                             </div>
                             <div class="col-auto d-flex">
-                                <select class="form-select me-3">
-                                <option checked=""><?=$date['weekday']." /".$date['mday']."/".$date['mon']."/".$date['year']?></option>
-                                    <?php
-
-for($i=1;$i<$date['mon'];$i++)
-{
-    ?>
-                                    <option><?=$date['mday']."/".($date['mon']-$i)."/".$date['year']?></option>
-    <?php
-}
-                                    ?>
-                                </select>
-                                <a href="#" class="btn btn-primary">Xuất</a>
                             </div>
                         </div>
                     </div>
@@ -35,61 +22,15 @@ for($i=1;$i<$date['mon'];$i++)
                                 data-sa-container-query="{&quot;340&quot;:&quot;saw-indicator--size--lg&quot;}">
                                 <div class="sa-widget-header saw-indicator__header">
                                     <h2 class="sa-widget-header__title">Doanh thu tháng <?=$date['mon']?></h2>
-                                    <div class="sa-widget-header__actions">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn btn-sm btn-sa-muted d-block"
-                                                id="widget-context-menu-1" data-bs-toggle="dropdown"
-                                                aria-expanded="false" aria-label="More">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                aria-labelledby="widget-context-menu-1">
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Xem chi tiết</a>
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider" />
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item text-danger" href="#">Xóa</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
                                 <?php
                                 $month_1 = sum_total_month($date['mon']);
-                                $month_2 = sum_total_month($date['mon']-1);
                                 $ave_mon_1 = $month_1['sum']/$month_1['count'];
-                                $ave_mon_2 = $month_2['sum']/$month_2['count'];
                                 ?>
                                 <div class="saw-indicator__body">
                                     <div class="saw-indicator__value"><?=number_format($month_1['sum'],0,'.',',')?> vnđ</div>
-                                    <?php
-                                    if($month_1 > $month_2)
-                                    {
-                                        ?>
                                         <div class="saw-indicator__delta saw-indicator__delta--rise">
-                                        <div class="saw-indicator__delta-direction">
-                                            <i class="fas fa-angle-up"></i>
                                         </div>
-                                        <div class="saw-indicator__delta-value"><?=number_format(((1-($month_1['sum']/$month_2['sum']))*100), 2, ',' , '.')?> %</div>
-                                        </div>
-                                        <div class="saw-indicator__caption">so với tháng <?=($date['mon']-1)." ".$date['year']?></div>
-                                        <?php
-                                    }else
-                                    {
-                                        ?>
-                                        <div class="saw-indicator__delta saw-indicator__delta--fall">
-                                        <div class="saw-indicator__delta-direction">
-                                            <i class="fas fa-angle-down"></i>
-                                        </div>
-                                        <div class="saw-indicator__delta-value"><?=number_format(((1-($month_1['sum']/$month_2['sum']))*100), 2, ',' , '.')?> %</div>
-                                        </div>
-                                        <div class="saw-indicator__caption">so với tháng <?=($date['mon']-1)." ".$date['year']?></div>
-                                        <?php
-                                    }
-                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -98,57 +39,11 @@ for($i=1;$i<$date['mon'];$i++)
                                 data-sa-container-query="{&quot;340&quot;:&quot;saw-indicator--size--lg&quot;}">
                                 <div class="sa-widget-header saw-indicator__header">
                                     <h2 class="sa-widget-header__title">Giá trị đơn hàng trung bình</h2>
-                                    <div class="sa-widget-header__actions">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn btn-sm btn-sa-muted d-block"
-                                                id="widget-context-menu-2" data-bs-toggle="dropdown"
-                                                aria-expanded="false" aria-label="More">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                aria-labelledby="widget-context-menu-2">
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Settings</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Move</a>
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider" />
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item text-danger" href="#">Remove</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="saw-indicator__body">
                                     <div class="saw-indicator__value"><?=number_format(($ave_mon_1), 0, ',','.')?> vnđ</div>
-                                    <?php
-                                    if($ave_mon_1>$ave_mon_2)
-                                    {
-                                        ?>
                                         <div class="saw-indicator__delta saw-indicator__delta--rise">
-                                        <div class="saw-indicator__delta-direction">
-                                            <i class="fas fa-angle-up"></i>
                                         </div>
-                                        <div class="saw-indicator__delta-value"><?=number_format((1-($ave_mon_1/$ave_mon_2))*100,2,',','.')?> %</div>
-                                        </div>
-                                        <div class="saw-indicator__caption">so với tháng <?=($date['mon']-1)." ".$date['year']?></div>
-                                        <?php
-                                    }else{
-                                    ?>
-                                    <div class="saw-indicator__delta saw-indicator__delta--fall">
-                                        <div class="saw-indicator__delta-direction">
-                                            <i class="fas fa-angle-down"></i>
-                                        </div>
-                                        <div class="saw-indicator__delta-value"><?=number_format((1-($ave_mon_1/$ave_mon_2))*100,2,',','.')?> %</div>
-                                        </div>
-                                        <div class="saw-indicator__caption">so với tháng <?=($date['mon']-1)." ".$date['year']?></div>
-                                        <?php
-                                    }
-                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -157,57 +52,11 @@ for($i=1;$i<$date['mon'];$i++)
                                 data-sa-container-query="{&quot;340&quot;:&quot;saw-indicator--size--lg&quot;}">
                                 <div class="sa-widget-header saw-indicator__header">
                                     <h2 class="sa-widget-header__title">Số đơn hàng</h2>
-                                    <div class="sa-widget-header__actions">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn btn-sm btn-sa-muted d-block"
-                                                id="widget-context-menu-3" data-bs-toggle="dropdown"
-                                                aria-expanded="false" aria-label="More">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                aria-labelledby="widget-context-menu-3">
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Settings</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Move</a>
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider" />
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item text-danger" href="#">Remove</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="saw-indicator__body">
                                     <div class="saw-indicator__value"><?=$month_1['count']?></div>
-                                    <?php
-                                    if($month_1['count']>$month_2['count'])
-                                    { 
-                                        ?>
                                         <div class="saw-indicator__delta saw-indicator__delta--rise">
-                                        <div class="saw-indicator__delta-direction">
-                                            <i class="fas fa-angle-up"></i>
                                         </div>
-                                        <div class="saw-indicator__delta-value"><?=number_format((1-($month_1['count']/$month_2['count']))*100,2,',','.')?> %</div>
-                                        </div>
-                                        <div class="saw-indicator__caption">so với tháng <?=($date['mon']-1)." ".$date['year']?></div>
-                                    <?php
-                                    }else{
-                                        ?>
-                                        <div class="saw-indicator__delta saw-indicator__delta--fall">
-                                        <div class="saw-indicator__delta-direction">
-                                            <i class="fas fa-angle-down"></i>
-                                        </div>
-                                        <div class="saw-indicator__delta-value"><?=number_format((1-($month_1['count']/$month_2['count']))*100,2,',','.')?> %</div>
-                                        </div>
-                                        <div class="saw-indicator__caption">so với tháng <?=($date['mon']-1)." ".$date['year']?></div>
-                                        <?php
-                                    }
-                                    ?>
                                     </div>
                             </div>
                         </div>
@@ -216,30 +65,6 @@ for($i=1;$i<$date['mon'];$i++)
                                 data-sa-container-query="{&quot;560&quot;:&quot;saw-pulse--size--lg&quot;}">
                                 <div class="sa-widget-header saw-pulse__header">
                                     <h2 class="sa-widget-header__title">Số lượng sản phẩm</h2>
-                                    <div class="sa-widget-header__actions">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn btn-sm btn-sa-muted d-block"
-                                                id="widget-context-menu-4" data-bs-toggle="dropdown"
-                                                aria-expanded="false" aria-label="More">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                aria-labelledby="widget-context-menu-4">
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Settings</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Move</a>
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider" />
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item text-danger" href="#">Remove</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="saw-pulse__counter">
                                     <?php
@@ -280,28 +105,6 @@ for($i=1;$i<$date['mon'];$i++)
                                 <div class="sa-widget-header saw-table__header">
                                     <h2 class="sa-widget-header__title">Thống kê sản phẩm</h2>
                                     <div class="sa-widget-header__actions">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn btn-sm btn-sa-muted d-block"
-                                                id="widget-context-menu-6" data-bs-toggle="dropdown"
-                                                aria-expanded="false" aria-label="More">
-                                                <i class="fas fa-ellipsis-v"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end"
-                                                aria-labelledby="widget-context-menu-6">
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Settings</a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#">Move</a>
-                                                </li>
-                                                <li>
-                                                    <hr class="dropdown-divider" />
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item text-danger" href="#">Remove</a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="saw-table__body sa-widget-table text-nowrap">
@@ -357,35 +160,7 @@ for($i=1;$i<$date['mon'];$i++)
                                 <div class="card-body">
                                     <div class="sa-widget-header mb-4">
                                         <h2 class="sa-widget-header__title">Đánh giá gần nhất</h2>
-                                        <div class="sa-widget-header__actions">
-                                            <div class="dropdown">
-                                                <button type="button" class="btn btn-sm btn-sa-muted d-block"
-                                                    id="widget-context-menu-8" data-bs-toggle="dropdown"
-                                                    aria-expanded="false" aria-label="More">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="3" height="13"
-                                                        fill="currentColor">
-                                                        <path
-                                                            d="M1.5,8C0.7,8,0,7.3,0,6.5S0.7,5,1.5,5S3,5.7,3,6.5S2.3,8,1.5,8z M1.5,3C0.7,3,0,2.3,0,1.5S0.7,0,1.5,0 S3,0.7,3,1.5S2.3,3,1.5,3z M1.5,10C2.3,10,3,10.7,3,11.5S2.3,13,1.5,13S0,12.3,0,11.5S0.7,10,1.5,10z">
-                                                        </path>
-                                                    </svg>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-end"
-                                                    aria-labelledby="widget-context-menu-8">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">Settings</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">Move</a>
-                                                    </li>
-                                                    <li>
-                                                        <hr class="dropdown-divider" />
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item text-danger" href="#">Remove</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                     <div class="sa-timeline mb-n2 pt-2">
                                         <ul class="sa-timeline__list">
@@ -407,35 +182,6 @@ for($i=1;$i<$date['mon'];$i++)
                                 <div class="card-body">
                                     <div class="sa-widget-header">
                                         <h2 class="sa-widget-header__title">Đánh giá sản phẩm</h2>
-                                        <div class="sa-widget-header__actions">
-                                            <div class="dropdown">
-                                                <button type="button" class="btn btn-sm btn-sa-muted d-block"
-                                                    id="widget-context-menu-9" data-bs-toggle="dropdown"
-                                                    aria-expanded="false" aria-label="More">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="3" height="13"
-                                                        fill="currentColor">
-                                                        <path
-                                                            d="M1.5,8C0.7,8,0,7.3,0,6.5S0.7,5,1.5,5S3,5.7,3,6.5S2.3,8,1.5,8z M1.5,3C0.7,3,0,2.3,0,1.5S0.7,0,1.5,0 S3,0.7,3,1.5S2.3,3,1.5,3z M1.5,10C2.3,10,3,10.7,3,11.5S2.3,13,1.5,13S0,12.3,0,11.5S0.7,10,1.5,10z">
-                                                        </path>
-                                                    </svg>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-end"
-                                                    aria-labelledby="widget-context-menu-9">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">Settings</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">Move</a>
-                                                    </li>
-                                                    <li>
-                                                        <hr class="dropdown-divider" />
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item text-danger" href="#">Remove</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <ul class="list-group list-group-flush">

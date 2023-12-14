@@ -5,6 +5,7 @@
     include "./../Model/xl_thanhtoan.php";
     include "./../Model/xl_search.php";
     $info = select_infomation_web();
+    //case tìm kiếm sản phẩm
     if (isset($_POST['text-search']))
     {
     $text_search = $_POST["text-search"];
@@ -13,7 +14,6 @@
     else
     {
     $text_search = "";
-    $list_search = search($text_search);
     }
     $info_user = '
     <div>

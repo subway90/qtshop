@@ -30,8 +30,8 @@ if(!defined('_CODE'))
                                 data-sa-search-input="#table-search">
                                 <thead>
                                     <tr>
-                                        <th class="w-min" data-orderable="false"><input type="checkbox"
-                                                class="form-check-input m-0 fs-exact-16 d-block" aria-label="..." />
+                                        <th class="w-min" data-orderable="false">
+                                            STT
                                         </th>
                                         <th class="min-w-20x">Tên sản phẩm</th>
                                         <th>Loại hàng</th>
@@ -50,8 +50,8 @@ if(!defined('_CODE'))
                     $rc = $result[$i];
 ?>
                                     <tr>
-                                        <td><input type="checkbox" class="form-check-input m-0 fs-exact-16 d-block"
-                                                aria-label="..." /></td>
+                                        <td>
+                                            <?=$i+1?>
                                         <td>
                                             <div class="d-flex align-items-center"><a href="#"
                                                     class="me-4">
