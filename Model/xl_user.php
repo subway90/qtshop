@@ -18,7 +18,7 @@ function mot_user($username){
     $conn = connection_database();
     $sql = "SELECT * FROM taikhoan WHERE username = '".$username."'";
     $result = $conn->query($sql);
-    $danhsach = $result->fetchAll();
+    $danhsach = $result->fetch();
     return $danhsach;
 }
     function check_user($test_user){

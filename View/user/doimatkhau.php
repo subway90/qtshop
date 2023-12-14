@@ -34,8 +34,6 @@
  include "./../Model/xl_user.php";
  $edit;
  $id_user = $_SESSION['dangnhap'][0][0];
- $load_user = mot_user('taikhoan',$_SESSION['dangnhap'][0][1],$_SESSION['dangnhap'][0][2]);
-
  if(isset($_REQUEST['edit'])){
     $edit = $_REQUEST['edit'];
     // if($edit == 0){
@@ -48,14 +46,10 @@
     }
 }
 ?>
-   
-
-
-
     <!-- Join Now Start -->
     <div class="container-fluid ">
       
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4 "><span class="bg-secondary pr-3">Wellcom To Account</span></h2>
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4 "><span class="bg-secondary pr-3">Đổi mật khẩu</span></h2>
         <div class="row px-xl-5 ">
             <div class="col-lg-6 mb-5">
                 <div class="contact-form bg-pink p-30">

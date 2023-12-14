@@ -89,6 +89,7 @@ $valid_username = "";
 $valid_password = "";
 $verify_valid_login = 0;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //Hiếu code
     if(!empty($_POST["remember"]))
     {
         $_SESSION['remember'][0] = "checked";
@@ -97,6 +98,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     {
         $_SESSION['remember'][0] = "";
     }
+
+    //kiểm tra đăng nhập
     if(!empty($_POST["username"]))
     {
         $verify_valid_login ++;
@@ -121,10 +124,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
         if($verify_valid_login == 2)
         {
-            $tk = mot_user($username);
+            $tk = mot_user($username); //gọi hàm mot_user và truyền tham số $username
             if(!empty($tk))
             {
-                if ($tk[0]['password'] == $password_md5)
+                if ($tk['password'] == $password_md5) // so sánh
                 {
                     if($remember == 1)
                     {
@@ -132,11 +135,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $_SESSION['remember'][2] = $password;
                     }
                     
-                    $_SESSION['dangnhap'] = $tk;
-                    if ($tk[0]["position"] == 0) {
+                    $_SESSION['dangnhap'] = $tk; // gán biến tk vào session dang nhap
+                    if ($tk["position"] == 0) {
                         header("Location: index.php?act=admin-dashboard");
                     }
-                    if ($tk[0]["position"] == 1) {
+                    if ($tk["position"] == 1) {
                         header("Location: index.php");
                     }
                 }

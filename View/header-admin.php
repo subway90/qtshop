@@ -308,13 +308,12 @@ $f_alert = '</div>
                     }
                     else{ //thành công
                         // $hinhsp = basename($_FILES['image']['name']);
-                    $valid_image = 1;
-                    $bool++;
+                        $valid_image = 1;
+                        $bool++;
                         $hinhsp = $_FILES['image']['name'];
                         $path = __DIR__ . './../View/img/';
                         $target_file = $path . $hinhsp;
                         move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-                        
                         }
                     }
                 }
