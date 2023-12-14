@@ -129,6 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             {
                 if ($tk[0]['password'] == $password_md5) // so sánh
                 {
+                    //Hiếu code
                     if($remember == 1)
                     {
                         $_SESSION['remember'][1] = $username;

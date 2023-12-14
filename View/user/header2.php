@@ -30,6 +30,23 @@
     {
         $list_feedback = select_user_feedback($_SESSION['dangnhap'][0][0]);
         $count_feedback = count($list_feedback);
+        if($count_feedback>0)
+        {
+            $notify_feedback = 0;
+            for($i=0;$i<$count_feedback;$i++)
+            {
+                if($list_feedback[$i]['status'] == 1)
+                {
+                    $notify_feedback++;
+                }else
+                {
+                    continue;
+                }
+            }
+        }else
+        {
+            $notify_feedback = 0;
+        }
         $user = load($_SESSION['dangnhap'][0][0]);
         if(($_SESSION['dangnhap'][0][7]) == 1)
         {
@@ -65,8 +82,7 @@
         }
     }else
     {
-        $count_feedback = 0;
-        
+        $notify_feedback = 0;
     }
 
     //filter shop
@@ -301,7 +317,7 @@
                                 <!-- Mobile button heart and button carrt Mobile -->
                     <a href="index.php?act=notification" class="btn px-0 ml-2">
                         <i class="fas fa-bell text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;"><?=$count_feedback?></span>
+                        <span class="badge text-dark border border-dark rounded-circle" style="padding-bottom: 2px;"><?=$notify_feedback?></span>
                     </a>
                     <a href="index.php?act=yeuthich" class="btn px-0 ml-2">
                         <i class="fas fa-heart text-dark"></i>
@@ -435,7 +451,7 @@
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="index.php?act=notification" class="btn px-0 ml-3">
                                 <i class="fas fa-bell text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><?=$count_feedback?></span>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><?=$notify_feedback?></span>
                             </a>
                             <a href="index.php?act=yeuthich" class="btn px-0 ml-3">
                                 <i class="fas fa-heart text-primary"></i>

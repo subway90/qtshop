@@ -43,7 +43,7 @@ if(isset($_REQUEST['success']))
             if(!empty($_POST["fullname"]))
             {
                 $verify_valid_sign_up ++;
-                $fullname = str_replace("'", '', $_POST["fullname"]);
+                $fullname = str_replace(["'","@","!",";"], '', $_POST["fullname"]);
                 $valid_up_name = "is-valid";
             }else
             {
@@ -72,8 +72,8 @@ if(isset($_REQUEST['success']))
             if(!empty($_POST["email"]))
             {
                 $email = str_replace("'", '', $_POST["email"]);
-                $l_r_c_e = check_email($email);
-                if(empty($l_r_c_e))
+                $CheckMail = check_email($email);
+                if(empty($CheckMail))
                 {
                     $verify_valid_sign_up ++;
                     $valid_up_email = "is-valid";
@@ -102,9 +102,9 @@ if(isset($_REQUEST['success']))
             //user
             if(!empty($_POST["username"]))
             {
-                $username = str_replace("'", '', $_POST["username"]);
-                $l_r_c_u = check_user($username);
-                if(empty($l_r_c_u))
+                $username = str_replace([" ", "'",";","!",",","."], '', $_POST["username"]);
+                $CheckUser = check_user($username);
+                if(empty($CheckUser))
                 {
                     $verify_valid_sign_up ++;
                     $valid_up_user = "is-valid";
@@ -122,26 +122,42 @@ if(isset($_REQUEST['success']))
             //pass
             if(!empty($_POST["password"]))
             {
-                $verify_valid_sign_up ++;
                 $password = str_replace("'", '', $_POST["password"]);
-                $valid_up_password = "is-valid";
-                //pass confirm
-                    if(!empty($_POST["password-confirm"]))
+                $length_password = strlen($password);
+                    if($length_password >= 8)
                     {
-                        $password_confirm = str_replace("'", '', $_POST["password-confirm"]);
-                            if($password_confirm == $password)
-                            {
-                                $verify_valid_sign_up ++;
-                                $valid_up_password_confirm = "is-valid";
+                        $start_password = substr($_POST["password"],0,1);
+                        if($start_password == strtoupper($start_password))
+                        {
+                            $verify_valid_sign_up ++;
+                            $valid_up_password = "is-valid";
+                            //pass confirm
+                                if(!empty($_POST["password-confirm"]))
+                                {
+                                    $password_confirm = str_replace("'", '', $_POST["password-confirm"]);
+                                        if($password_confirm == $password)
+                                        {
+                                            $verify_valid_sign_up ++;
+                                            $valid_up_password_confirm = "is-valid";
+                                        }else
+                                        {
+                                            $valid_up_password_confirm = "is-invalid";
+                                            $_SESSION['valid_up_password_confirm'] = "Mật khẩu xác thực không đúng";
+                                        }
+                                }else
+                                {
+                                    $valid_up_password = "is-invalid";
+                                    $_SESSION['valid_up_password'] = "Vui lòng nhập xác thực mật khẩu";
+                                }
                             }else
                             {
-                                $valid_up_password_confirm = "is-invalid";
-                                $_SESSION['valid_up_password_confirm'] = "Mật khẩu xác thực không đúng";
+                                $valid_up_password = "is-invalid";
+                                $_SESSION['valid_up_password'] = "Vui lòng nhập ít nhất 1 chữ viết hoa ở đầu dòng";
                             }
                     }else
                     {
-                        $valid_up_password_confirm = "is-invalid";
-                        $_SESSION['valid_up_password_confirm'] = "Vui lòng nhập xác thực mật khẩu";
+                        $valid_up_password = "is-invalid";
+                        $_SESSION['valid_up_password'] = "Vui lòng điền mật khẩu lớn hơn 8 kí tự";
                     }
             }else
             {
@@ -151,10 +167,8 @@ if(isset($_REQUEST['success']))
             //successful
             if($verify_valid_sign_up == 7)
             {
-                $goiid = id();
-                $id_new = $goiid['id_user'] + 1;
                 $pmd = md5($password);
-                them_user($id_new,$username,$pmd,$fullname,$email,$phone,$address,1);
+                them_user($username,$pmd,$fullname,$email,$phone,$address);
                 header('Location: index.php?act=taouser&success');
             }
     }
@@ -194,7 +208,7 @@ if(isset($_REQUEST['success']))
                 <div class="card-body p-sm-5 m-sm-3 flex-grow-0">
                     <h1 style="display: <?=$bool_display?>" class="mb-0 fs-3">Đăng Kí Tài Khoản</h1>
                     <?=$_SESSION['alert']?>
-                    <form style="display: <?=$bool_display?>" action="index.php?act=taouser" method="post" enctype="multipart/form-data"> 
+                <form action="index.php?act=taouser" method="post" style="display: <?=$bool_display?>"> 
                     <div class="fs-exact-14 text-muted mt-2 pt-1 mb-5 pb-2">Điền vào biểu mẫu để tạo một tài khoản mới.</div>
                     <div class="mb-4">
                         <label class="form-label">Họ Và Tên <span class="text-danger">(*)</span> </label>
@@ -239,6 +253,7 @@ if(isset($_REQUEST['success']))
                     <div>
                         <button type="submit" class="btn btn-primary btn-lg w-100 mt-4">Đăng Kí</button>
                     </div>
+                </form>
                 </div>
                 <div class="sa-divider sa-divider--has-text">
                 <div class="sa-divider__text">Tiếp Tục Với</div>
@@ -246,7 +261,6 @@ if(isset($_REQUEST['success']))
                     <div class="form-group mb-4 mt-4 pt-2 text-center text-muted">
                         <a href="index.php?act=dangnhap">Đăng nhập tài khoản</a>
                     </div>
-                </form>
                 </div>
             </div>
         </div>

@@ -8,10 +8,9 @@ function id()
     $danhsach = $goiid->fetch();
     return $danhsach;
 }   
-function them_user($id_new,$username,$password,$fullname,$email,$phone,$address,$position){
+function them_user($username,$password,$fullname,$email,$phone,$address){
     $conn = connection_database();
-    $sql = "INSERT INTO taikhoan VALUES($id_new,'".$username."','".$password."' ,'".$fullname."','".$email."',".$phone.",'".$address."','".$position."', 'user_image.jpg',01-01-2000, 1)";
-    // echo($sql);
+    $sql = "INSERT INTO taikhoan VALUES(NULL,'".$username."','".$password."' ,'".$fullname."','".$email."',".$phone.",'".$address."',1, 'user_image.jpg',current_timestamp, 1)";
     $conn->query($sql); 
 }
 function mot_user($username){
@@ -30,7 +29,7 @@ function mot_user($username){
     }
     function check_email($test_email){
         $conn = connection_database();
-        $sql = "SELECT password FROM taikhoan where email = '".$test_email."'";
+        $sql = "SELECT email FROM taikhoan where email = '".$test_email."'";
         $result = $conn->query($sql);
         $danhsach = $result->fetchAll();
         return $danhsach;
