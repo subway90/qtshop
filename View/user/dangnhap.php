@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tk = mot_user($username); //gọi hàm mot_user và truyền tham số $username
             if(!empty($tk))
             {
-                if ($tk['password'] == $password_md5) // so sánh
+                if ($tk[0]['password'] == $password_md5) // so sánh
                 {
                     if($remember == 1)
                     {
@@ -136,10 +136,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                     
                     $_SESSION['dangnhap'] = $tk; // gán biến tk vào session dang nhap
-                    if ($tk["position"] == 0) {
+                    if ($tk[0]["position"] == 0) {
                         header("Location: index.php?act=admin-dashboard");
                     }
-                    if ($tk["position"] == 1) {
+                    if ($tk[0]["position"] == 1) {
                         header("Location: index.php");
                     }
                 }

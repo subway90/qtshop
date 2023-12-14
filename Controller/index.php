@@ -14,7 +14,7 @@ if(!isset($_SESSION['dangnhap'])) $_SESSION['dangnhap'] = [];
 if(!isset($_SESSION['thanhtoan'])) $_SESSION['thanhtoan'] = [];
 if(!empty($_SESSION['dangnhap']))
 {
-        if($_SESSION['dangnhap'][0][7] == 0)
+        if($_SESSION['dangnhap'][7] == 0)
         {
                 define('_ADMIN',true);
         }

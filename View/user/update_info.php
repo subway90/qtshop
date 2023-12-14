@@ -28,21 +28,21 @@
                                         <div class="card-body d-flex flex-column align-items-center">
                                             <div class="pt-3">
                                                 <div class="sa-symbol sa-symbol--shape--circle" style="--sa-symbol--size:6rem">
-                                                    <img src="../View/img/<?=$load_user[8]?>" width="96" height="96" alt="" />
+                                                    <img src="../View/img/<?=$load_user[0][8]?>" width="96" height="96" alt="" />
                                                 </div>
                                             </div>
                                             <div class="text-center mt-4">
-                                                <div class="fs-exact-16 fw-medium"> <?=$load_user[3]?></div>
+                                                <div class="fs-exact-16 fw-medium"> <?=$load_user[0][3]?></div>
                                                 <div class="mt-2">Giới tính:
-                                                    <?php if($load_user[10]==1){ ?>nam<?php }else{ ?>nữ<?php }?>
+                                                    <?php if($load_user[0][10]==1){ ?>nam<?php }else{ ?>nữ<?php }?>
                                                 </div>
 
                                                 <div class="fs-exact-13 text-muted">
-                                                    <div class="mt-2"><a href="mailto:<?=$load_user[4]?>"><?=$load_user[4]?></a></div>
-                                                    <div class="mt-2">0<?=number_format($load_user[5],0,',',' ')?></div>
-                                                    <div class="mt-2"><?=$load_user[6]?></div>
+                                                    <div class="mt-2"><a href="mailto:<?=$load_user[0][4]?>"><?=$load_user[0][4]?></a></div>
+                                                    <div class="mt-2">0<?=number_format($load_user[0][5],0,',',' ')?></div>
+                                                    <div class="mt-2"><?=$load_user[0][6]?></div>
                                                     <div class="mt-4">Thay ảnh đại diện</div>
-                                                    <input hidden  name="old_image" type="text" value="<?=$load_user[8]?>">
+                                                    <input hidden  name="old_image" type="text" value="<?=$load_user[0][8]?>">
                                                     <input style="margin-left: 15%" type="file" name="new_image" value="">
                                                 </div>
                                             </div>
@@ -50,7 +50,7 @@
                                             <div class="w-100">
                                                 <dl class="list-unstyled m-0">
                                                     <dt class="fs-exact-14 fw-medium">Họ và Tên</dt>
-                                                            <input name="fullname" type="text" class="form-control" value="<?=$load_user[3]?>" required>
+                                                            <input name="fullname" type="text" class="form-control" value="<?=$load_user[0][3]?>" required>
                                                 </dl>
                                                 <dl class="list-unstyled m-0 mt-4">
                                                     <dt class="fs-exact-14 fw-medium">Giới tính</dt>
@@ -61,21 +61,21 @@
                                                 </dl>
                                                 <dl class="list-unstyled m-0 mt-4">
                                                     <dt class="fs-exact-14 fw-medium">Ngày sinh</dt>
-                                                            <input disabled type="date" name="born" class="form-control" value="<?=$load_user[9]?>">
+                                                            <input disabled type="date" name="born" class="form-control" value="<?=$load_user[0][9]?>">
                                                 </dl>
                                                 <dl class="list-unstyled m-0 mt-4">
                                                     <dt class="fs-exact-14 fw-medium">Email</dt>
-                                                    <input disabled name="email" type="email" class="form-control" value="<?=$load_user[4]?>" required>
+                                                    <input disabled name="email" type="email" class="form-control" value="<?=$load_user[0][4]?>" required>
 
                                                 </dl>
                                                 <dl class="list-unstyled m-0 mt-4">
                                                     <dt class="fs-exact-14 fw-medium">Số điện thoại</dt>
-                                                    <input name="phone" type="number" class="form-control" value="0<?=$load_user[5]?>" required>
+                                                    <input name="phone" type="number" class="form-control" value="0<?=$load_user[0][5]?>" required>
 
                                                 </dl>
                                                 <dl class="list-unstyled m-0 mt-4">
                                                     <dt class="fs-exact-14 fw-medium">Địa chỉ</dt>
-                                                    <input name="address" type="text" class="form-control" value="<?=$load_user[6]?>" required>
+                                                    <input name="address" type="text" class="form-control" value="<?=$load_user[0][6]?>" required>
                                                 </dl>
                                             </div>
                                         </div>
