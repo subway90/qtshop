@@ -173,12 +173,33 @@
 
                                  <!-- rating review start -->
                                 <div class="d-flex align-items-center justify-content-center mb-1">
+                                <?php
+                                $SelectAllRating = SelectAllRating($rc['id_sp']);
+                                if(!empty($SelectAllRating))
+                                {
+                                    $Avarage_Star = round($SelectAllRating['total_star']/$SelectAllRating['count_review'],1);
+                                    $Number_Review = $SelectAllRating['count_review'];
+                                }else
+                                {
+                                    $Avarage_Star = 0;
+                                    $Number_Review = 0;
+                                }
+                                for($i=1;$i<6;$i++)
+                                {
+                                    if($Avarage_Star>=$i)
+                                    {
+                                    ?>
                                     <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small>(99)</small>
+                                    <?php
+                                    }else
+                                    {
+                                    ?>
+                                    <small class="far fa-star text-primary mr-1"></small>
+                                    <?php
+                                    }
+                                }
+                                ?>
+                                    <small>(<?=$Number_Review?>)</small>
                                 </div>
                                 <!-- rating review end -->
 

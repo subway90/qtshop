@@ -94,13 +94,23 @@
     }
     function list_review($id){
         $conn = connection_database();
-        $sql = "SELECT tk.fullname as name, tk.image as image, rv.id_user id_user, rv.id_sp as id_sp, rv.noidung as noidung, rv.rating as rating, rv.date_submit as time
+        $sql = "SELECT tk.fullname as name, tk.image as image, rv.id_user id_user, rv.id_sp as id_sp, rv.noidung as noidung, rv.rating as rating, rv.date_submit as time,rv.image as image_review
         FROM review rv JOIN taikhoan as tk
         ON rv.id_user = tk.id_user
         WHERE rv.id_sp =".$id;
         $result = $conn->query($sql);
         $l_review = $result->fetchAll();
         return $l_review;
+    }
+    function SelectAllRating($id){
+        $conn = connection_database();
+        $sql = "SELECT sum(rating) as total_star, count(id_sp) as count_review
+        FROM review
+        WHERE id_sp = ".$id."
+        GROUP BY id_sp";
+        $result = $conn->query($sql);
+        $review = $result->fetch();
+        return $review;
     }
 
     function chitietsp($table_name, $id){

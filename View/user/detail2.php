@@ -21,9 +21,9 @@ $id = $_REQUEST['id'];
     }
     }
 $result = danhsachcmt($id);
-$result_l_r = list_review($id);
+$ListReview = list_review($id);
     $count_cmt = count($result);
-    $count_review = count($result_l_r);
+    $count_review = count($ListReview);
 //point rating
 $average_rating = 0;
 $total_rating = 0;
@@ -34,7 +34,7 @@ if($count_review == 0)
 {
     for($i=0;$i<$count_review;$i++)
     {
-        $rc = $result_l_r[$i];
+        $rc = $ListReview[$i];
         $total_rating += $rc['rating'];
     }
     $average_rating = $total_rating/$count_review;
@@ -253,24 +253,27 @@ if($count_review == 0)
                                 <div class="col-md-6">
                                     <h4 class="mb-4"><?=$count_review?> đánh giá của sản phẩm "<?=$sp[0][1]?>"</h4>
                                     <?php
-                                    $count_cmt = count($result_l_r);
-                                    if(count($result_l_r) <= 0){
+                                    $count_review = count($ListReview);
+                                    if(count($ListReview) <= 0){
                                         echo("<div class='text-primary'>Chưa có đánh giá cho sản phẩm này.</div>");
                                     }else
                                     {
-                                        for($i = 0; $i < count($result_l_r); $i++)
+                                        for($i = 0; $i < count($ListReview); $i++)
                                         {
-                                            $r_v = $result_l_r[$i];
+                                            $OneReview = $ListReview[$i];
                                         ?>
                                     <div class="media mb-4">
-                                        <img src="../View/img/<?=$r_v['image']?>" alt="image user" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                        <img src="../View/img/<?=$OneReview['image']?>" alt="image user" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                         <div class="media-body">
-                                            <h6><?=$r_v['name']?><small> - <i><?=$r_v['time']?></i></small></h6>
+                                            <h6><?=$OneReview['name']?><small> - <i><?=$OneReview['time']?></i></small></h6>
                                             <div class="text-primary mb-2">
-                                                <?=$r_v['rating']?>
+                                                <?=$OneReview['rating']?>
                                                 <i class="fas fa-star"></i>
                                             </div>
-                                            <p><?=$r_v['noidung']?></p>
+                                            <p><?=$OneReview['noidung']?></p>
+                                            <div>
+                                                <img width="210" height="280" src="../View/img/<?=$OneReview['image_review']?>" alt="<?=$OneReview['image_review']?>">
+                                            </div>
                                         </div>
                                     </div>
                                     <?php
