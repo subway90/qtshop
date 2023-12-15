@@ -25,6 +25,41 @@ if(!empty($_SESSION['dangnhap']))
         switch($act)
         {
         // chuc nang admin
+        case "admin-infomation":
+                $_SESSION['alert'] = "";
+                if(defined('_ADMIN'))
+                {
+                include "./../View/header-admin.php";
+                include "./../View/admin/infomation.php";
+                include "./../View/admin/footer-admin.php";
+                break;
+        }
+        else{
+                require_once('404.html'); exit;
+        }
+        case "admin-voucher":
+                if(defined('_ADMIN'))
+                {
+                include "./../View/header-admin.php";
+                include "./../View/admin/voucher.php";
+                include "./../View/admin/footer-admin.php";
+                break;
+        }
+        else{
+                require_once('404.html'); exit;
+        }
+        case "admin-upload-voucher":
+                $_SESSION['alert'] = "";
+                if(defined('_ADMIN'))
+                {
+                include "./../View/header-admin.php";
+                include "./../View/admin/admin-upload-voucher.php";
+                include "./../View/admin/footer-admin.php";
+                break;
+        }
+        else{
+                require_once('404.html'); exit;
+        }
         case "admin-review":
                 if(defined('_ADMIN'))
                 {

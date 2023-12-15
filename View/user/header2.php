@@ -266,13 +266,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title><?=$info['web_name']?></title>
+    <title><?=$info[1]?></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="../View/img/logo520x520.png" rel="icon">
+    <link href="../View/img/<?=$info[2]?>" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -335,7 +335,7 @@
             <div class="col-lg-4">
                 <a href="index.php" class="text-decoration-none">
                     <span class="h1">
-                    <img class="h1 mb-30" src="../View/img/logo520x520.png" width="88px" height="88px" alt="">
+                    <img class="h1 mb-30" src="../View/img/<?=$info[2]?>" width="88px" height="88px" alt="">
                     </span>
                     <span class="h1 text text-dark bg-light">Thời Trang <span class="h1 text-danger">QT</span></span>
                 </a>

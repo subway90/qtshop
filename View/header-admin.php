@@ -1,5 +1,8 @@
 
 <?php
+$getdaynow = getdate();
+$timenow = $getdaynow['year'].'/'.$getdaynow['mon'].'/'.$getdaynow['mday'].' '.$getdaynow['hours'].':'.$getdaynow['minutes'].':'.$getdaynow['seconds'];
+$number_second_now = strtotime($timenow);
 $bool_name = 2;
 $name = "";
 $price = "";
@@ -8,6 +11,15 @@ $sale = 0;
 $decribe = "";
 $hinhsp = "";
 $valid_image = 2;
+$size = "";
+$color = "";
+$code = ""; 
+$amount = "";
+$condition = "";
+$number = "";
+$status = 2;
+$datestart = "";
+$dateend = "";
 $h_alert = '<div class="alert alert-sa-danger-card alert-sa-has-icon alert-dismissible fade show" role="alert">
 <div class="alert-sa-icon">
     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
@@ -20,6 +32,7 @@ $f_alert = '</div>
             </div>';
         include "./../Model/xl_sanpham.php";
         include "./../Model/xl_search.php";
+        $info = select_infomation_web();
         $load_user = load_user($_SESSION['dangnhap'][0][1]);
         if(isset($_REQUEST['feedback'])) 
         {
@@ -200,7 +213,8 @@ $f_alert = '</div>
         if(isset($_REQUEST['upload']))
         {
             $upload = $_REQUEST['upload'];
-            if($upload == 0){
+            if($upload == 0)
+            {
                     $v1 = $_POST['v1'];
                     $name = $_POST['name'];
                     $decribe = $_POST['decribe'];
@@ -213,7 +227,8 @@ $f_alert = '</div>
                         themloai($name,$v1,$decribe,$image);
                     }
             }
-            if($upload == 3){
+            if($upload == 3)
+            {
                 $level = $_POST['level'];
                 $name = $_POST['name'];
                 $decribe = $_POST['decribe'];
@@ -225,7 +240,96 @@ $f_alert = '</div>
                     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
                     themloaiv1($name,$level,$decribe,$image);
                 }
-        }
+            }
+            if($upload == 4)
+            {
+                $verify_voucher = 0;
+                $status = $_POST['status'];
+                if(!empty($_POST['code']))
+                {
+                    $verify_voucher++;
+                    $code = str_replace(['"',"'",',','.','@','#','!',' ','}','{','[',']'],'',$_POST['code']);
+                }else
+                {
+                    $_SESSION['alert'] .= 'Mã voucher chưa được nhập.<br>';
+                }
+                if(!empty($_POST['condition']))
+                {
+                $condition = $_POST['condition'];
+                }else
+                {
+                    $condition = 0;
+                }
+                if(!empty($_POST['number']))
+                {
+                $number = $_POST['number'];
+                }else
+                {
+                    $number = 0;
+                }
+                if(!empty($_POST['amount']))
+                {
+                    $verify_voucher++;
+                    $amount = $_POST['amount'];
+                }else
+                {
+                    $_SESSION['alert'] .= 'Số lượng chưa được nhập.<br>';
+                }
+                if(!empty($_POST['decribe']))
+                {
+                    $decribe = $_POST['decribe'];
+                }else
+                {
+                    $decribe = 'trống';
+                }
+                if(!empty($_POST['datestart']))
+                {
+                    $datestart = $_POST['datestart'];
+                    if(similar_text($datestart,"yyyy/mm/dd hh:mm:ss")==5)
+                    {
+                        if(strtotime($datestart)>$number_second_now)
+                        {
+                        $verify_voucher++;
+                        }else
+                        {
+                        $_SESSION['alert'] .= 'Không thể nhập ngày bắt đầu ở quá khứ.<br>';
+                        }
+                    }else
+                    {
+                        $_SESSION['alert'] .= 'Ngày bắt đầu nhập chưa đúng định dạng.<br>';
+                    }
+                }else
+                {
+                    $_SESSION['alert'] .= 'Ngày bắt đầu chưa được nhập.<br>';
+                }
+                if(!empty($_POST['dateend']))
+                {
+                    $dateend = $_POST['dateend'];
+                    if(similar_text($dateend,"yyyy/mm/dd hh:mm:ss")==5)
+                    {
+                        if(strtotime($dateend)>$number_second_now)
+                        {
+                        $verify_voucher++;
+                        }else
+                        {
+                        $_SESSION['alert'] .= 'Không thể nhập ngày kết thúc ở quá khứ.<br>';
+                        }
+                    }else
+                    {
+                        $_SESSION['alert'] .= 'Ngày kết thúc nhập chưa đúng định dạng.<br>';
+                    }
+                }else
+                {
+                    $_SESSION['alert'] .= 'Ngày kết thúc chưa được nhập.<br>';
+                }
+                if($verify_voucher==4)
+                {
+                themvoucher($code,$condition,$number,$datestart,$dateend,$amount,$status,$decribe);
+                }
+            }else
+            {
+                $code = "";
+            }
         if($upload==1)
         {
             $bool = 0;
@@ -357,9 +461,9 @@ $f_alert = '</div>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="format-detection" content="telephone=no" />
-    <title>THỜI TRANG QT | Quản lí</title>
+    <title><?=$info[1]?> | Quản lí</title>
     <!-- icon -->
-    <link rel="icon" type="image/png" href="./../View/img/logo520x520.png" />
+    <link rel="icon" type="image/png" href="./../View/img/<?=$info[2]?>" />
     <!-- fonts -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i" />
@@ -474,6 +578,28 @@ $f_alert = '</div>
                                             </svg>
                                         </span>
                                         <span class="sa-nav__title">Quản lí đánh giá</span>
+                                    </a>
+                                </li>
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                    <a href="index.php?act=admin-voucher" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <!-- <i class="fas fa-shopping-cart"></i> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor">
+                                                <path d="M7,14v-2h9v2H7z M14,7h2v2h-2V7z M12.5,6C12.8,6,13,6.2,13,6.5v3c0,0.3-0.2,0.5-0.5,0.5h-2 C10.2,10,10,9.8,10,9.5v-3C10,6.2,10.2,6,10.5,6H12.5z M7,2h9v2H7V2z M5.5,5h-2C3.2,5,3,4.8,3,4.5v-3C3,1.2,3.2,1,3.5,1h2 C5.8,1,6,1.2,6,1.5v3C6,4.8,5.8,5,5.5,5z M0,2h2v2H0V2z M9,9H0V7h9V9z M2,14H0v-2h2V14z M3.5,11h2C5.8,11,6,11.2,6,11.5v3 C6,14.8,5.8,15,5.5,15h-2C3.2,15,3,14.8,3,14.5v-3C3,11.2,3.2,11,3.5,11z" ></path>
+                                            </svg>
+                                        </span>
+                                        <span class="sa-nav__title">Quản lí Voucher</span>
+                                    </a>
+                                </li>
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                    <a href="index.php?act=admin-infomation" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <!-- <i class="fas fa-shopping-cart"></i> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor">
+                                                <path d="M7,14v-2h9v2H7z M14,7h2v2h-2V7z M12.5,6C12.8,6,13,6.2,13,6.5v3c0,0.3-0.2,0.5-0.5,0.5h-2 C10.2,10,10,9.8,10,9.5v-3C10,6.2,10.2,6,10.5,6H12.5z M7,2h9v2H7V2z M5.5,5h-2C3.2,5,3,4.8,3,4.5v-3C3,1.2,3.2,1,3.5,1h2 C5.8,1,6,1.2,6,1.5v3C6,4.8,5.8,5,5.5,5z M0,2h2v2H0V2z M9,9H0V7h9V9z M2,14H0v-2h2V14z M3.5,11h2C5.8,11,6,11.2,6,11.5v3 C6,14.8,5.8,15,5.5,15h-2C3.2,15,3,14.8,3,14.5v-3C3,11.2,3.2,11,3.5,11z" ></path>
+                                            </svg>
+                                        </span>
+                                        <span class="sa-nav__title">Quản lí thông tin WEBSITE</span>
                                     </a>
                                 </li>
                             </ul>

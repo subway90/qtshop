@@ -19,9 +19,7 @@ if(!defined('_CODE'))
             $_SESSION['giohang'][] = $sp_u;
             header('Location: index.php?act=giohang');
         }else{ //giá trị giữ nguyên
-            $_SESSION['giohang'][$vitri][3]=$sl; //cập nhật số lượng thay đổi tại id_sp=$vitri
-            $_SESSION['giohang'][$vitri][5]=$size; //cập nhật size thay đổi tại id_sp=$vitri
-            $_SESSION['giohang'][$vitri][6]=$color; //cập nhật color thay đổi tại id_sp=$vitri
+            $_SESSION['giohang'][$vitri][3]=$sl+1; //cập nhật số lượng thay đổi tại id_sp=$vitri
             header('Location: index.php?act=giohang');
         }
         
@@ -179,6 +177,7 @@ if(!defined('_CODE'))
                             <!-- <td class="align-middle"><?=number_format(($tong_pr[$i]),0,',','.')?> vnđ</td> -->
                             </form>
                             <td class="align-middle">
+                                <!-- xóa sản phẩm -->
                                 <button onclick='window.location.href="index.php?act=giohang&del=<?=$pr[0]?>&size=<?=$pr[5]?>&color=<?=strtolower($pr[6])?>"' class="btn btn-sm btn-primary">
                                     <i class="fa fa-times"></i>
                                 </button>
@@ -221,21 +220,7 @@ if(!empty($_GET['code']))
                                 {
                                     if($_SESSION['voucher'][5]>0)
                                     {
-                                        // if($_SESSION['voucher'][6]==2)
-                                        // {
-                                        // $alert_vourcher = "<span class='text-success'>Áp dụng mã thành công vào hóa đơn</span>";
-                                        // define('_CODE_VOUCHER_2',true);
-                                        // }
-                                        // if($_SESSION['voucher'][6]==3)
-                                        // {
-                                        // $alert_vourcher = "<span class='text-success'>Áp dụng mã thành công vào hóa đơn</span>";
-                                        // define('_CODE_VOUCHER_3',true);
-                                        // }
-                                        // if($_SESSION['voucher'][6]==4)
-                                        // {
                                         $alert_vourcher = "<span class='text-success'>Áp dụng mã thành công vào hóa đơn</span>";
-                                        // define('_CODE_VOUCHER_4',true);
-                                        // }
                                     }else
                                     {
                                         $_SESSION['voucher'] = [];

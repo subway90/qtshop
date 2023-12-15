@@ -2,8 +2,8 @@
 $edit;
 $id;
 $sp;
-// isset($_REQUEST['edit']);
-$id = $_REQUEST['id'];
+//select 1 sản phẩm
+    $id = $_REQUEST['id'];
     $sp = mot_sanpham("sanpham",$id);
     $view_new = $sp[0][4] + 1;
     $id_sp = $sp[0][0];
@@ -291,7 +291,6 @@ if($count_review == 0)
                                     <?php
                                     $result = danhsachcmt($id);
                                     $id = $sp[0][0];
-                                    $count_cmt = count($result);
                                     if(count($result) <= 0){
                                         echo("<div class='text-primary'>Chưa có bình luận. Hãy trở thành người bình luận đầu tiên</div>");
                                     }else

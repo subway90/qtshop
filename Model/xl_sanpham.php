@@ -167,6 +167,13 @@
         $danhsach = $result->fetchAll();
         return $danhsach;
     }
+    function list_voucher(){
+        $conn = connection_database();
+        $sql = "SELECT * FROM vourcher ORDER BY date_create DESC";
+        $result = $conn->query($sql);
+        $danhsach = $result->fetchAll();
+        return $danhsach;
+    }
     
     function order_of_user($id){
         $conn = connection_database();
@@ -238,6 +245,17 @@
         echo '<script type="text/javascript">
 
             window.onload = function () { alert("Thêm loại hàng LV1 thành côngg !"); }
+
+        </script>';
+    }
+    function themvoucher($code,$condition,$number,$datestart,$dateend,$amount,$status,$decribe)
+    {
+        $conn = connection_database();
+        $sql = " INSERT INTO vourcher  VALUES (NULL,'".$code."',".$condition.",".$number.",".$datestart.",".$dateend.",".$amount.",current_timestamp,".$status.",'".$decribe."')";
+        $conn->query($sql);
+        echo '<script type="text/javascript">
+
+            window.onload = function () { alert("Thêm voucher thành công !"); }
 
         </script>';
     }
