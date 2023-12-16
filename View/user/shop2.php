@@ -21,7 +21,6 @@
     $listitems = danhsachsp_limit($st,$records,$select_product); // danh sách sản phẩm cho trang thứ $page
     //bắt đầu bằng sản phẩm thứ $st, select $records sản phẩm
 ?>
-
 <!-- form start-->
 <form  name="adminForm" method="post" enctype="multipart/form-data"> 
         <input type="hidden" name="txtPage" value="<?=$page?>"/>
@@ -158,7 +157,7 @@
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <a style="white-space: unset" class="h6 text-decoration-none text-truncate" href=""><?=$rc['Name']?></a>
+                                <a href="index.php?act=detail&edit=0&id=<?= $rc["id_sp"]?>" style="white-space: unset" class="h6 text-decoration-none text-truncate" href=""><?=$rc['Name']?></a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5><?=number_format($rc['Sale'],0,',','.')?> đ</h5>
                                     <?php
@@ -184,9 +183,9 @@
                                     $Avarage_Star = 0;
                                     $Number_Review = 0;
                                 }
-                                for($i=1;$i<6;$i++)
+                                for($j=1;$j<6;$j++)
                                 {
-                                    if($Avarage_Star>=$i)
+                                    if($Avarage_Star>=$j)
                                     {
                                     ?>
                                     <small class="fa fa-star text-primary mr-1"></small>
