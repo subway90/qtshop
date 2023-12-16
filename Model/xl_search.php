@@ -9,7 +9,7 @@
     function slide_1()
     {
         $conn = connection_database();
-        $sql = "SELECT * FROM slide where status = 1 order by id_slide asc";
+        $sql = "SELECT * FROM slide where status = 1 order by date desc limit 20";
         $rc_s = $conn->query($sql);
         $slide_1 = $rc_s->fetchAll();
         return $slide_1;
@@ -22,18 +22,10 @@
         $slide_2 = $rc_s->fetchAll();
         return $slide_2;
     }
-    function slide_3()
-    {
-        $conn = connection_database();
-        $sql = "SELECT * FROM slide where status = 3 order by id_slide desc limit 1";
-        $rc_s = $conn->query($sql);
-        $slide_3 = $rc_s->fetch();
-        return $slide_3;
-    }
     function slide_all()
     {
         $conn = connection_database();
-        $sql = "SELECT * FROM slide order by id_slide asc";
+        $sql = "SELECT * FROM slide order by id_slide desc";
         $rc_s = $conn->query($sql);
         $slide = $rc_s->fetchAll();
         return $slide;

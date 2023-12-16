@@ -2,7 +2,6 @@
         <?php
     $slide_1 = slide_1(); //xl_search
     $slide_2 = slide_2(); //xl_search
-    $slide_3 = slide_3(); //xl_search
     ?>
     <div class="container-fluid mb-3">
         <div class="row px-xl-5">
@@ -11,7 +10,7 @@
                     <ol class="carousel-indicators">
                         <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
                         <?php
-                        for($i=1;$i<=count($slide_1);$i++)
+                        for($i=1;$i<count($slide_1);$i++)
                         {
                             ?>    
                         <li data-target="#header-carousel" data-slide-to="<?=$i?>"></li>
@@ -20,40 +19,69 @@
                         ?>
                     </ol>
                     <div class="carousel-inner">
-                        <!-- slide 3 start -->
-
+                        <!-- first slide 1 start -->
                         <div class="carousel-item position-relative active" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="./../View/img/<?=$slide_3['image']?>" style="object-fit: cover;">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <img class="position-absolute w-100 h-100" src="./../View/img/<?=$slide_1[0]['image']?>" style="object-fit: cover;">
+                            <div style="<?=$slide_1[0]['background']?>" class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?=$slide_3['title2']?></h1>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"><?=$slide_3['title1']?></p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="<?=$slide_3['link']?>">Mua ngay</a>
+                                    <?php
+                                    if(!empty($slide_1[0]['title1']))
+                                    {
+                                    ?>
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?=$slide_1[0]['title2']?></h1>
+                                    <?php
+                                    }
+                                    if(!empty($slide_1[0]['title2']))
+                                    {
+                                    ?>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"><?=$slide_1[0]['title1']?></p>
+                                    <?php
+                                    }
+                                    if(!empty($slide_1[0]['link']))
+                                    {
+                                    ?>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="<?=$slide_1[0]['link']?>"><?=$slide_1[0]['name_link']?></a>
+                                    <?php
+                                    }?>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- slide 3 end -->
-
+                        <!-- first slide 1 end -->
                         <!-- slide 1 start -->
                         <?php
-                        for($i=0;$i<count($slide_1);$i++)
+                        for($i=1;$i<count($slide_1);$i++)
                         {
+                            $slide = $slide_1[$i];
                             ?>
                         <div class="carousel-item position-relative" style="height: 430px;">
-                            <img class="position-absolute w-100 h-100" src="./../View/img/<?=$slide_1[$i]['image']?>" style="object-fit: cover;">
+                            <img class="position-absolute w-100 h-100" src="./../View/img/<?=$slide['image']?>" style="object-fit: cover;">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                                 <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?=$slide_1[$i]['title2']?></h1>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"><?=$slide_1[$i]['title1']?></p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="<?=$slide_1[$i]['link']?>">Tham gia</a>
+                                    <?php
+                                    if(!empty($slide['title1']))
+                                    {
+                                    ?>
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?=$slide['title2']?></h1>
+                                    <?php
+                                    }
+                                    if(!empty($slide['title2']))
+                                    {
+                                    ?>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"><?=$slide['title1']?></p>
+                                    <?php
+                                    }
+                                    if(!empty($slide['link']))
+                                    {
+                                    ?>
+                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="<?=$slide['link']?>"><?=$slide['name_link']?></a>
+                                    <?php
+                                    }?>
                                 </div>
                             </div>
                         </div>
                         <?php
                         }
                         ?>
-
                         <!-- slide 1 end -->
                         
                     </div>
@@ -289,20 +317,50 @@
             <div class="col-md-6">
                 <div class="product-offer mb-30" style="height: 300px;">
                     <img class="img-fluid" src="./../View/img/<?=$slide_2[0]['image']?>" alt="">
-                    <div class="offer-text">
+                    <div style="<?=$slide_2[0]['background']?>" class="offer-text">
+                        <?php
+                        if(!empty($slide_2[0]['title2']))
+                        {
+                        ?>
                         <h6 class="text-white text-uppercase"><?=$slide_2[0]['title2']?></h6>
+                        <?php
+                        }if(!empty($slide_2[0]['title1']))
+                        {
+                        ?>
                         <h3 class="text-white mb-3"><?=$slide_2[0]['title1']?></h3>
-                        <a href="<?=$slide_2[0]['link']?>" class="btn btn-primary">Mua ngay</a>
+                        <?php
+                        }if(!empty($slide_2[0]['link']))
+                        {
+                        ?>
+                        <a href="<?=$slide_2[0]['link']?>" class="btn btn-primary"><?=$slide_2[0]['name_link']?></a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="product-offer mb-30" style="height: 300px;">
                     <img class="img-fluid" src="./../View/img/<?=$slide_2[1]['image']?>" alt="">
-                    <div class="offer-text">
+                    <div style="<?=$slide_2[1]['background']?>" class="offer-text">
+                        <?php
+                        if(!empty($slide_2[1]['title2']))
+                        {
+                        ?>
                         <h6 class="text-white text-uppercase"><?=$slide_2[1]['title2']?></h6>
+                        <?php
+                        }if(!empty($slide_2[1]['title1']))
+                        {
+                        ?>
                         <h3 class="text-white mb-3"><?=$slide_2[1]['title1']?></h3>
-                        <a href="<?=$slide_2[1]['link']?>" class="btn btn-primary">Mua ngay</a>
+                        <?php
+                        }if(!empty($slide_2[1]['link']))
+                        {
+                        ?>
+                        <a href="<?=$slide_2[1]['link']?>" class="btn btn-primary"><?=$slide_2[0]['name_link']?></a>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

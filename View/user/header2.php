@@ -272,8 +272,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="../View/img/<?=$info[2]?>" rel="icon">
-
+    <link href="../View/img/<?=$info[3]?>" rel="icon">
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
@@ -335,7 +334,7 @@
             <div class="col-lg-4">
                 <a href="index.php" class="text-decoration-none">
                     <span class="h1">
-                    <img class="h1 mb-30" src="../View/img/<?=$info[2]?>" width="88px" height="88px" alt="">
+                    <img class="h1 mb-30" src="../View/img/<?=$info[3]?>" width="88px" height="88px" alt="">
                     </span>
                     <span class="h1 text text-dark bg-light">Thời Trang <span class="h1 text-danger">QT</span></span>
                 </a>

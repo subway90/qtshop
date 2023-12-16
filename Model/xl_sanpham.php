@@ -502,7 +502,7 @@
         function list_view_product_user(){
             $conn = connection_database();
             $sql = "SELECT id_sp as id, Name as tensp, Price as giasp, Sale as sale, image, Viewsp as view, size, color
-            FROM `sanpham` WHERE status = 1 ORDER BY Viewsp DESC LIMIT 12
+            FROM `sanpham` WHERE status = 1 AND Viewsp > 0 ORDER BY Viewsp DESC LIMIT 12
             ";
             $result = $conn->query($sql);
             $l_view = $result->fetchAll();

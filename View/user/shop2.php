@@ -198,7 +198,7 @@
                                     }
                                 }
                                 ?>
-                                    <small>(<?=$Number_Review?>)</small>
+                                    <small>(<?=$Number_Review?> lượt)</small>
                                 </div>
                                 <!-- rating review end -->
 
