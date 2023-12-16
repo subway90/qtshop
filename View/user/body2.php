@@ -136,7 +136,7 @@
                 $loai_v1 = $result[$i]
                 ?>
             <div class="col-lg-3 col-md-6 col-sm-9 pb-1">
-                <a class="text-decoration-none" href="index.php?act=search-product&searchloai=<?=$loai_v1['name']?>">
+                <a class="text-decoration-none" href="#">
                     <div class="cat-item d-flex align-items-center mb-4">
                         <div class="overflow-hidden" style="width: 100px; height: 100px;">
                             <img class="img-fluid" src="./../View/img/<?=$loai_v1['image']?>" alt="">
