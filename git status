@@ -1,0 +1,164 @@
+[33mcommit b563676a9e187f94bca490dc94cf12115f37c4a7[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Fri Dec 15 18:01:15 2023 +0700
+
+    Add case info
+
+[33mcommit 243106ace118aad0c46d44120a8b443c137af380[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Thu Dec 14 22:42:44 2023 +0700
+
+    Update case quản lí đánh giá
+
+[33mcommit 6777a7edfab643f3ffe19fed0af6a238095bc75d[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Thu Dec 14 15:33:54 2023 +0700
+
+    Show list review, edit template list review in shop and detail
+
+[33mcommit 607a7a2369aed00ef118da874e27ed000077bd25[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Thu Dec 14 14:56:22 2023 +0700
+
+    Sửa lỗi kAI của table taikhoan
+
+[33mcommit 9a44d68b26d9e259efc2a91fa0b9b0300512dcfb[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Thu Dec 14 13:04:07 2023 +0700
+
+    sửa lỗi session đăng nhập
+
+[33mcommit e064e04e898fb6363d60d83e6b4ac7e16ae33505[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Thu Dec 14 12:54:11 2023 +0700
+
+    Thay đổi fetch của hàm mot_user
+
+[33mcommit 6a45f9c5712de18b8ea58dec94ce9c3a19269476[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Wed Dec 13 11:38:52 2023 +0700
+
+    Backup sourcecode FTP
+
+[33mcommit 7ae41c3ab6df249cb3f66370d2898adce1a2927f[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Tue Dec 12 10:33:09 2023 +0700
+
+    Hoàn thành validate case feedback, giao diện và upload
+
+[33mcommit e00ad7dd4c124982f9229ca3d674620be4ebb86b[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Tue Dec 12 01:28:51 2023 +0700
+
+    Form đánh giá (template)
+
+[33mcommit fd63e063d41de06423a3307e0c75aa700378b048[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Tue Dec 12 00:18:17 2023 +0700
+
+    Đại cập nhật Version 2.0 - giao diện - logo brand - case đánh giá - thông báo
+
+[33mcommit b26b0e911e3e4acd223d1a5f0c18135dc5fd8d46[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 14:58:23 2023 +0700
+
+    Upload case gửi feedback từ admin
+
+[33mcommit 3b17a16bda9107051dfd6d3afac25b0af53a0082[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 13:43:40 2023 +0700
+
+    Sửa lại chi tiết hóa đơn cho admin
+
+[33mcommit 18824c48c2a46d534019ed9c442a1fbb1919e9d4[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 11:23:56 2023 +0700
+
+    Sửa template thông tin đăng nhập/đăng xuất
+
+[33mcommit ea855b168bef59430f0646ad7bd81db8df3754b9[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 11:11:39 2023 +0700
+
+    Sửa footer
+
+[33mcommit 49256d921f06f5aec2cd72a011683e44962bc16b[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 10:50:04 2023 +0700
+
+    Thay template cho case contact
+
+[33mcommit 66fa72543758d9c1a59718f84be5c212b3f5aa57[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 10:26:25 2023 +0700
+
+    Sửa lỗi không search filter color
+
+[33mcommit 0346f7877be1f2b362c716ba8eb5f126f60b888b[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 10:07:52 2023 +0700
+
+    Sửa lỗi không thêm được sp vào list yêu thích ở case seach
+
+[33mcommit 353c1b9675ccee510dd425d57c985c1b86367878[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 10:00:37 2023 +0700
+
+    Sửa lỗi không thêm đc vào giỏ từ list yêu thích
+
+[33mcommit 2aab6963734d787f269657f0c1d6b4b87dc8fa96[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 00:55:12 2023 +0700
+
+    Upload file .gitignore
+
+[33mcommit 9a0767b99f9ea5752eca3d5d7c6c1b153d9bb6c6[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 00:07:46 2023 +0700
+
+    Thêm chức năng testcode5
+
+[33mcommit 100543aa9f98eaea32a068534c98057e9d53959d[m
+Merge: a52f6f6 5068307
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Mon Dec 11 00:03:21 2023 +0700
+
+    Merge branch 'main' of https://github.com/subway90/thoitrangqt
+
+[33mcommit a52f6f6750f867b0cad91fdee66dc954d3969fb9[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Sun Dec 10 23:56:57 2023 +0700
+
+    Sửa case testcode4.php Version 2.1
+
+[33mcommit 9476dfec6c00b55b076b5d77c9f0930ad71eec58[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Sun Dec 10 23:50:27 2023 +0700
+
+    Gắn template vào case testcode4
+
+[33mcommit 5068307efb0428388f1ba8f67bdb1bf6cc6e0649[m
+Author: Minh Hiếu <113250198+subway90@users.noreply.github.com>
+Date:   Sun Dec 10 23:41:31 2023 +0700
+
+    Create README.md
+    
+    README - ThoitrangQT introduce
+
+[33mcommit 892d88fd5b6f07e374d35456388c6a001557ccc5[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Sun Dec 10 23:30:18 2023 +0700
+
+    Sửa lỗi Không chạy được case testcode 3 & 4
+
+[33mcommit 6e598f9c00cadc6a34307342fe936716ddd952d4[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Sun Dec 10 23:25:23 2023 +0700
+
+    Thêm chức năng testcode3
+
+[33mcommit 18e814b0fc4a34813859c66d6aa2ce1968665094[m
+Author: subway90 <nguyenhieu3105@gmail.com>
+Date:   Sun Dec 10 23:18:47 2023 +0700
+
+    Upload sourcecode MVC_QT Version 1.0 12/10/2023
