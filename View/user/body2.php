@@ -357,7 +357,7 @@
                         }if(!empty($slide_2[1]['link']))
                         {
                         ?>
-                        <a href="<?=$slide_2[1]['link']?>" class="btn btn-primary"><?=$slide_2[0]['name_link']?></a>
+                        <a href="<?=$slide_2[1]['link']?>" class="btn btn-primary"><?=$slide_2[1]['name_link']?></a>
                         <?php
                         }
                         ?>

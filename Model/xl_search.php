@@ -25,7 +25,7 @@
     function slide_all()
     {
         $conn = connection_database();
-        $sql = "SELECT * FROM slide order by id_slide desc";
+        $sql = "SELECT * FROM slide ORDER BY id_slide DESC";
         $rc_s = $conn->query($sql);
         $slide = $rc_s->fetchAll();
         return $slide;
@@ -41,6 +41,32 @@
 
         </script>';
     }
+    function edit_slide($id,$title1,$title2,$image,$link,$name_link,$status,$background){
+        if($background==1)
+        {
+            $background = "background: none";
+        }else
+        {
+            $background = "";
+        }
+
+        $conn = connection_database();
+        $sql =  "UPDATE slide
+                SET title1='".$title1."',
+                title1='".$title1."',
+                title2='".$title2."',
+                image='".$image."',
+                link='".$link."',
+                name_link='".$name_link."',
+                status=".$status.",
+                background='".$background."',
+                date = current_timestamp
+                WHERE id_slide = ".$id;
+       $conn->query($sql);
+       echo '<script type="text/javascript">
+        window.onload = function () { alert("Chỉnh sửa thành công slide !"); }
+    </script>';
+      }
     function slide($id)
     {
         $conn = connection_database();

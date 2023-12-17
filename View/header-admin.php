@@ -1,8 +1,8 @@
-
 <?php
 $getdaynow = getdate();
 $timenow = $getdaynow['year'].'/'.$getdaynow['mon'].'/'.$getdaynow['mday'].' '.$getdaynow['hours'].':'.$getdaynow['minutes'].':'.$getdaynow['seconds'];
 $number_second_now = strtotime($timenow);
+$auth_image = array('image/jpeg','image/jpg', 'image/png');
 $bool_name = 2;
 $name = "";
 $price = "";
@@ -20,6 +20,10 @@ $number = "";
 $status = 2;
 $datestart = "";
 $dateend = "";
+$_SESSION['valid_name_link'] = '';
+$arrow = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+</svg>';
 $h_alert = '<div class="alert alert-sa-danger-card alert-sa-has-icon alert-dismissible fade show" role="alert">
 <div class="alert-sa-icon">
     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
@@ -124,7 +128,7 @@ $f_alert = '</div>
                 $id = $_REQUEST['id'];
                 $sp = mot_sanpham("sanpham",$id);
             }
-            if($edit ==1)
+            if($edit == 1)
             {
                 $masp = $_POST['masp'];
                 $tensp = $_POST['tensp'];
@@ -156,7 +160,7 @@ $f_alert = '</div>
                 capnhatsp("sanpham", $masp, $tensp, $giasale, $giagoc, $decribe, $slsp, $hinhsp,$loaihang, $sale, $size, $color);
 
             }
-            if($edit ==2)
+            if($edit == 2)
             {
                 $v1 = $_POST['v1'];
                 $name_cate = $_POST['name_cate'];
@@ -188,7 +192,7 @@ $f_alert = '</div>
                 $id = $_REQUEST['id'];
                 $s_cate_v1 = select_one_cate_v1($id);
             }
-            if($edit ==6)
+            if($edit == 6)
             {
                 $level = $_POST['level'];
                 $name_cate = $_POST['name_cate_v1'];
@@ -207,6 +211,54 @@ $f_alert = '</div>
                 upload_cate_v1($name_cate,$decribe_cate,$id_cate,$image_cate,$level);
                 // header('Location: index.php?act=admin-category');
 
+            }
+            if($edit == 7) 
+            {
+                $id = $_REQUEST['id'];
+                $verify_edit_slide = 0;
+                $title1 = $_POST['title1'];
+                $title2 = $_POST['title2'];
+                $link = $_POST['link'];
+                $name_link = $_POST['name_link'];
+                if(!empty($link) && empty($name_link))
+                {
+                    $verify_edit_slide = 1;
+                    $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'>Vui lòng nhập tên button (Vì có địa chỉ link)</div>";
+                    $_SESSION['valid_name_link'] = 'is-invalid';
+                }
+                $status = $_POST['status'];
+                $background = $_POST['background'];
+                $image = $_POST['hinh_cu'];
+                if(isset($_FILES['hinh_moi']))
+                {  
+                    if($_FILES['hinh_moi']['name'] != "")
+                    {
+                        if(in_array($_FILES['hinh_moi']['type'],$auth_image) === false)
+                        {
+                            $verify_edit_slide = 1;
+                            $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'>Vui lòng chọn đúng file ảnh (.png/ .jpg/ .jpeg/ .gif)</div>";
+                        }
+                        else
+                        {
+                            if($_FILES['hinh_moi']['size'] >= 5120000) // đơn vị: byte
+                            {
+                                $verify_edit_slide = 1;
+                                $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng chọn file ảnh có kích thước dưới 5MB</div>";
+                            }else
+                            { 
+                                $image = $_FILES['hinh_moi']['name'];
+                                $path = __DIR__ . './../View/img/';
+                                $target_file = $path . $image;
+                                move_uploaded_file($_FILES['hinh_moi']['tmp_name'], $target_file);
+                            }
+                        }
+                    }
+                }
+                if($verify_edit_slide == 0)
+                {
+                    edit_slide($id,$title1,$title2,$image,$link,$name_link,$status,$background);
+                    $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'><span class='text-success'>Sửa thành công slide</span></div>";
+                }
             }
         }
 
@@ -410,7 +462,6 @@ $f_alert = '</div>
             }
             if($_FILES['image']['name'] !== "")
             {
-                $auth_image = array('image/jpeg','image/jpg', 'image/png');
                 if(in_array($_FILES['image']['type'],$auth_image) === false)
                 {
                     $_SESSION['alert'] .= 'Vui lòng chọn đúng file ảnh (png/ jpg/ jpeg).<br>';
@@ -437,16 +488,6 @@ $f_alert = '</div>
             }
             if($bool == 8)
         {
-        $h_alert = '<div class="alert alert-sa-success-card alert-sa-has-icon alert-dismissible fade show" role="alert">
-                        <div class="alert-sa-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
-                                <circle cx="12" cy="12" r="10"></circle> <line x1="12" y1="16" x2="12" y2="12"></line> <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                            </svg>
-                        </div>
-                    <div class="alert-sa-content">';
-        $f_alert = '</div>
-                        <button type="button" class="sa-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>';
         $_SESSION['alert'] .= 'Sản phẩm đã đăng thành công !';
         themsp($id_loai, $name, $price, $sale, $decribe, $mount, $ptsale, $hinhsp, $color, $size);
         }

@@ -156,14 +156,14 @@ $rc = $result[$i];
                                                     {
                                                     ?>
                                                     <li><a class="dropdown-item" href="index.php?act=admin-orders&update=0&dh=<?=$rc['id_dh']?>&stt=1">Cập nhật thanh toán 
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg> 
+                                                    <?=$arrow?> 
                                                     <span class="text-success">(Đã thanh toán)</span></a></li>
                                                     <?php
                                                     }else
                                                     {
                                                     ?>
                                                     <li><a class="dropdown-item" href="index.php?act=admin-orders&update=0&dh=<?=$rc['id_dh']?>&stt=2">Cập nhật thanh toán 
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg> 
+                                                    <?=$arrow?> 
                                                     <span class="text-danger">(Chưa thanh toán)</span></a></li>
                                                     <?php
                                                     }
@@ -173,21 +173,21 @@ $rc = $result[$i];
                                                     {
                                                     ?>
                                                     <li><a class="dropdown-item" href="index.php?act=admin-orders&update=1&dh=<?=$rc['id_dh']?>&stt=3">Cập nhật giao hàng 
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg> 
+                                                    <?=$arrow?> 
                                                     <span class="text-warning">(Đang giao hàng)</span></a></li>
                                                     <?php
                                                     }elseif($rc['giaohang']==3)
                                                     {
                                                     ?>
                                                     <li><a class="dropdown-item" href="index.php?act=admin-orders&update=1&dh=<?=$rc['id_dh']?>&stt=1">Cập nhật giao hàng 
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg> 
+                                                    <?=$arrow?> 
                                                     <span class="text-success">(Đã giao hàng)</span></a></li>
                                                     <?php
                                                     }elseif($rc['giaohang']==1)
                                                     {
                                                     ?>
                                                     <li><a class="dropdown-item" href="index.php?act=admin-orders&update=1&dh=<?=$rc['id_dh']?>&stt=2">Cập nhật giao hàng 
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg> 
+                                                    <?=$arrow?> 
                                                     <span class="text-danger">(Chưa giao hàng)</span></a></li>
                                                     <?php
                                                     }

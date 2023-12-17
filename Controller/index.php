@@ -95,7 +95,7 @@ if(!empty($_SESSION['dangnhap']))
                 require_once('404.html'); exit;
         }       
         case "admin-edit-slide":
-                $_SESSION['alert'] = "";
+                $_SESSION['alert'] ="";
                 if(defined('_ADMIN'))
                 {
                 include "./../View/header-admin.php";

@@ -30,13 +30,12 @@ if(!defined('_CODE'))
                                 data-sa-search-input="#table-search">
                                 <thead>
                                     <tr>
-                                        <th class="w-min" data-orderable="false"><input type="checkbox"
-                                                class="form-check-input m-0 fs-exact-16 d-block" aria-label="..." />
-                                        </th>
                                         <th>ID</th>
                                         <th class="min-w-20x">Nội dung slide</th>
                                         <th>Link button</th>
-                                        <th>Ngày tạo</th>
+                                        <th>Tên button</th>
+                                        <th>Làm mờ Background</th>
+                                        <th>Ngày cập nhật</th>
                                         <th class="min-w-5x">Trạng thái</th>
                                         <th class="w-min" data-orderable="false"></th>
                                     </tr>
@@ -49,41 +48,98 @@ for($i=0;$i<count($result);$i++)
 $slide = $result[$i];
 ?>
                                     <tr>
-                                        <td><input type="checkbox" class="form-check-input m-0 fs-exact-16 d-block"
-                                                aria-label="..." /></td>
                                         <td class="text-nowrap"><?=$slide['id_slide']?>
                                         </td>
                                         <td>
-                                            <div class="d-flex align-items-center"><a href="index.php?act=admin-edit-accounts&user=<?=$rc['username']?>"
-                                                    class="me-4">
-                                                    <div
-                                                        class="sa-symbol sa-symbol--shape--rounded " style="width: 140px; height: 40px">
-                                                        <img src="./../View/img/<?=$slide['image']?>" alt="image-user" /></div>
+                                            <div class="d-flex align-items-center">
+                                                <a href="#" class="me-4">
+                                                    <div class="sa-symbol sa-symbol--shape--rounded " style="width: 140px; height: 60px">
+                                                        <img src="./../View/img/<?=$slide['image']?>" alt="image-slide" />
+                                                    </div>
                                                 </a>
-                                                <div><a href="#" class="text-reset"><?=$slide['title2']?></a>
-                                                    <div class="text-muted mt-n1"><?=$slide['title1']?></div>
+                                                <div>
+                                                <?php
+                                                if(!empty($slide['title1']))
+                                                {
+                                                ?>
+                                                <a href="#" class="text-reset"><?=$slide['title2']?></a>
+                                                <?php
+                                                }else
+                                                {
+                                                ?>
+                                                <a href="#" class="text-reset">(trống)</a>
+                                                <?php
+                                                }
+                                                if(!empty($slide['title1']))
+                                                {
+                                                    ?>
+                                                <div class="text-muted mt-n1"><?=$slide['title1']?></div>
+                                                <?php
+                                                }else
+                                                {
+                                                ?>
+                                                <div class="text-muted mt-n1">(trống)</div>
+                                                <?php
+                                                }
+                                                ?> 
                                                 </div>
                                             </div>
                                         </td>
-                                        <td><?=$slide['link']?></td>
+                                        <td>
+                                            <?php
+                                            if(!empty($slide['link']))
+                                            {
+                                                echo $slide['link'];
+                                            }else
+                                            {
+                                                echo'(trống)';
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            if(!empty($slide['name_link']))
+                                            {
+                                                echo $slide['name_link'];
+                                            }else
+                                            {
+                                                echo'(trống)';
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            if(!empty($slide['background']))
+                                            {
+                                                ?>
+                                                <div class="sa-price"><div class="badge badge-sa-success">Đang bật</div>
+                                                <?php
+                                            }else
+                                            {
+                                                ?>
+                                                <div class="sa-price"><div class="badge badge-sa-secondary">Đang tắt</div>
+                                                <?php
+                                            }
+                                            ?>
+                                        </td>
                                         <td><?=$slide['date']?></td>
                                         <td>
                                             <?php
                                             if($slide['status']==1)
                                             {
                                             ?>
-                                                <div class="sa-price"><div class="badge badge-sa-success">Đang hiện</div>
+                                                <div class="sa-price"><div class="badge badge-sa-success">SLIDE 1</div>
                                             <?php
                                             }
                                             else if($slide['status']==2)
                                             {
                                             ?>
-                                                <div class="sa-price"><div class="badge badge-sa-primary">Đang ẩn</div>
+                                                <div class="sa-price"><div class="badge badge-sa-info">SLIDE 2</div>
                                             <?php
                                             }
                                             else{
                                             ?>
-                                                <div class="sa-price"><div class="badge badge-sa-warning">Đang nổi bật</div>
+                                                <div class="sa-price"><div class="badge badge-sa-danger">Đang ẩn</div>
                                             <?php
                                             }
                                             ?>
@@ -100,11 +156,61 @@ $slide = $result[$i];
                                                     </svg></button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="customer-context-menu-0">
-                                                    <li><a class="dropdown-item" href="index.php?act=admin-edit-slide&id=<?=$slide['id_slide']?>">Sửa</a></li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="index.php?act=admin-edit-slide&id=<?=$slide['id_slide']?>">Sửa slide</a>
+                                                    </li>
+                                                    <li>
+                                                        <?php
+                                                        if(!empty($slide['background']))
+                                                        {
+                                                        ?>
+                                                        <a class="dropdown-item text-primary" href="#">Tắt làm mờ Background</a>
+                                                        <?php
+                                                        }else
+                                                        {
+                                                            ?>
+                                                        <a class="dropdown-item text-success" href="#">Bật làm mờ Background</a>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    </li>
+                                                        <?php
+                                                        if($slide['status']==1)
+                                                        {
+                                                        ?>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">Thay đổi <?=$arrow?> <span class="text-info">SLIDE 2</span> </a>
+                                                    </li>
+                                                        <?php
+                                                        }elseif($slide['status']==1)
+                                                        {
+                                                        ?>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">Thay đổi <?=$arrow?> <span class="text-info">SLIDE 1</span> </a>
+                                                    </li>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     <li>
                                                         <hr class="dropdown-divider" />
                                                     </li>
-                                                    <li><a class="dropdown-item text-danger" href="index.php?act=admin-slide&del=3&id=<?=$slide['id_slide']?>&stt=<?=$slide['status']?>">Ẩn / hiện</a></li>
+                                                    <?php
+                                                    if($slide['status'] == 3)
+                                                    {
+                                                        ?>
+                                                    <li>
+                                                        <a class="dropdown-item text-success" href="index.php?act=admin-slide&del=3&id=<?=$slide['id_slide']?>&stt=<?=$slide['status']?>">Hiện slide</a>
+                                                    </li>
+                                                        <?php
+                                                    }else
+                                                    {
+                                                        ?>
+                                                    <li>
+                                                        <a class="dropdown-item text-danger" href="index.php?act=admin-slide&del=3&id=<?=$slide['id_slide']?>&stt=<?=$slide['status']?>">Ẩn slide</a>
+                                                    </li>
+                                                        <?php
+                                                    }
+                                                    ?>
                                                 </ul>
                                             </div>
                                         </td>
@@ -115,9 +221,9 @@ $slide = $result[$i];
                                 </tbody>
                             </table>
                         </div>
-                        <!-- slide phụ -->
+                        <!-- slide phụ start-->
 
-                        <div class="py-5">
+                        <!-- <div class="py-5">
                             <div class="row g-4 align-items-center">
                                 <div class="col">
                                     <h1 class="h3 m-0">Danh sách slide phụ</h1>
@@ -190,7 +296,9 @@ for($i=1;$i<=2;$i++)
 ?>
                                 </tbody>
                             </table>
-                        </div>
+                        </div> -->
+
+                        <!-- slide phụ end -->
                     </div>
                 </div>
             </div><!-- sa-app__body / end -->
