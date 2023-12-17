@@ -179,14 +179,14 @@ $slide = $result[$i];
                                                         {
                                                         ?>
                                                     <li>
-                                                        <a class="dropdown-item" href="#">Thay đổi <?=$arrow?> <span class="text-info">SLIDE 2</span> </a>
+                                                        <a class="dropdown-item" href="index.php?act=admin-slide&update&stt=<?=$slide['status']?>&slide=<?=$slide['id_slide']?>">Thay đổi <?=$arrow?> <span class="text-info">SLIDE 2</span> </a>
                                                     </li>
                                                         <?php
-                                                        }elseif($slide['status']==1)
+                                                        }elseif($slide['status']==2)
                                                         {
                                                         ?>
                                                     <li>
-                                                        <a class="dropdown-item" href="#">Thay đổi <?=$arrow?> <span class="text-info">SLIDE 1</span> </a>
+                                                        <a class="dropdown-item" href="index.php?act=admin-slide&update&stt=<?=$slide['status']?>&slide=<?=$slide['id_slide']?>">Thay đổi <?=$arrow?> <span class="text-success">SLIDE 1</span> </a>
                                                     </li>
                                                         <?php
                                                         }
@@ -199,14 +199,14 @@ $slide = $result[$i];
                                                     {
                                                         ?>
                                                     <li>
-                                                        <a class="dropdown-item text-success" href="index.php?act=admin-slide&del=3&id=<?=$slide['id_slide']?>&stt=<?=$slide['status']?>">Hiện slide</a>
+                                                        <a class="dropdown-item text-success" href="index.php?act=admin-slide&update&stt=<?=$slide['status']?>&slide=<?=$slide['id_slide']?>">Hiện slide</a>
                                                     </li>
                                                         <?php
                                                     }else
                                                     {
                                                         ?>
                                                     <li>
-                                                        <a class="dropdown-item text-danger" href="index.php?act=admin-slide&del=3&id=<?=$slide['id_slide']?>&stt=<?=$slide['status']?>">Ẩn slide</a>
+                                                        <a class="dropdown-item text-danger" href="index.php?act=admin-slide&update&stt=4&slide=<?=$slide['id_slide']?>">Ẩn slide</a>
                                                     </li>
                                                         <?php
                                                     }

@@ -55,19 +55,38 @@ $f_alert = '</div>
         {
             $update = $_REQUEST['update'];
             $stt = $_REQUEST['stt'];
-            $dh = $_REQUEST['dh'];
-            if($update==0)//thay đổi trạng thái thanh toán
+            if(isset($_REQUEST['dh']))
             {
-                update_order_checkout($stt,$dh);
+                $dh = $_REQUEST['dh'];
+                if($update==0)//thay đổi trạng thái thanh toán
+                {
+                    update_order_checkout($stt,$dh);
+                }
+                if($update==1)//thay đổi trạng thái đơn hàng
+                {
+                    update_order_delivery($stt,$dh);
+                }
+                if($update==2)//hủy đơn/ khôi phục đơn
+                {
+                    update_order_status($stt,$dh);
+                }
             }
-            if($update==1)//thay đổi trạng thái đơn hàng
+            if(isset($_REQUEST['slide']))
             {
-                update_order_delivery($stt,$dh);
+                if($stt == 1)
+                {
+                    $stt = 2;
+                }elseif($stt == 2 || $stt == 3)
+                {
+                    $stt = 1;
+                }else
+                {
+                    $stt = 3;
+                }
+                $slide = $_REQUEST['slide'];
+                update_slide_status($stt,$slide);
             }
-            if($update==2)//hủy đơn/ khôi phục đơn
-            {
-                update_order_status($stt,$dh);
-            }
+
             
         }
         if (isset($_REQUEST['del'])) 

@@ -79,6 +79,12 @@
         $conn->query($sql);
         header('Location: index.php?act=admin-orders'); 
     }
+    function update_slide_status($stt,$slide){
+        $conn = connection_database();
+        $sql = " UPDATE slide SET status = ".$stt.",date = current_timestamp WHERE id_slide =".$slide;
+        $conn->query($sql);
+        header('Location: index.php?act=admin-slide'); 
+    }
     function danhsachsp_all(){
         $conn = connection_database();
         $sql = "SELECT sp.id_sp as id_sp, sp.Name as Name, sp.Price as Price, sp.Sale as Sale, sp.Date_import as Ngay, sp.Viewsp as View, sp.Decribe as Decribe, sp.Mount as Mount, sp.Sale as Sale, sp.`%sale` as `%sale`, sp.image as image, sp.status as status, l.name as name FROM sanpham as sp JOIN loaihang as l ON sp.id_loai = l.id_loaihang order by sp.id_sp asc;";
