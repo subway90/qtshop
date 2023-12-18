@@ -1,4 +1,23 @@
 <?php
+//Múi giờ Hồ Chí Minh
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+$time_now = date('Y/m/d H:i:s');
+//change background
+if(isset($_REQUEST['snow']))
+{
+    if($_REQUEST['snow'] == 'on')
+    {
+        $_SESSION['background'] = "on background";
+    }else
+    {
+        $_SESSION['background'] = "";
+    }
+    ?>
+    <script>
+        history.back();
+    </script>
+    <?php
+}
     include "./../Model/xl_sanpham.php";
     include "./../Model/xl_loaihang.php";
     include "./../Model/xl_giohang.php";
@@ -295,8 +314,20 @@
 	}
     </script>
 </head>
-
-<body>
+<?php
+if(!empty($_SESSION['background']))
+{
+    ?>
+<body style='background-image: url("../View/img/snow.gif"); background-color:#000000'>
+    <?php
+}
+else
+{
+    ?>
+    <body>
+    <?php
+}
+?>
     <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
@@ -446,8 +477,28 @@
                                 </div>
                             </div> -->
 
+                        <!-- Desktop nav bar -->
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
+                            <?php
+                            if(!empty($_SESSION['background']))
+                            {
+                            ?>
+                                <a href="index.php?snow=off" class="btn px-0 ml-3">
+                                <i class="fas fa-brush text-primary"></i>    
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><small><i class="fas fa-times "></i></small></span>
+                                </a>
+                            <?php
+                            }else
+                            {
+                            ?>
+                                <a href="index.php?snow=on" class="btn px-0 ml-3">
+                                <i class="fas fa-brush text-primary"></i>    
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><small><i class="fas fa-check "></i></small></span>
+                                </a>
+                            <?php
+                            }
+                            ?>
                             <a href="index.php?act=notification" class="btn px-0 ml-3">
                                 <i class="fas fa-bell text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><?=$notify_feedback?></span>

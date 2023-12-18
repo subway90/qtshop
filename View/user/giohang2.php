@@ -211,8 +211,6 @@ if(!empty($_GET['code']))
             if(!empty($arr_vourcher))
             {   
                 $_SESSION['voucher'] = [$code,$arr_vourcher['condition_voucher'],$arr_vourcher['number_voucher'],$arr_vourcher['time_start'],$arr_vourcher['time_end'],$arr_vourcher['amount'],$arr_vourcher['status'],$arr_vourcher['id_voucher']];
-                    date_default_timezone_set('Asia/Ho_Chi_Minh');
-                        $time_now = date('Y/m/d H:i:s');
                             $time_end_vourcher = $_SESSION['voucher'][4];
                             if(strtotime($time_now)<strtotime($time_end_vourcher))
                             {

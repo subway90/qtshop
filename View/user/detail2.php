@@ -9,16 +9,33 @@ $sp;
     $id_sp = $sp[0][0];
     capnhatviewsp($id_sp,$view_new);
 
-//add comment
+//add cmt
     if(!empty($_SESSION['dangnhap']))
     {
-    $id_sp_cmt = $sp[0][0];
-    $id_user_cmt = $_SESSION['dangnhap'][0][0];
-    $cmt = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $cmt = $_POST['cmt'];
-        themcmt($id_user_cmt,$cmt,$id_sp_cmt);
+        $id_sp_cmt = $sp[0][0];
+        $id_user_cmt = $_SESSION['dangnhap'][0][0];
+        $select_cmt_user = LimitComment($id_sp_cmt,$id_user_cmt);
+        if(count($select_cmt_user) == 3)
+        {
+            if(strtotime($time_now)-strtotime($select_cmt_user[0]['time']) < 86400)
+            {
+                define('LOCK_CMT',true);
+            }
+        }
     }
+    $cmt = "";
+    if(isset($_REQUEST['postcmt']))
+    {
+        if(!defined('LOCK_CMT'))
+        {
+            $cmt = $_POST['cmt'];
+            themcmt($id_user_cmt,$cmt,$id_sp_cmt);
+            header('Location: index.php?act=detail&edit=0&id='.$id);
+        }else
+        {
+            echo' <script>alert("ĐÃ ĐẠT GIỚI HẠN BÌNH LUẬN CỦA NGÀY HÔM NAY !")</script>';
+        }
+        
     }
 $result = danhsachcmt($id);
 $ListReview = list_review($id);
@@ -324,17 +341,30 @@ if($count_review == 0)
                                     ?>
                                     <div class="col-md-6">
                                     <h4 class="mb-4">Để lại bình luận của bạn</h4>
-                                    <form method="post" enctype="multipart/form-data">
+                                    <form method="post" action="index.php?act=detail&edit=0&id=1&postcmt" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label for="message">Nội dung bình luận *</label>
-                                            <textarea name="cmt" id="message" cols="30" rows="5" class="form-control"></textarea>
+                                            <textarea required name="cmt" id="message" cols="30" rows="5" class="form-control"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="name">Họ và tên *</label>
                                             <input disabled value="<?=$user[0][3]?>" type="text" class="form-control" id="name">
                                         </div>
                                         <div class="form-group mb-0">
-                                            <input type="submit" value="Đăng bình luận" class="btn btn-primary px-3">
+                                            <?php
+                                            if(!defined('LOCK_CMT'))
+                                            {
+                                            ?>
+                                                <input type="submit" value="Đăng bình luận" class="btn btn-primary px-3">
+                                            <?php
+                                            }else
+                                            {
+                                            ?>
+                                                <input disabled type="submit" value="Đăng bình luận" class="btn btn-primary px-3">
+                                                <small class="text-info"><br>Hôm nay bạn đã đăng đủ 3 bình luận của sản phẩm này, vui lòng quay lại vào ngày mai</small>
+                                            <?php   
+                                            }
+                                            ?>
                                         </div>
                                     </form>
                                 </div>

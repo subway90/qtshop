@@ -134,7 +134,7 @@
         $sql = "SELECT cmt.id_user as id, tk.fullname as hoten, tk.image as image, cmt.noidung as noidung, cmt.time as time
         FROM binhluan as cmt JOIN taikhoan as tk
         ON cmt.id_user = tk.id_user
-        WHERE cmt.sanpham =".$id;
+        WHERE cmt.sanpham =".$id." AND cmt.status = 1";
         $result_cmt = $conn->query($sql);
         $danhsach_cmt = $result_cmt->fetchAll();
         return $danhsach_cmt;
@@ -221,17 +221,13 @@
 
         </script>';
     }
-
     function themcmt($id_user_cmt, $cmt,$id_sp_cmt)
     {
         $conn = connection_database();
-        $sql = " INSERT INTO binhluan VALUES (NULL,".$id_user_cmt.", '".$cmt."', current_timestamp,".$id_sp_cmt.")";
+        $sql = " INSERT INTO binhluan VALUES (NULL,".$id_user_cmt.", '".$cmt."', current_timestamp,".$id_sp_cmt.",1)";
         // echo $sql;
         $conn->query($sql);
-        echo '<script type="text/javascript">
-
-            window.onload = function () { alert("BÌNH LUẬN ĐÃ ĐƯỢC ĐĂNG !"); }
-        </script>';
+        
     }
     function themloai($name,$v1,$decribe,$image)
     {
@@ -422,6 +418,16 @@
             //  echo ($sql);
            $conn->query($sql);
           }
+          function LimitComment($id_sp_cmt,$id_user_cmt){
+            $conn = connection_database();
+            $sql = "SELECT id_binhluan, time
+                    FROM binhluan
+                    WHERE id_user = ".$id_user_cmt." AND sanpham = ".$id_sp_cmt." AND status = 1
+                    ORDER BY time DESC LIMIT 3";
+            $result = $conn->query($sql);
+            $danhsach = $result->fetchAll();
+            return $danhsach;
+        }
           function load($id){
             $conn = connection_database();
             $sql = "select * from taikhoan where id_user =".$id;
