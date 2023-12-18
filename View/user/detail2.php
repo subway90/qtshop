@@ -250,17 +250,10 @@ if($count_review == 0)
                     <div class="tab-content">
 
                         <div class="tab-pane fade show active" id="tab-pane-1">
-                            <div class="row">
-                                <table>
-                                    <thead>
-                                    <h4 class="mb-3">Chi tiết sản phẩm</h4>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                        <?=$sp[0][5]?>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="row p-3">
+                            <p>
+                            <?=$sp[0][5]?>
+                            </p>
                             </div>
                             
                         </div>
