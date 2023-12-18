@@ -19,7 +19,7 @@ if(!defined('_CODE'))
             $_SESSION['giohang'][] = $sp_u;
             header('Location: index.php?act=giohang');
         }else{ //giá trị giữ nguyên
-            $_SESSION['giohang'][$vitri][3]=$sl+1; //cập nhật số lượng thay đổi tại id_sp=$vitri
+            $_SESSION['giohang'][$vitri][3]=$sl; //cập nhật số lượng thay đổi tại id_sp=$vitri
             header('Location: index.php?act=giohang');
         }
         
