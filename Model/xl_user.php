@@ -85,7 +85,17 @@ function mot_user($username){
       }
       function all_in_feedback($id_review){
         $conn = connection_database();
-        $sql = "SELECT rv.status as status, rv2.id_ct as id_ct, rv2.id_sp as id_sp, rv2.id_dh as id_dh, rv2.giasp as giasp, rv2.soluong as soluong, rv2.size as size, rv2.color as color, rv2.date_ct as date, rv2.tensp as tensp, rv2.anhsp as anhsp FROM review rv JOIN (SELECT ct.id_chitiet as id_ct, ct.id_dh as id_dh, ct.id_sp as id_sp, ct.soluong as soluong, ct.size as size, ct.color as color, ct.date_create as date_ct, sp.Name as tensp, sp.image as anhsp, sp.Sale as giasp FROM dh_chitiet ct JOIN sanpham sp ON ct.id_sp = sp.id_sp) rv2 ON rv.id_ct = rv2.id_ct WHERE rv.id_review = ".$id_review;
+        $sql = "SELECT rv.rating as rating, rv.noidung as noidung, rv.image as image, rv.status as status, rv2.id_ct as id_ct, rv2.id_sp as id_sp, rv2.id_dh as id_dh, rv2.giasp as giasp, rv2.soluong as soluong, rv2.size as size, rv2.color as color, rv2.date_ct as date, rv2.tensp as tensp, rv2.anhsp as anhsp 
+                FROM review rv 
+                JOIN 
+                (
+                    SELECT ct.id_chitiet as id_ct, ct.id_dh as id_dh, ct.id_sp as id_sp, ct.soluong as soluong, ct.size as size, ct.color as color, ct.date_create as date_ct, sp.Name as tensp, sp.image as anhsp, sp.Sale as giasp 
+                    FROM dh_chitiet ct 
+                    JOIN sanpham sp 
+                    ON ct.id_sp = sp.id_sp
+                    ) rv2 
+                ON rv.id_ct = rv2.id_ct 
+                WHERE rv.id_review = ".$id_review;
         $r_c_u = $conn->query($sql);
         $result = $r_c_u->fetch();
         return $result;
@@ -101,5 +111,6 @@ function mot_user($username){
                 date_submit = current_timestamp
                 WHERE id_review = ".$id_review;
        $conn->query($sql);
+       header("Location: index.php?act=review&id_review=$id_review");
     }
 ?>

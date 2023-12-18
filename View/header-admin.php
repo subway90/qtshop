@@ -9,6 +9,7 @@ $price = "";
 $mount = "";
 $sale = 0;
 $decribe = "";
+$short_decribe = "";
 $hinhsp = "";
 $valid_image = 2;
 $size = "";
@@ -154,6 +155,7 @@ $f_alert = '</div>
                 $giasale = $_POST['giasale'];
                 $giagoc = $_POST['giagoc'];
                 $slsp = $_POST['slsp'];
+                $short_decribe = $_POST['short_decribe'];
                 $decribe = $_POST['decribe'];
                 $loaihang = $_POST['loaihang'];
                 $size = $_POST['size'];
@@ -176,7 +178,7 @@ $f_alert = '</div>
                 {
                     $sale = floor((1-($giasale/$giagoc))*100);
                 }
-                capnhatsp("sanpham", $masp, $tensp, $giasale, $giagoc, $decribe, $slsp, $hinhsp,$loaihang, $sale, $size, $color);
+                capnhatsp("sanpham", $masp, $tensp, $giasale, $giagoc, $decribe,$short_decribe, $slsp, $hinhsp,$loaihang, $sale, $size, $color);
 
             }
             if($edit == 2)
@@ -401,7 +403,7 @@ $f_alert = '</div>
             {
                 $code = "";
             }
-        if($upload==1)
+        if($upload == 1)
         {
             $bool = 0;
             $id_loai = $_POST['id_loai'];
@@ -470,6 +472,15 @@ $f_alert = '</div>
                 $_SESSION['alert'] .= 'Màu sản phẩm chưa được nhập.<br>';
                 $valid_color = "is-invalid";
             }
+            if(!empty($_POST['short_decribe']))
+            {
+                $bool++;
+                $valid_short_decribe = "is-valid";
+                $short_decribe = $_POST['short_decribe'];
+            }else{
+                $_SESSION['alert'] .= 'Ghi chú ngắn chưa được nhập.<br>';
+                $valid_short_decribe = "is-invalid";
+            }
             if(!empty($_POST['decribe']))
             {
                 $bool++;
@@ -505,10 +516,10 @@ $f_alert = '</div>
             {
                 $_SESSION['alert'] .= 'Hình ảnh chưa được nhập.<br>';
             }
-            if($bool == 8)
+            if($bool == 9)
         {
         $_SESSION['alert'] .= 'Sản phẩm đã đăng thành công !';
-        themsp($id_loai, $name, $price, $sale, $decribe, $mount, $ptsale, $hinhsp, $color, $size);
+        themsp($id_loai, $name, $price, $sale, $decribe, $short_decribe, $mount, $ptsale, $hinhsp, $color, $size);
         }
         }
         }

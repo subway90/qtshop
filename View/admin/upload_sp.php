@@ -57,6 +57,9 @@ if(!defined('_CODE'))
                                             <small><span class="text-danger">Lưu ý: </span>Nếu sản phẩm này <strong>muốn sale</strong> (giảm giá) thì nhập vào, còn để trống thì mặc định là <strong>không SALE</strong></small>
                                                     <input type="number" name="sale" min="1000" class="form-control <?=$valid_sale?>" value="<?=$sale?>" placeholder="nhập giá bạn muốn sale (vnđ), có thể để trống nếu không sale"  />
                                             </div>
+                                            <div class="mb-4"><label class="form-label">Ghi chú ngắn</label><textarea name="short_decribe" class=" form-control <?=$valid_short_decribe?>"
+                                                    rows="2"><?=$short_decribe?></textarea>
+                                            </div>
                                             <div class="mb-4"><label class="form-label">Ghi chú</label><textarea name="decribe" class=" form-control <?=$valid_decribe?>"
                                                     rows="5"><?=$decribe?></textarea>
                                             </div>

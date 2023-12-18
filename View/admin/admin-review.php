@@ -78,7 +78,14 @@ if(!defined('_CODE'))
                                         </td>
                                         <td>
                                             <p><?=$rc['noidung']?></p>
+                                            <?php
+                                            if($rc['image'] != 'trống')
+                                            {
+                                            ?>
                                             <img src="../View/img/<?=$rc['image']?>" width="30%" alt="<?=$rc['image']?>">
+                                            <?php
+                                            }
+                                            ?>
                                         </td>
                                         <td>
                                             <div class="sa-price">

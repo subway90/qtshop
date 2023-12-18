@@ -101,7 +101,7 @@ if($count_review == 0)
                     </div>
                     <h3 class="font-weight-semi-bold mb-4"><?=$sp[0][2]?></h3>
                     <p class="mb-4">
-                        <?=$sp[0][5]?>
+                        <?=$sp[0][14]?>
                     </p>
                     <form action="index.php?act=giohang" method="post">
                         <input hidden name="id" type="text" value="<?=$sp[0][0]?>">
@@ -267,12 +267,18 @@ if($count_review == 0)
                                         <div class="media-body">
                                             <h6><?=$OneReview['name']?><small> - <i><?=$OneReview['time']?></i></small></h6>
                                             <div class="text-primary mb-2">
-                                                <?=$OneReview['rating']?>
-                                                <i class="fas fa-star"></i>
+                                                Điểm đánh giá : <?=$OneReview['rating']?> <i class="fas fa-star"></i>
                                             </div>
                                             <p><?=$OneReview['noidung']?></p>
                                             <div>
-                                                <img width="210" height="280" src="../View/img/<?=$OneReview['image_review']?>" alt="<?=$OneReview['image_review']?>">
+                                                <?php
+                                                if($OneReview['image_review'] != 'trống')
+                                                {
+                                                ?>
+                                                <img width="190px" src="../View/img/<?=$OneReview['image_review']?>" alt="<?=$OneReview['image_review']?>">
+                                                <?php
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>

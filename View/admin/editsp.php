@@ -39,9 +39,14 @@ if(!defined('_CODE'))
                                                 <!-- <textarea class="sa-quill-control form-control" rows="8">ERROR</textarea> -->
                                             </div>
                                             <div>
+                                                <label for="form-product/short-description" class="form-label">Ghi chú ngắn</label>
+                                                <textarea name="short_decribe" id="form-product/short-description" class="form-control"
+                                                    rows="2"><?=$sp[0][14]?></textarea>
+                                            </div>
+                                            <div>
                                                 <label for="form-product/short-description" class="form-label">Ghi chú</label>
                                                 <textarea name="decribe" id="form-product/short-description" class="form-control"
-                                                    rows="3"><?=$sp[0][5]?></textarea>
+                                                    rows="8"><?=$sp[0][5]?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -49,12 +54,12 @@ if(!defined('_CODE'))
                                         <div class="card-body p-5">
                                             <div class="mb-5">
                                                 <h2 class="mb-0 fs-exact-18">Giá sản phẩm</h2>
-                                                <small><span class="text-danger">Lưu ý: </span>Nếu nhập Giá hiện tại > (lớn hơn) Giá gốc, thì Giá gốc sẽ thay đổi thành Giá hiện tại bạn vừa nhập.</small>
+                                                <small><span class="text-danger">Lưu ý: </span>Nếu nhập Giá sale > Giá gốc, thì giá gốc sẽ thay thế bằng giá trị giá sale bạn nhập.</small>
                                             </div>
                                             <div class="row g-4">
                                                 <div class="col">
                                                     <label for="form-product/price"
-                                                        class="form-label">Giá hiện tại (sale)</label><input type="number"
+                                                        class="form-label">Giá sale</label><input type="number"
                                                         class="form-control" id="form-product/price" value="<?=$sp[0]['Sale']?>" name="giasale" />
                                                 </div>
                                                 <div class="col">

@@ -109,7 +109,8 @@
         ) rv2
         ON sp.id_sp = rv2.id_sp
         ) rv3
-        ON ct.id_chitiet = rv3.id_ct";
+        ON ct.id_chitiet = rv3.id_ct
+        ORDER BY rv3.id_review DESC";
         $result = $conn->query($sql);
         $danhsach = $result->fetchAll();
         return $danhsach;
@@ -141,9 +142,10 @@
     function list_review($id){
         $conn = connection_database();
         $sql = "SELECT tk.fullname as name, tk.image as image, rv.id_user id_user, rv.id_sp as id_sp, rv.noidung as noidung, rv.rating as rating, rv.date_submit as time,rv.image as image_review
-        FROM review rv JOIN taikhoan as tk
+        FROM review rv
+        JOIN taikhoan as tk
         ON rv.id_user = tk.id_user
-        WHERE rv.id_sp =".$id;
+        WHERE rv.id_sp =".$id." AND status = 2"; 
         $result = $conn->query($sql);
         $l_review = $result->fetchAll();
         return $l_review;
@@ -152,7 +154,7 @@
         $conn = connection_database();
         $sql = "SELECT sum(rating) as total_star, count(id_sp) as count_review
         FROM review
-        WHERE id_sp = ".$id."
+        WHERE id_sp = ".$id." AND status = 2
         GROUP BY id_sp";
         $result = $conn->query($sql);
         $review = $result->fetch();
@@ -207,11 +209,11 @@
         return $danhsach;
     }
 
-    function themsp($id_loai, $name, $price, $sale, $decribe, $mount, $ptsale, $hinhsp, $color, $size)
+    function themsp($id_loai, $name, $price, $sale, $decribe, $short_decribe, $mount, $ptsale, $hinhsp, $color, $size)
     {
         $conn = connection_database();
         $sql = " INSERT INTO sanpham VALUES 
-        (NULL,'".$name."',".$price.",current_timestamp, 0,'".$decribe."',".$mount.",".$sale.",'".$hinhsp."',".$id_loai.",1,'".$color."','".$size."',".$ptsale.")";
+        (NULL,'".$name."',".$price.",current_timestamp, 0,'".$decribe."',".$mount.",".$sale.",'".$hinhsp."',".$id_loai.",1,'".$color."','".$size."',".$ptsale.",'".$short_decribe."')";
         $conn->query($sql);
         echo '<script type="text/javascript">
 
@@ -364,7 +366,7 @@
         $s_s_dh = $result->fetch();
         return $s_s_dh;
     }
-    function capnhatsp($tenbang, $masp, $tensp, $giasale, $giagoc, $decribe, $slsp, $hinhsp,$loaihang, $sale, $size, $color){
+    function capnhatsp($tenbang, $masp, $tensp, $giasale, $giagoc, $decribe, $short_decribe,$slsp, $hinhsp,$loaihang, $sale, $size, $color){
         $conn = connection_database();
         $sql =  "Update ".$tenbang." 
                 Set Name='". $tensp ."', 
@@ -377,6 +379,7 @@
                 Decribe ='".$decribe."',
                 size ='".$size."',
                 color ='".$color."',
+                short_decribe ='".$short_decribe."',
                 Date_import = current_timestamp
                 where id_sp = ".$masp;
        $conn->query($sql);

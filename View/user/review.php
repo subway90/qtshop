@@ -1,12 +1,13 @@
 <?php
-$id_review = $_REQUEST['id_review'];
-$info_review = all_in_feedback($id_review);
 if($info_review['status'] == 1)
 {
     $status_button = "";
+    $status_input = "";
 }else
 {
+    $_SESSION['alert'] = '<div class="alert alert-success" role="alert">Đánh giá sản phẩm thành công, cảm ơn quý khách !</div>';
     $status_button = "style='display:none'";
+    $status_input = "disabled";
 }
 ?>
 <body>
@@ -22,7 +23,19 @@ if($info_review['status'] == 1)
 <form action="index.php?act=review&id_review=<?=$id_review?>&sendfeedback" method="post" enctype="multipart/form-data">
                                 <input name="id_review" hidden type="number" value="<?=$id_review?>">
                                 <div class="col-auto d-flex">
-                                    <a href="index.php?act=notification" class="btn btn-secondary me-3">Quay về</a>
+                                    <?php
+                                    if($info_review['status'] == 1)
+                                    {
+                                    ?>
+                                        <a href="index.php?act=notification" class="btn btn-secondary me-3">Quay về</a>
+                                    <?php
+                                    }else
+                                    {
+                                    ?>
+                                        <a href="index.php?act=notification" class="btn btn-primary me-3">Quay về</a>
+                                    <?php
+                                    }
+                                    ?>
                                     <button <?=$status_button?> type="submit" class="btn btn-primary">Gửi</button>
                                 </div>
                             </div>
@@ -37,8 +50,8 @@ if($info_review['status'] == 1)
                                                 <small>Đánh giá của bạn sẽ giúp chúng tôi cải thiện chất lượng sản phẩm hơn !</small>
                                             </div>
                                             <div class="mb-4">
-                                                <label for="form-product/name" class="form-label">Thông tin</label>
-                                                <input disabled type="text" class="form-control" id="form-product/name" value="Thời gian: <?=$info_review['date']?> | Mã: <?=$info_review['id_ct']?>"/>
+                                                <label for="form-product/name" class="form-label">Thông tin hóa đơn chi tiết</label>
+                                                <input disabled type="text" class="form-control" id="form-product/name" value="Thời gian mua: <?=$info_review['date']?> | ID hóa đơn chi tiết: <?=$info_review['id_ct']?>"/>
                                             </div>
                                             <div class="row g-4">
                                                 <div style="text-align: center" class="col-sm-6">
@@ -77,7 +90,7 @@ if($info_review['status'] == 1)
                                                     <div class="col-sm-4">
                                                         <div class="mb-4">
                                                             <label for="rating" class="form-label">Điểm sao <span class="text-danger">(*)</span></label>
-                                                                <select name="rating" id="rating" class="sa-select2 form-select <?=$valid_rating?>">
+                                                                <select <?=$status_input?> name="rating" id="rating" class="sa-select2 form-select <?=$valid_rating?>">
                                                                 <?php
                                                                 $option_rating = array('1 sao (RẤT TỆ)','2 sao (TỆ)','3 sao (BÌNH THƯỜNG)','4 sao (TỐT)','5 sao (RẤT TỐT)');
                                                                 for($i=0;$i<count($option_rating);$i++)
@@ -99,13 +112,13 @@ if($info_review['status'] == 1)
                                                         </div>
                                                         <div class="mb-4">
                                                                 <label for="formFile-3-normal" class="form-label">Upload ảnh đánh giá</label>
-                                                                <input name="image" value="image" type="file" class="form-control <?=$valid_image?>" id="formFile-3-normal"/>
+                                                                <input <?=$status_input?> name="image" value="image" type="file" class="form-control <?=$valid_image?>" id="formFile-3-normal"/>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-8">
                                                         <div class="mb-4">
                                                             <label for="form-product/description" class="form-label">Nội dung đánh giá  <span class="text-danger">(*)</span></label>
-                                                            <textarea  name="noidung" id="form-product/description" class="sa-quill-control form-control <?=$valid_noidung?>" rows="5"><?=$noidung?></textarea>
+                                                            <textarea <?=$status_input?> name="noidung" id="form-product/description" class="sa-quill-control form-control <?=$valid_noidung?>" rows="5"><?=$noidung?></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
