@@ -468,14 +468,13 @@ else
                             <a href="index.php?act=shop" class="nav-item nav-link <?=$_SESSION['active_product']?>">Sản phẩm</a>
                             <a href="index.php?act=giohang" class="nav-item nav-link <?=$_SESSION['active_cart']?>">Giỏ hàng</a>
                             <a href="index.php?act=contact" class="nav-item nav-link <?=$_SESSION['active_contact']?>">Liên hệ</a>
-
-                            <!-- <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tin tức <i class="fa fa-angle-down mt-1"></i></a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle <?=$_SESSION['active_news']?>" data-toggle="dropdown">Tin tức <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Thông báo</a>
-                                    <a href="checkout.html" class="dropdown-item">Khuyến mãi</a>
+                                    <a href="index.php?act=news-fashion" class="dropdown-item <?=$_SESSION['active_fashion']?>">Thời trang</a>
+                                    <a href="#" class="dropdown-item <?=$_SESSION['active_promotion']?>">Khuyến mãi</a>
                                 </div>
-                            </div> -->
+                            </div>
 
                         <!-- Desktop nav bar -->
                         </div>

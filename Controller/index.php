@@ -289,13 +289,10 @@ if(!empty($_SESSION['dangnhap']))
                 include "./../View/admin/footer-admin.php";
                 break;
         case "goiemail":
-                include "./../View/admin/headeradmin.php";
+                include "./../View/admin/header-admin.php";
                 include "./../View/admin/goiemail.php";
+                include "./../View/admin/footer-admin.php";
                 break;
-        case "mail_pass":
-                include "./../View/user/mail_password.php";
-                break;  
-
 
         // chuc nang user
         case "update_info":
@@ -308,52 +305,14 @@ if(!empty($_SESSION['dangnhap']))
                 include "./../View/user/review.php";
                 break;
         case "change_pass":
-                // include "./../View/user/header-active.php";
                 include "./../View/user/doimatkhau.php";
                 break; 
-        case "giohang":
-                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "active";$_SESSION['active_contact'] = "";
-                include "./../View/user/header2.php";
-                include "./../View/user/giohang2.php";
-                include "./../View/user/footer2.php";
-                break;
-        case "yeuthich":
-                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "active";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";
-                include "./../View/user/header2.php";
-                include "./../View/user/yeuthich.php";
-                include "./../View/user/footer2.php";
-                break;
-        case "thanhtoan":
-                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "active";$_SESSION['active_contact'] = "";
-                if(!empty($_SESSION['giohang']))
-                {
-                include "./../View/user/header2.php";
-                include "./../View/user/thanhtoan1.php";
-                include "./../View/user/footer2.php";
-                break;
-                }
-                else
-                {
-                        header('Location: index.php?act=giohang');
-                }
-        case "check_thanhtoan":
-                include "./../View/user/check_thanhtoan.php";
-                break;
-        case "detail":
-                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "active";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";
-                include "./../View/user/header2.php";
-                include "./../View/user/detail2.php";
-                include "./../View/user/footer2.php";
-                break;
-        case "contact":
-                $_SESSION['alert'] = "";
-                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "active";
-                include "./../View/user/header2.php";
-                include "./../View/user/contact2.php";
-                include "./../View/user/footer2.php";
         case "taouser":
                 include "./../View/user/taouser.php";
                 break;
+        case "mail_pass":
+                include "./../View/user/mail_password.php";
+                break;  
         case "history":
                 include "./../View/user/history.php";
                 break;
@@ -364,28 +323,20 @@ if(!empty($_SESSION['dangnhap']))
                 $_SESSION['alert'] = "";
                 if(empty($_SESSION['dangnhap']))
                 {
-                        $_SESSION['valid_username'] = ""; $_SESSION['valid_password'] = ""; 
-                        include "./../View/user/dangnhap.php";
-                        break;
+                $_SESSION['valid_username'] = "";
+                $_SESSION['valid_password'] = ""; 
+                include "./../View/user/dangnhap.php";
+                break;
                 }else
                 {
-                        header('Location: index.php');
+                header('Location: index.php');
                 }
-        case "shop":
-                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "active";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";
-                include "./../View/user/header2.php";
-                include "./../View/user/shop2.php";
-                include "./../View/user/footer2.php";
-                break;
         case "logout":
                 $_SESSION['dangnhap']= [];
                 header('Location: index.php');
                 break;
-        case "search-product":
-                $_SESSION['active_home'] = "active";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";
-                include "./../View/user/header2.php";
-                include "./../View/user/search.php";
-                include "./../View/user/footer2.php";
+        case "check_thanhtoan":
+                include "./../View/user/check_thanhtoan.php";
                 break;
         case "testcode":
                 include "./../View/user/testcode.php";
@@ -399,8 +350,64 @@ if(!empty($_SESSION['dangnhap']))
         case "testcode4":
                 include "./../View/user/testcode4.php";
                 break;
+        case "giohang":
+                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "active";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "";$_SESSION['active_fashion'] = "";$_SESSION['active_promotion'] = "";
+                include "./../View/user/header2.php";
+                include "./../View/user/giohang2.php";
+                include "./../View/user/footer2.php";
+                break;
+        case "yeuthich":
+                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "active";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "";$_SESSION['active_fashion'] = "";$_SESSION['active_promotion'] = "";
+                include "./../View/user/header2.php";
+                include "./../View/user/yeuthich.php";
+                include "./../View/user/footer2.php";
+                break;
+        case "thanhtoan":
+                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "active";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "";$_SESSION['active_fashion'] = "";$_SESSION['active_promotion'] = "";
+                if(!empty($_SESSION['giohang']))
+                {
+                include "./../View/user/header2.php";
+                include "./../View/user/thanhtoan1.php";
+                include "./../View/user/footer2.php";
+                break;
+                }
+                else
+                {
+                header('Location: index.php?act=giohang');
+                }
+        case "detail":
+                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "active";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "";$_SESSION['active_fashion'] = "";$_SESSION['active_promotion'] = "";
+                include "./../View/user/header2.php";
+                include "./../View/user/detail2.php";
+                include "./../View/user/footer2.php";
+                break;
+        case "contact":
+                $_SESSION['alert'] = "";
+                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "active";$_SESSION['active_news'] = "";$_SESSION['active_fashion'] = "";$_SESSION['active_promotion'] = "";
+                include "./../View/user/header2.php";
+                include "./../View/user/contact2.php";
+                include "./../View/user/footer2.php";
+                break;
+        case "shop":
+                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "active";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "";$_SESSION['active_fashion'] = "";$_SESSION['active_promotion'] = "";
+                include "./../View/user/header2.php";
+                include "./../View/user/shop2.php";
+                include "./../View/user/footer2.php";
+                break;
+        case "news-fashion":
+                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "active";$_SESSION['active_fashion'] = "active";$_SESSION['active_promotion'] = "";
+                include "./../View/user/header2.php";
+                include "./../View/user/news_fashion.php";
+                include "./../View/user/footer2.php";
+                break;
+        case "search-product":
+                $_SESSION['active_home'] = "active";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "";$_SESSION['active_fashion'] = "";$_SESSION['active_promotion'] = "";
+                include "./../View/user/header2.php";
+                include "./../View/user/search.php";
+                include "./../View/user/footer2.php";
+                break;
         default:
-                $_SESSION['active_home'] = "active";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";
+                $_SESSION['active_home'] = "active";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "";$_SESSION['active_fashion'] = "";$_SESSION['active_promotion'] = "";
                 include "./../View/user/header2.php";
                 include "./../View/user/body2.php";
                 include "./../View/user/footer2.php";
@@ -411,7 +418,7 @@ if(!empty($_SESSION['dangnhap']))
 else
 {               
                 $_SESSION['alert'] = "";
-                $_SESSION['active_home'] = "active";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";
+                $_SESSION['active_home'] = "active";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "";$_SESSION['active_fashion'] = "";$_SESSION['active_promotion'] = "";
                 include "./../View/user/header2.php";
                 include "./../View/user/body2.php";
                 include "./../View/user/footer2.php";
