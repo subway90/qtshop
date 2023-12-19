@@ -25,6 +25,42 @@ if(!empty($_SESSION['dangnhap']))
         switch($act)
         {
         // chuc nang admin
+        case "admin-cate-news":
+                if(defined('_ADMIN'))
+                {        
+                include "./../View/header-admin.php";
+                include "./../View/admin/cate_news.php";
+                include "./../View/admin/footer-admin.php";
+                break;
+        }
+        else{
+                require_once('404.html'); exit;
+        }
+        case "admin-upload-cate-news":
+                if(defined('_ADMIN'))
+                {
+                $_SESSION['alert'] = "";
+                include "./../View/header-admin.php";
+                include "./../View/admin/upload_cate_news.php";
+                include "./../View/admin/footer-admin.php";
+                break;
+        }
+        else{
+                require_once('404.html'); exit;
+        }
+        case "admin-upload-news-fashion":
+                $_SESSION['alert'] = "";
+                if(defined('_ADMIN'))
+                {
+                include "./../View/header-admin.php";
+                include "./../View/admin/upload_news_fashion.php";
+                include "./../View/admin/footer-admin.php";
+                break;
+        }
+        else{
+                require_once('404.html'); exit;
+        }
+
         case "admin-infomation":
                 $_SESSION['alert'] = "";
                 if(defined('_ADMIN'))

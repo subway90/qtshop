@@ -300,6 +300,139 @@ $f_alert = '</div>
                         themloai($name,$v1,$decribe,$image);
                     }
             }
+            if($upload == 1)
+            {
+                $bool = 0;
+                $id_loai = $_POST['id_loai'];
+                if(!empty($_POST['name']))
+                {
+                    $bool++;
+                    $name = $_POST['name'];
+                    $valid_name = "is-valid";
+                }else{
+                    $_SESSION['alert'] .= 'Tên chưa được nhập.<br>';
+                    $valid_name = "is-invalid";
+                }
+                if(!empty($_POST['price']))
+                {
+                    $bool++;
+                    $valid_price = "is-valid";
+                    $price = $_POST['price'];
+                }else{
+                    $_SESSION['alert'] .= 'Giá Gốc chưa được nhập.<br>';
+                    $valid_price = "is-invalid";
+                }
+                if(!empty($_POST['sale']))
+                {
+                    $sale = $_POST['sale'];
+                    if($sale<=$price)
+                    {
+                        $bool++;
+                        $ptsale = round((1-($sale/$price))*100);
+                        $valid_sale = "is-valid";
+                        $sale = $_POST['sale'];
+                    }else
+                    {
+                        $valid_sale = "is-invalid";
+                        $_SESSION['alert'] .= 'Giá Sale không được lớn hơn Giá Gốc.<br>';
+                    }
+                }else{
+                    $bool++;
+                    $sale = $price;
+                    $ptsale = 0;
+                    $valid_sale = "is-valid";
+                }
+                if(!empty($_POST['mount']))
+                {
+                    $bool++;
+                    $valid_mount = "is-valid";
+                    $mount = $_POST['mount'];
+                }else{
+                    $_SESSION['alert'] .= 'Số lượng chưa được nhập.<br>';
+                    $valid_mount = "is-invalid";
+                }
+                if(!empty($_POST['size']))
+                {
+                    $bool++;
+                    $valid_size = "is-valid";
+                    $size = $_POST['size'];
+                }else{
+                    $_SESSION['alert'] .= 'Size sản phẩm chưa được nhập.<br>';
+                    $valid_size = "is-invalid";
+                }
+                if(!empty($_POST['color']))
+                {
+                    $bool++;
+                    $valid_color = "is-valid";
+                    $color = $_POST['color'];
+                }else{
+                    $_SESSION['alert'] .= 'Màu sản phẩm chưa được nhập.<br>';
+                    $valid_color = "is-invalid";
+                }
+                if(!empty($_POST['short_decribe']))
+                {
+                    $bool++;
+                    $valid_short_decribe = "is-valid";
+                    $short_decribe = $_POST['short_decribe'];
+                }else{
+                    $_SESSION['alert'] .= 'Ghi chú ngắn chưa được nhập.<br>';
+                    $valid_short_decribe = "is-invalid";
+                }
+                if(!empty($_POST['decribe']))
+                {
+                    $bool++;
+                    $valid_decribe = "is-valid";
+                    $decribe = $_POST['decribe'];
+                }else{
+                    $_SESSION['alert'] .= 'Ghi chú chưa được nhập.<br>';
+                    $valid_decribe = "is-invalid";
+                }
+                if($_FILES['image']['name'] !== "")
+                {
+                    if(in_array($_FILES['image']['type'],$auth_image) === false)
+                    {
+                        $_SESSION['alert'] .= 'Vui lòng chọn đúng file ảnh (png/ jpg/ jpeg).<br>';
+                    }
+                    else{
+                        if($_FILES['image']['size'] >= 5120000) // đơn vị: byte
+                        {
+                            $_SESSION['alert'] .= 'Vui lòng chọn đúng file ảnh dưới 5MB.<br>';
+                        }
+                        else{ //thành công
+                            // $hinhsp = basename($_FILES['image']['name']);
+                            $valid_image = 1;
+                            $bool++;
+                            $hinhsp = $_FILES['image']['name'];
+                            $path = __DIR__ . './../View/img/';
+                            $target_file = $path . $hinhsp;
+                            move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+                            }
+                        }
+                    }
+                else
+                {
+                    $_SESSION['alert'] .= 'Hình ảnh chưa được nhập.<br>';
+                }
+                if($bool == 9)
+            {
+            $_SESSION['alert'] .= 'Sản phẩm đã đăng thành công !';
+            themsp($id_loai, $name, $price, $sale, $decribe, $short_decribe, $mount, $ptsale, $hinhsp, $color, $size);
+            }
+            }
+            if($upload == 2)
+            {
+                $status = $_POST['status'];
+                $name = $_POST['name'];
+                $decribe = $_POST['decribe'];
+                // if(isset($_FILES['image']))
+                // {
+                //     $image = basename($_FILES['image']['name']);
+                //     $path = __DIR__ . './../View/img/';
+                //     $target_file = $path . $image;
+                //     move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+                // }
+                AddCateNews($status,$name,$decribe);
+            }
             if($upload == 3)
             {
                 $level = $_POST['level'];
@@ -403,125 +536,6 @@ $f_alert = '</div>
             {
                 $code = "";
             }
-        if($upload == 1)
-        {
-            $bool = 0;
-            $id_loai = $_POST['id_loai'];
-            if(!empty($_POST['name']))
-            {
-                $bool++;
-                $name = $_POST['name'];
-                $valid_name = "is-valid";
-            }else{
-                $_SESSION['alert'] .= 'Tên chưa được nhập.<br>';
-                $valid_name = "is-invalid";
-            }
-            if(!empty($_POST['price']))
-            {
-                $bool++;
-                $valid_price = "is-valid";
-                $price = $_POST['price'];
-            }else{
-                $_SESSION['alert'] .= 'Giá Gốc chưa được nhập.<br>';
-                $valid_price = "is-invalid";
-            }
-            if(!empty($_POST['sale']))
-            {
-                $sale = $_POST['sale'];
-                if($sale<=$price)
-                {
-                    $bool++;
-                    $ptsale = round((1-($sale/$price))*100);
-                    $valid_sale = "is-valid";
-                    $sale = $_POST['sale'];
-                }else
-                {
-                    $valid_sale = "is-invalid";
-                    $_SESSION['alert'] .= 'Giá Sale không được lớn hơn Giá Gốc.<br>';
-                }
-            }else{
-                $bool++;
-                $sale = $price;
-                $ptsale = 0;
-                $valid_sale = "is-valid";
-            }
-            if(!empty($_POST['mount']))
-            {
-                $bool++;
-                $valid_mount = "is-valid";
-                $mount = $_POST['mount'];
-            }else{
-                $_SESSION['alert'] .= 'Số lượng chưa được nhập.<br>';
-                $valid_mount = "is-invalid";
-            }
-            if(!empty($_POST['size']))
-            {
-                $bool++;
-                $valid_size = "is-valid";
-                $size = $_POST['size'];
-            }else{
-                $_SESSION['alert'] .= 'Size sản phẩm chưa được nhập.<br>';
-                $valid_size = "is-invalid";
-            }
-            if(!empty($_POST['color']))
-            {
-                $bool++;
-                $valid_color = "is-valid";
-                $color = $_POST['color'];
-            }else{
-                $_SESSION['alert'] .= 'Màu sản phẩm chưa được nhập.<br>';
-                $valid_color = "is-invalid";
-            }
-            if(!empty($_POST['short_decribe']))
-            {
-                $bool++;
-                $valid_short_decribe = "is-valid";
-                $short_decribe = $_POST['short_decribe'];
-            }else{
-                $_SESSION['alert'] .= 'Ghi chú ngắn chưa được nhập.<br>';
-                $valid_short_decribe = "is-invalid";
-            }
-            if(!empty($_POST['decribe']))
-            {
-                $bool++;
-                $valid_decribe = "is-valid";
-                $decribe = $_POST['decribe'];
-            }else{
-                $_SESSION['alert'] .= 'Ghi chú chưa được nhập.<br>';
-                $valid_decribe = "is-invalid";
-            }
-            if($_FILES['image']['name'] !== "")
-            {
-                if(in_array($_FILES['image']['type'],$auth_image) === false)
-                {
-                    $_SESSION['alert'] .= 'Vui lòng chọn đúng file ảnh (png/ jpg/ jpeg).<br>';
-                }
-                else{
-                    if($_FILES['image']['size'] >= 5120000) // đơn vị: byte
-                    {
-                        $_SESSION['alert'] .= 'Vui lòng chọn đúng file ảnh dưới 5MB.<br>';
-                    }
-                    else{ //thành công
-                        // $hinhsp = basename($_FILES['image']['name']);
-                        $valid_image = 1;
-                        $bool++;
-                        $hinhsp = $_FILES['image']['name'];
-                        $path = __DIR__ . './../View/img/';
-                        $target_file = $path . $hinhsp;
-                        move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-                        }
-                    }
-                }
-            else
-            {
-                $_SESSION['alert'] .= 'Hình ảnh chưa được nhập.<br>';
-            }
-            if($bool == 9)
-        {
-        $_SESSION['alert'] .= 'Sản phẩm đã đăng thành công !';
-        themsp($id_loai, $name, $price, $sale, $decribe, $short_decribe, $mount, $ptsale, $hinhsp, $color, $size);
-        }
-        }
         }
 
 ?>
@@ -551,6 +565,10 @@ $f_alert = '</div>
     <link rel="stylesheet" href="./../template/admin_t/css/style.css" />
     <!-- cdn google -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Summernote CSS - CDN Link -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <!-- //Summernote CSS - CDN Link -->
     
 </head>
 
@@ -671,6 +689,28 @@ $f_alert = '</div>
                                             </svg>
                                         </span>
                                         <span class="sa-nav__title">Quản lí thông tin WEBSITE</span>
+                                    </a>
+                                </li>
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                    <a href="index.php?act=admin-cate-news" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <!-- <i class="fas fa-shopping-cart"></i> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor">
+                                                <path d="M7,14v-2h9v2H7z M14,7h2v2h-2V7z M12.5,6C12.8,6,13,6.2,13,6.5v3c0,0.3-0.2,0.5-0.5,0.5h-2 C10.2,10,10,9.8,10,9.5v-3C10,6.2,10.2,6,10.5,6H12.5z M7,2h9v2H7V2z M5.5,5h-2C3.2,5,3,4.8,3,4.5v-3C3,1.2,3.2,1,3.5,1h2 C5.8,1,6,1.2,6,1.5v3C6,4.8,5.8,5,5.5,5z M0,2h2v2H0V2z M9,9H0V7h9V9z M2,14H0v-2h2V14z M3.5,11h2C5.8,11,6,11.2,6,11.5v3 C6,14.8,5.8,15,5.5,15h-2C3.2,15,3,14.8,3,14.5v-3C3,11.2,3.2,11,3.5,11z" ></path>
+                                            </svg>
+                                        </span>
+                                        <span class="sa-nav__title">Loại tin tức</span>
+                                    </a>
+                                </li>
+                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
+                                    <a href="index.php?act=admin-upload-news-fashion" class="sa-nav__link">
+                                        <span class="sa-nav__icon">
+                                            <!-- <i class="fas fa-shopping-cart"></i> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor">
+                                                <path d="M7,14v-2h9v2H7z M14,7h2v2h-2V7z M12.5,6C12.8,6,13,6.2,13,6.5v3c0,0.3-0.2,0.5-0.5,0.5h-2 C10.2,10,10,9.8,10,9.5v-3C10,6.2,10.2,6,10.5,6H12.5z M7,2h9v2H7V2z M5.5,5h-2C3.2,5,3,4.8,3,4.5v-3C3,1.2,3.2,1,3.5,1h2 C5.8,1,6,1.2,6,1.5v3C6,4.8,5.8,5,5.5,5z M0,2h2v2H0V2z M9,9H0V7h9V9z M2,14H0v-2h2V14z M3.5,11h2C5.8,11,6,11.2,6,11.5v3 C6,14.8,5.8,15,5.5,15h-2C3.2,15,3,14.8,3,14.5v-3C3,11.2,3.2,11,3.5,11z" ></path>
+                                            </svg>
+                                        </span>
+                                        <span class="sa-nav__title">Tạo bài viết</span>
                                     </a>
                                 </li>
                             </ul>

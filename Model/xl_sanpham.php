@@ -252,6 +252,18 @@
 
         </script>';
     }
+    function AddCateNews($status,$name,$decribe)
+    {
+        $conn = connection_database();
+        $sql = " INSERT INTO cate_news  VALUES (NULL,'".$name."','".$decribe."',".$status.",current_timestamp,current_timestamp)";
+        $conn->query($sql);
+        echo '<script type="text/javascript">
+
+            window.onload = function () { alert("Thêm tin tức mới thành côngg !"); }
+
+        </script>';
+        $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'><span class='text-success'>Thêm thành công !</span></div>";
+    }
     function themvoucher($code,$condition,$number,$datestart,$dateend,$amount,$status,$decribe)
     {
         $conn = connection_database();
@@ -317,6 +329,13 @@
         $result = $conn->query($sql);
         $list_s = $result->fetchAll();
         return $list_s;
+    }
+    function list_cate_news(){
+        $conn = connection_database();
+        $sql = "SELECT * FROM cate_news";
+        $result = $conn->query($sql);
+        $list = $result->fetchAll();
+        return $list;
     }
     function c_pro_in_cate($id_loai){
         $conn = connection_database();
