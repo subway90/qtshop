@@ -1,26 +1,3 @@
-<?php
-if(!defined('_CODE'))
-{
-        require_once('404.html'); exit;
-}
-?>
-<!-- sa-app__footer -->
-            <div class="sa-app__footer d-block d-md-flex">
-                <!-- copyright --><div class="m-auto">Một sản phẩm của nhóm QUYẾT TÂM</div>
-                <div>Trang chủ <a href="https://thoitrangqt.shop">thoitrangqt.shop</a>
-                </div>
-                <!-- copyright / end -->
-            </div>
-            <!-- sa-app__footer / end -->
-        </div>
-        <!-- sa-app__content / end -->
-        <!-- sa-app__toasts -->
-        <div class="sa-app__toasts toast-container bottom-0 end-0"></div>
-        <!-- sa-app__toasts / end -->
-    </div>
-<!-- sa-app / end -->
-    <!-- scripts -->
-    
     <script src="./../template/admin_t/vendor/jquery/jquery.min.js"></script>
     <script src="./../template/admin_t/vendor/feather-icons/feather.min.js"></script>
     <script src="./../template/admin_t/vendor/simplebar/simplebar.min.js"></script>
@@ -41,9 +18,19 @@ if(!defined('_CODE'))
     <script src="./../template/admin_t/js/calendar.js"></script>
     <script src="./../template/admin_t/js/demo.js"></script>
     <script src="./../template/admin_t/js/demo-chart-js.js"></script>
-</body>
-<!-- Mirrored from
-    stroyka-admin.html.themeforest.scompiler.ru/variants/ltr/index.html by HTTrack
-    Website Copier/3.x [XR&CO'2014], Thu, 13 Jul 2023 09:18:59 GMT -->
-
-</html>
+<!-- Summernote JS - CDN Link -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // $("#description_news").summernote();
+            $('#description_news').summernote({
+                placeholder: 'Nội dung bài viết',
+                tabsize: 2,
+                height: 300
+            });
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+    <!-- //Summernote JS - CDN Link -->

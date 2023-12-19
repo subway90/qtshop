@@ -54,7 +54,7 @@ if(!empty($_SESSION['dangnhap']))
                 {
                 include "./../View/header-admin.php";
                 include "./../View/admin/upload_news.php";
-                include "./../View/admin/footer-admin.php";
+                // include "./../View/admin/footer-admin.php";
                 break;
         }
         else{

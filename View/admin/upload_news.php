@@ -1,4 +1,5 @@
 <?php
+include('scriptnews.php');
 if(isset($_REQUEST['checked']))
 {
     $id_user = $_SESSION['dangnhap'][0][0];
@@ -61,9 +62,9 @@ $decribe = "";
                                                 <div class="col">
                                                    <label for="category" class="form-label">Chế độ hiển thị <span class="text-danger">(*)</span></label>
                                                    <select name="status" id="category" class="sa-select2 form-select">
-                                                        <option value="1">Bình thường</option>
+                                                        <option value="3">Hiện</option>
                                                         <option  value="2">Nổi bật</option>
-                                                        <option  value="3">Ẩn</option>
+                                                        <option  value="1">Ẩn</option>
                                                     </select>
                                                 </div>
                                             </div>
