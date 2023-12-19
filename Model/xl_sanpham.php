@@ -240,6 +240,27 @@
 
         </script>';
     }
+    function AddNews($id_cate,$title,$decribe,$id_user,$status,$date_setup)
+    {
+        if(empty($date_setup))
+        {
+            $date_setup = "current_timestamp";
+        }else
+        {
+            //  mm/dd/yyyy
+            $str_date_input = $date_setup;
+            $date_setup = substr($str_date_input,6,4)."-".substr($str_date_input,0,2)."-".substr($str_date_input,3,2);
+        }
+        $conn = connection_database();
+        $sql = " INSERT INTO news VALUES (NULL,".$id_cate.",'".$title."','".$decribe."',current_timestamp,current_timestamp,".$id_user.",".$id_user.",".$status.",".$date_setup.")";
+        // var_dump("<div style='margin: 10% 20%'>".$sql."</div>"); exit;
+        $conn->query($sql);
+        echo '<script type="text/javascript">
+
+            window.onload = function () { alert("Thêm tin tức thành công !"); }
+
+        </script>';
+    }
     
     function themloaiv1($name,$level,$decribe,$image)
     {
@@ -333,6 +354,20 @@
     function list_cate_news(){
         $conn = connection_database();
         $sql = "SELECT * FROM cate_news";
+        $result = $conn->query($sql);
+        $list = $result->fetchAll();
+        return $list;
+    }
+    function ListCateNewsForCreate(){
+        $conn = connection_database();
+        $sql = "SELECT id_cate as id, name FROM cate_news";
+        $result = $conn->query($sql);
+        $list = $result->fetchAll();
+        return $list;
+    }
+    function list_news(){
+        $conn = connection_database();
+        $sql = "SELECT * FROM news";
         $result = $conn->query($sql);
         $list = $result->fetchAll();
         return $list;
