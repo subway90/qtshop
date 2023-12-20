@@ -49,46 +49,62 @@
                         <li data-target="#header-carousel" data-slide-to="1"></li>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="carousel-item position-relative active" style="height: 380px;">
-                            <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" style="object-fit: cover;">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men Fashion</h1>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                        <!-- tin tức nổi bật start -->
+                        <a href="index.php?act=news&slug=khuyen-mai-gio-am-xmas" class="carousel-item position-relative active" style="height: 380px;">
+                            <img class="position-absolute w-100 h-100" src="../View/img/product_default.png" style="object-fit: cover;"  alt="Tiêu đề bài viết">
+                            <div style="text-align: left" class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 1000px; margin-top: 20%">
+                                    <h5 class="text-white mb-3 animate__animated animate__fadeInDown">
+                                        Title NewsTitle NewsTitle NewsTitle NewsTitle NewsTitle NewsTitle NewsTitle NewsTitle NewsTitle News
+                                        </h5>
+                                    <p style="font-size: 15px" class="animate__animated animate__bounceIn">
+                                        Nội dung bài viết string 250Nội dung bài viết string 250Nội dung bài viết string 250Nội dung bài viết string 250Nội dung bài viết string 250Nội dung bài viết string 250
+                                    </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="carousel-item position-relative" style="height: 380px;">
-                            <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover;">
-                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                                <div class="p-3" style="max-width: 700px;">
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Women Fashion</h1>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
-                                    <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                        </a>
+                        <a href="index.php" class="carousel-item position-relative" style="height: 380px;">
+                            <img class="position-absolute w-100 h-100" src="../View/img/product_default.png" style="object-fit: cover;"  alt="Tiêu đề bài viết">
+                            <div style="text-align: left" class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                <div class="p-3" style="max-width: 1000px; margin-top: 20%">
+                                    <h5 class="text-white mb-3 animate__animated animate__fadeInDown">
+                                        Title NewsTitle NewsTitle NewsTitle NewsTitle NewsTitle NewsTitle NewsTitle NewsTitle NewsTitle News
+                                        </h5>
+                                    <p style="font-size: 15px" class="animate__animated animate__bounceIn">
+                                        Nội dung bài viết string 250Nội dung bài viết string 250Nội dung bài viết string 250Nội dung bài viết string 250Nội dung bài viết string 250Nội dung bài viết string 250
+                                    </p>
                                 </div>
                             </div>
-                        </div>
+                        </a>
+                        <!-- tin tức nổi bật end -->
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
+                <!-- Tin tức phụ start -->
                 <div class="product-offer mb-30" style="height: 175px;">
-                    <img class="img-fluid" src="img/offer-1.jpg" alt="">
-                    <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Save 20%</h6>
-                        <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
-                    </div>
+                    <img class="img-fluid" src="../View/img/product_default.png" alt="">
+                    <a href="index.php" class="offer-text text-decoration-none">
+                        <h6 class="mt-5 ml-3 pt-4 text-white text-uppercase">
+                            Title2 Title2 Title2 Title2 Title2 Title2 Title2 Title2 Title2 Title2 Title2 
+                        </h6>
+                        <p style="font-size: 13px" class="text-white mb-3 ml-3">
+                            Content2 Content2 Content2 Content2 Content2 Content2 Content2 Content2 Content2 Content2 Content2 Content2
+                        </p style="font-size: 15px">
+                    </a>
                 </div>
                 <div class="product-offer mb-30" style="height: 175px;">
-                    <img class="img-fluid" src="img/offer-2.jpg" alt="">
-                    <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Save 20%</h6>
-                        <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
-                    </div>
+                    <img class="img-fluid" src="../View/img/product_default.png" alt="">
+                    <a href="index.php" class="offer-text text-decoration-none">
+                        <h6 class="mt-5 ml-3 pt-4 text-white text-uppercase">
+                            Title2 Title2 Title2 Title2 Title2 Title2 Title2 Title2 Title2 Title2 Title2 
+                        </h6>
+                        <p style="font-size: 13px" class="text-white mb-3 ml-3">
+                            Content2 Content2 Content2 Content2 Content2 Content2 Content2 Content2 Content2 Content2 Content2 Content2
+                        </p style="font-size: 15px">
+                    </a>
                 </div>
+                <!-- Tin tức phụ end -->
             </div>
         </div>
     </div>

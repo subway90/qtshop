@@ -536,6 +536,74 @@ $f_alert = '</div>
             {
                 $code = "";
             }
+            if($upload == 5)
+            {
+                $verify_news = 0;
+                $id_user = $_SESSION['dangnhap'][0][0];
+                $date_setup = $_POST['date_setup'];
+                $id_cate = $_POST['id_cate'];
+                $status = $_POST['status'];
+                $title = $_POST['title'];
+                $slug = $_POST['slug'];
+                $image_title = $_POST['image_title'];
+                $decribe = $_POST['decribe'];
+                if(!empty($date_setup))
+                {
+                    $valid_date_setup = "is-valid";
+                }else
+                {
+                    $valid_date_setup = "";
+                }
+                if(!empty($title))
+                {
+                    $verify_news++;
+                    $valid_title = "is-valid";
+                }else
+                {
+                    $valid_title = "is-invalid";
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng nhập tiêu đề bài viết</div>";
+                }
+                if(!empty($slug))
+                {
+                    $verify_news++;
+                    $valid_slug = "is-valid";
+                }else
+                {
+                    $valid_slug = "is-invalid";
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng nhập đường dẫn bài viết</div>";
+                }
+                if($_FILES['image_title']['name'] != "")
+                {
+                    if(in_array($_FILES['image_title']['type'],$auth_image) === false)
+                    {
+                         $verify_edit_slide = 1;
+                        $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng chọn đúng file ảnh (.png/ .jpg/ .jpeg/ .gif)</div>";
+                    }
+                    else
+                    {
+                        if($_FILES['image_title']['size'] >= 5120000) // đơn vị: byte
+                        {
+                            $verify_edit_slide = 1;
+                            $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng chọn file ảnh có kích thước dưới 5MB</div>";
+                        }else
+                        { 
+                            $image = $_FILES['image_title']['name'];
+                            $path = __DIR__ . './../View/img/';
+                            $target_file = $path . $image;
+                            move_uploaded_file($_FILES['image_title']['tmp_name'], $target_file);
+                        }
+                    }
+                }else
+                {
+                    $_SESSION['alert'] .= "Vui lòng nhập hình ảnh bài viết";
+                }
+                AddNews($id_cate,$title,$slug,$image_title,$decribe,$id_user,$status,$date_setup);
+                $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'><span class='text-success'>Sửa thành công slide</span></div>";
+            }else
+            {
+            $decribe = "";
+            }
+            
         }
 
 ?>

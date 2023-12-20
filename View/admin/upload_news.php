@@ -1,23 +1,8 @@
 <?php
 include('scriptnews.php');
-if(isset($_REQUEST['checked']))
-{
-    $id_user = $_SESSION['dangnhap'][0][0];
-    $date_setup = $_POST['date_setup'];
-    $id_cate = $_POST['id_cate'];
-    $status = $_POST['status'];
-    $title = $_POST['title'];
-    $decribe = $_POST['decribe'];
-    AddNews($id_cate,$title,$decribe,$id_user,$status,$date_setup);
-    $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'><span class='text-success'>Sửa thành công slide</span></div>";
-}else
-{
-$decribe = "";
-}
-
 ?>
 <div id="top" class="sa-app__body">
-    <form action="index.php?act=admin-upload-news&checked" method="post" enctype="multipart/form-data">
+    <form action="index.php?act=admin-upload-news&upload=5" method="post" enctype="multipart/form-data">
                 <div class="mx-sm-2 px-2 px-sm-3 px-xxl-4 pb-6">
                     <div class="container">
                         <div class="py-5">
@@ -42,7 +27,7 @@ $decribe = "";
                                             <div class="row g-4">
                                                 <div class="col">
                                                     <label for="form-product/seo-title" class="form-label">Hẹn ngày (nếu có)</label>
-                                                        <input name="date_setup" type="text" class="form-control datepicker-here" id="form-product/publish-date" data-auto-close="true" data-language="en"/>
+                                                        <input name="date_setup" value="<?=$date_setup?>" type="text" class="form-control datepicker-here" id="form-product/publish-date" data-auto-close="true" data-language="en"/>
                                                 </div>
                                                 <div class="col">
                                                    <label for="category" class="form-label">Loại tin tức <span class="text-danger">(*)</span></label>
@@ -68,11 +53,30 @@ $decribe = "";
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="mb-4 mt-4">
-                                                <label for="form-product/name" class="form-label">
-                                                    Tiêu đề 
-                                                    <span class="text-danger">(*)</span></label>
-                                                    <input name="title" type="text" class="form-control" id="form-product/name" placeholder="Tiêu đề bài viết"/>
+                                            <div class="row g-4">
+                                                <div style="text-align: center" class="col-4">
+                                                    <img class="p-5" id="image" src="../View/img/product_default.png" alt="image" width="70%"> <br>
+                                                </div>
+                                                <div class="col-8">
+                                                <div class="mb-5 mt-5">
+                                                        <label for="form-product/name" class="form-label">
+                                                            Tiêu đề 
+                                                            <span class="text-danger">(*)</span></label>
+                                                            <input name="title" type="text" class="form-control" id="form-product/name" placeholder="Tiêu đề bài viết"/>
+                                                    </div>
+                                                    <div class="mb-5">
+                                                        <label for="form-product/slug" class="form-label">
+                                                            Đường dẫn đến bài viết
+                                                            <span class="text-danger">(*)</span></label>
+                                                            <input name="slug" type="text" class="form-control" id="form-product/slug" placeholder="Ví dụ: tieu-de-bai-viet"/>
+                                                    </div>
+                                                    <div class="mb-5">
+                                                        <label for="imageFile" class="form-label">
+                                                            Ảnh hiển thị
+                                                            <span class="text-danger">(*)</span></label>
+                                                            <input name="image_title" type="file" class="form-control" id="imageFile"  onchange="chooseFile(this)"  placeholder="Tiêu đề bài viết" accept="image/jpeg, image/png, image/gif"/>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="mb-4">
                                                 <label for="description_news" class="form-label">Nội dung</label>
@@ -87,3 +91,17 @@ $decribe = "";
                 </div>
     </form>
 </div>
+<script>
+    function chooseFile(fileInput)
+    {
+        if(fileInput.files && fileInput.files[0])
+        {
+            var reader = new FileReader();
+            reader.onload =function (e)
+                                        {
+                                            $('#image').attr('src',e.target.result);
+                                        }
+                                        reader.readAsDataURL(fileInput.files[0])
+        }
+    }
+</script>

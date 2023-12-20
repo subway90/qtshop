@@ -447,6 +447,12 @@ if(!empty($_SESSION['dangnhap']))
                 include "./../View/user/news_fashion.php";
                 include "./../View/user/footer2.php";
                 break;
+        case "news":
+                $_SESSION['active_home'] = "";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "active";$_SESSION['active_fashion'] = "active";$_SESSION['active_promotion'] = "";
+                include "./../View/user/header2.php";
+                include "./../View/user/news_user.php";
+                include "./../View/user/footer2.php";
+                break;
         case "search-product":
                 $_SESSION['active_home'] = "active";$_SESSION['active_product'] = "";$_SESSION['active_cart'] = "";$_SESSION['active_contact'] = "";$_SESSION['active_news'] = "";$_SESSION['active_fashion'] = "";$_SESSION['active_promotion'] = "";
                 include "./../View/user/header2.php";

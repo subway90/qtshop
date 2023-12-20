@@ -23,6 +23,7 @@ if(isset($_REQUEST['snow']))
     include "./../Model/xl_giohang.php";
     include "./../Model/xl_thanhtoan.php";
     include "./../Model/xl_search.php";
+    include "../Model/xl_news.php";
     $info = select_infomation_web();
     //case tìm kiếm sản phẩm
     if (isset($_POST['text-search']))

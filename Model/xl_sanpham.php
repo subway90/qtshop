@@ -240,7 +240,7 @@
 
         </script>';
     }
-    function AddNews($id_cate,$title,$decribe,$id_user,$status,$date_setup)
+    function AddNews($id_cate,$title,$slug,$image_title,$decribe,$id_user,$status,$date_setup)
     {
         if(empty($date_setup))
         {
@@ -252,7 +252,7 @@
             $date_setup = substr($str_date_input,6,4)."-".substr($str_date_input,0,2)."-".substr($str_date_input,3,2);
         }
         $conn = connection_database();
-        $sql = " INSERT INTO news VALUES (NULL,".$id_cate.",'".$title."','".$decribe."',current_timestamp,current_timestamp,".$id_user.",".$id_user.",".$status.",".$date_setup.")";
+        $sql = " INSERT INTO news VALUES (NULL,".$id_cate.",'".$title."','".$slug."','".$image_title."','".$decribe."',current_timestamp,current_timestamp,".$id_user.",".$id_user.",".$status.",".$date_setup.")";
         // var_dump("<div style='margin: 10% 20%'>".$sql."</div>"); exit;
         $conn->query($sql);
         echo '<script type="text/javascript">
