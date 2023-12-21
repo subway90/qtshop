@@ -100,7 +100,7 @@ if(!empty($_SESSION['dangnhap']))
                 if(defined('_ADMIN'))
                 {
                 include "./../View/header-admin.php";
-                include "./../View/admin/admin-upload-voucher.php";
+                include "./../View/admin/upload_voucher.php";
                 include "./../View/admin/footer-admin.php";
                 break;
         }

@@ -1,6 +1,7 @@
 <?php
-$getdaynow = getdate();
-$timenow = $getdaynow['year'].'/'.$getdaynow['mon'].'/'.$getdaynow['mday'].' '.$getdaynow['hours'].':'.$getdaynow['minutes'].':'.$getdaynow['seconds'];
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+$datenow = date('Y-m-d');
+$timenow = date('Y-m-d H:i:s');
 $number_second_now = strtotime($timenow);
 $auth_image = array('image/jpeg','image/jpg', 'image/png');
 $bool_name = 2;
@@ -14,11 +15,16 @@ $hinhsp = "";
 $valid_image = 2;
 $size = "";
 $color = "";
-$code = ""; 
+$code = "";
+$title = "";
+$slug = "";
+$tipforslug = "";
 $amount = "";
 $condition = "";
 $number = "";
-$status = 2;
+$status = 2; //mặc định hiển thị cho tất cả upload | Trạng thái bình thường
+$id_cate = 1;
+$date_setup = "";
 $datestart = "";
 $dateend = "";
 $_SESSION['valid_name_link'] = '';
@@ -37,6 +43,7 @@ $f_alert = '</div>
             </div>';
         include "./../Model/xl_sanpham.php";
         include "./../Model/xl_search.php";
+        include "./../Model/xl_news.php";
         $info = select_infomation_web();
         $load_user = load_user($_SESSION['dangnhap'][0][1]);
         if(isset($_REQUEST['feedback'])) 
@@ -545,11 +552,18 @@ $f_alert = '</div>
                 $status = $_POST['status'];
                 $title = $_POST['title'];
                 $slug = $_POST['slug'];
-                $image_title = $_POST['image_title'];
+                $image_title = $_FILES['image_title']['name'];
                 $decribe = $_POST['decribe'];
                 if(!empty($date_setup))
                 {
-                    $valid_date_setup = "is-valid";
+                    if(strtotime($date_setup)>=strtotime($datenow))
+                    {
+                        $valid_date_setup = "is-valid";
+                    }else
+                    {
+                        $valid_date_setup = "is-invalid";
+                        $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Không thể hẹn ngày ở quá khứ</div>";
+                    }
                 }else
                 {
                     $valid_date_setup = "";
@@ -558,6 +572,7 @@ $f_alert = '</div>
                 {
                     $verify_news++;
                     $valid_title = "is-valid";
+                    $tipforslug = CreateSlug($title);
                 }else
                 {
                     $valid_title = "is-invalid";
@@ -565,45 +580,64 @@ $f_alert = '</div>
                 }
                 if(!empty($slug))
                 {
-                    $verify_news++;
-                    $valid_slug = "is-valid";
+                    $verify_slug = SelectOneNews($slug);
+                    if(empty($verify_slug))
+                    {
+                        $verify_news++;
+                        $valid_slug = "is-valid";
+                    }else
+                    {
+                        $valid_slug = "is-invalid";
+                        $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Đường dẫn này đã tồn tại</div>";
+                    }
+                    
                 }else
                 {
                     $valid_slug = "is-invalid";
                     $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng nhập đường dẫn bài viết</div>";
                 }
+                if(!empty($decribe))
+                {
+                    $verify_news++;
+                    $valid_decribe = "is-valid";
+                }else
+                {
+                    $valid_decribe = "is-invalid";
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng nhập nội dung bài viết</div>";
+                }
                 if($_FILES['image_title']['name'] != "")
                 {
                     if(in_array($_FILES['image_title']['type'],$auth_image) === false)
                     {
-                         $verify_edit_slide = 1;
+                        $valid_image_title = "is-invalid";
                         $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng chọn đúng file ảnh (.png/ .jpg/ .jpeg/ .gif)</div>";
                     }
                     else
                     {
                         if($_FILES['image_title']['size'] >= 5120000) // đơn vị: byte
                         {
-                            $verify_edit_slide = 1;
+                            $valid_image_title = "is-invalid";
                             $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng chọn file ảnh có kích thước dưới 5MB</div>";
                         }else
-                        { 
-                            $image = $_FILES['image_title']['name'];
+                        {
+                            $verify_news++;
+                            $valid_image_title = "is-valid";
                             $path = __DIR__ . './../View/img/';
-                            $target_file = $path . $image;
+                            $target_file = $path . $image_title;
                             move_uploaded_file($_FILES['image_title']['tmp_name'], $target_file);
                         }
                     }
                 }else
                 {
-                    $_SESSION['alert'] .= "Vui lòng nhập hình ảnh bài viết";
+                    $valid_image_title = "is-invalid";
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng nhập hình ảnh bài viết</div>";
                 }
-                AddNews($id_cate,$title,$slug,$image_title,$decribe,$id_user,$status,$date_setup);
-                $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'><span class='text-success'>Sửa thành công slide</span></div>";
-            }else
-            {
-            $decribe = "";
+                if($verify_news == 4)
+                {
+                    AddNews($id_cate,$title,$slug,$image_title,$decribe,$id_user,$status,$date_setup);
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'><span class='text-success'>Sửa thành công slide</span></div>";
+                }
             }
-            
         }
 
 ?>

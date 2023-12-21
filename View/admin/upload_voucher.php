@@ -102,9 +102,9 @@ if(!defined('_CODE'))
                                         </div>
                                         <div class="mt-n5">
                                             <div class="px-5 py-4 my-2">
-                                                <label for="form-product/seo-title" class="form-label">Ngày bắt đầu <span class="text-danger">(năm/tháng/ngày giờ:phút:giây)</span><br><small>Ví dụ: 2023/12/15 23:59:59</small>
+                                                <label for="form-product/seo-title" class="form-label">Ngày bắt đầu <span class="text-danger">(năm/tháng/ngày giờ:phút:giây)</span><br><small>Ví dụ: <?=$timenow?></small>
                                                 <input type="text" value="<?=$datestart?>" name="datestart" class="form-control">
-                                                <label for="form-product/seo-title" class="form-label mt-5">Ngày kết thúc <span class="text-danger">(năm/tháng/ngày giờ:phút:giây)</span><br><small>Ví dụ: 2023/12/15 23:59:59</small>
+                                                <label for="form-product/seo-title" class="form-label mt-5">Ngày kết thúc <span class="text-danger">(năm/tháng/ngày giờ:phút:giây)</span><br><small>Ví dụ: <?=$timenow?></small>
                                                 <input type="text" value="<?=$dateend?>" name="dateend" class="form-control"> 
                                             </div>
                                     </div>

@@ -1,5 +1,12 @@
 <!-- <?php phpinfo(); ?> -->
 <?php
-$str = 'đen, trắng, tím, vàng, xanh dương';
-var_dump(explode(',', $str));
+$arr_replace =
+[ 
+    "abc" => "xyz",
+    "Hieu" => "thoi trang",
+    " " => "-"
+];
+$title = 'Nguyen Minh Hieu 2023';
+$title = strtr($title,$arr_replace);
+echo $title;
 ?>

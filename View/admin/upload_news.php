@@ -27,7 +27,7 @@ include('scriptnews.php');
                                             <div class="row g-4">
                                                 <div class="col">
                                                     <label for="form-product/seo-title" class="form-label">Hẹn ngày (nếu có)</label>
-                                                        <input name="date_setup" value="<?=$date_setup?>" type="text" class="form-control datepicker-here" id="form-product/publish-date" data-auto-close="true" data-language="en"/>
+                                                        <input name="date_setup" value="<?=$date_setup?>" type="text" class="form-control <?=$valid_date_setup?> datepicker-here" id="form-product/publish-date" data-auto-close="true" data-language="en"/>
                                                 </div>
                                                 <div class="col">
                                                    <label for="category" class="form-label">Loại tin tức <span class="text-danger">(*)</span></label>
@@ -37,9 +37,18 @@ include('scriptnews.php');
                                                     for($i=0;$i<count($list_cate);$i++)
                                                     {
                                                         $cate = $list_cate[$i];
+                                                        if($cate['id'] == $id_cate)
+                                                        {
                                                     ?>
+                                                        <option selected value="<?=$cate['id']?>"><?=$cate['name']?></option>
+                                                    <?php
+                                                        }else
+                                                        {
+                                                    ?>
+                                                    
                                                         <option value="<?=$cate['id']?>"><?=$cate['name']?></option>
                                                     <?php
+                                                        }
                                                     }
                                                     ?>
                                                     </select>
@@ -47,9 +56,30 @@ include('scriptnews.php');
                                                 <div class="col">
                                                    <label for="category" class="form-label">Chế độ hiển thị <span class="text-danger">(*)</span></label>
                                                    <select name="status" id="category" class="sa-select2 form-select">
+                                                    <?php
+                                                    if($status == 1)
+                                                    {
+                                                    ?>
                                                         <option value="3">Hiện</option>
-                                                        <option  value="2">Nổi bật</option>
-                                                        <option  value="1">Ẩn</option>
+                                                        <option value="2">Nổi bật</option>
+                                                        <option selected value="1">Ẩn</option>
+                                                    <?php
+                                                    }elseif($status == 2)
+                                                    {
+                                                    ?>
+                                                        <option value="3">Hiện</option>
+                                                        <option selected value="2">Nổi bật</option>
+                                                        <option value="1">Ẩn</option>
+                                                    <?php
+                                                    }elseif($status == 3)
+                                                    {
+                                                    ?>
+                                                        <option selected value="3">Hiện</option>
+                                                        <option value="2">Nổi bật</option>
+                                                        <option value="1">Ẩn</option>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -62,19 +92,27 @@ include('scriptnews.php');
                                                         <label for="form-product/name" class="form-label">
                                                             Tiêu đề 
                                                             <span class="text-danger">(*)</span></label>
-                                                            <input name="title" type="text" class="form-control" id="form-product/name" placeholder="Tiêu đề bài viết"/>
+                                                            <input name="title" type="text" value="<?=$title?>" class="form-control <?=$valid_title?>" id="form-product/name" placeholder="Tiêu đề bài viết"/>
                                                     </div>
                                                     <div class="mb-5">
                                                         <label for="form-product/slug" class="form-label">
                                                             Đường dẫn đến bài viết
                                                             <span class="text-danger">(*)</span></label>
-                                                            <input name="slug" type="text" class="form-control" id="form-product/slug" placeholder="Ví dụ: tieu-de-bai-viet"/>
+                                                            <?php
+                                                            if(!empty($tipforslug))
+                                                            {
+                                                            ?>
+                                                            <br><strong>Gợi ý: <div class="mb-2 badge badge-sa-info"><?=$tipforslug?></div></strong>
+                                                            <?php
+                                                            }
+                                                            ?>
+                                                            <input name="slug" type="text" value="<?=$slug?>" class="form-control <?=$valid_slug?>" id="form-product/slug" placeholder="Ví dụ: tieu-de-bai-viet"/>
                                                     </div>
                                                     <div class="mb-5">
                                                         <label for="imageFile" class="form-label">
                                                             Ảnh hiển thị
                                                             <span class="text-danger">(*)</span></label>
-                                                            <input name="image_title" type="file" class="form-control" id="imageFile"  onchange="chooseFile(this)"  placeholder="Tiêu đề bài viết" accept="image/jpeg, image/png, image/gif"/>
+                                                            <input name="image_title" type="file" class="form-control <?=$valid_image_title?>" id="imageFile"  onchange="chooseFile(this)"  placeholder="Tiêu đề bài viết" accept="image/jpeg, image/png, image/gif"/>
                                                     </div>
                                                 </div>
                                             </div>

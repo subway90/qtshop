@@ -17,7 +17,7 @@ if(isset($_REQUEST['slug']))
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="index.php">Trang chủ</a>
-                    <a class="breadcrumb-item text-dark" href="index.php?act=news-fashion">Tin tức thời trang</a>
+                    <a class="breadcrumb-item text-dark" href="index.php?act=news-fashion"><?=$news['id_cate']?></a>
                     <span class="breadcrumb-item active"><?=$news['title']?></span>
                 </nav>
             </div>
