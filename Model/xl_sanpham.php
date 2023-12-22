@@ -334,6 +334,22 @@
 
         </script>';
     }
+    function UpdateNews($id_cate,$title,$slug,$image_title,$decribe,$user_submit,$status,$date_setup,$id_news)
+    {
+        $conn = connection_database();
+        $sql =  "UPDATE news
+                SET 
+                id_cate ='".$id_cate."',
+                title ='".$title."',
+                slug ='".$slug."',
+                image_title ='".$image_title."',
+                decribe ='".$decribe."',
+                date_submit = current_timestamp,
+                user_submit =".$user_submit.",
+                date_setup =".$date_setup."
+                WHERE id_news = ".$id_news;
+       $conn->query($sql);
+    }
     
     function themloaiv1($name,$level,$decribe,$image)
     {

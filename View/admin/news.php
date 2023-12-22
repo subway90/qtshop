@@ -106,7 +106,7 @@ if(!defined('_CODE'))
                                                     </svg></button>
                                                 <ul class="dropdown-menu dropdown-menu-end"
                                                     aria-labelledby="category-context-menu-0">
-                                                    <li><a class="dropdown-item" href="#">Sửa</a></li>
+                                                    <li><a class="dropdown-item" href="index.php?act=admin-edit-news&slugone=<?=$news['slug']?>">Sửa</a></li>
                                                     <li>
                                                         <hr class="dropdown-divider" />
                                                     </li>

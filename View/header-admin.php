@@ -288,6 +288,101 @@ $f_alert = '</div>
                     $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'><span class='text-success'>Sửa thành công slide</span></div>";
                 }
             }
+            if($edit == 8)
+            {
+                $id_news = $_REQUEST['id'];
+                $verify_news = 0;
+                $user_submit = $_SESSION['dangnhap'][0][0];
+                $date_setup = $_POST['date_setup'];
+                $id_cate = $_POST['id_cate'];
+                $status = $_POST['status'];
+                $title = $_POST['title'];
+                $slug = $_POST['slug'];
+                $image_title = $_FILES['image_title']['name'];
+                $decribe = $_POST['decribe'];
+                if(!empty($date_setup))
+                {
+                    if(strtotime($date_setup)>=strtotime($datenow))
+                    {
+                        $valid_date_setup = "is-valid";
+                    }else
+                    {
+                        $valid_date_setup = "is-invalid";
+                        $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Không thể hẹn ngày ở quá khứ</div>";
+                    }
+                }else
+                {
+                    $date_setup = $_POST['old_date_setup'];
+                    $valid_date_setup = "";
+                }
+                if(!empty($title))
+                {
+                    $verify_news++;
+                    $valid_title = "is-valid";
+                    $tipforslug = CreateSlug($title);
+                }else
+                {
+                    $valid_title = "is-invalid";
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng nhập tiêu đề bài viết</div>";
+                }
+                if(!empty($slug))
+                {
+                    $verify_slug = SelectOneNews($slug);
+                    if(empty($verify_slug))
+                    {
+                        $verify_news++;
+                        $valid_slug = "is-valid";
+                    }else
+                    {
+                        $valid_slug = "is-invalid";
+                        $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Đường dẫn này đã tồn tại</div>";
+                    }
+                    
+                }else
+                {
+                    $valid_slug = "is-invalid";
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng nhập đường dẫn bài viết</div>";
+                }
+                if(!empty($decribe))
+                {
+                    $verify_news++;
+                    $valid_decribe = "is-valid";
+                }else
+                {
+                    $valid_decribe = "is-invalid";
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng nhập nội dung bài viết</div>";
+                }
+                if($_FILES['image_title']['name'] != "")
+                {
+                    if(in_array($_FILES['image_title']['type'],$auth_image) === false)
+                    {
+                        $valid_image_title = "is-invalid";
+                        $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng chọn đúng file ảnh (.png/ .jpg/ .jpeg/ .gif)</div>";
+                    }
+                    else
+                    {
+                        if($_FILES['image_title']['size'] >= 5120000) // đơn vị: byte
+                        {
+                            $valid_image_title = "is-invalid";
+                            $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Vui lòng chọn file ảnh có kích thước dưới 5MB</div>";
+                        }else
+                        {
+                            $valid_image_title = "is-valid";
+                            $path = __DIR__ . './../View/img/';
+                            $target_file = $path . $image_title;
+                            move_uploaded_file($_FILES['image_title']['tmp_name'], $target_file);
+                        }
+                    }
+                }else
+                {
+                    $image_title = $_POST['old_image_title'];
+                }
+                if($verify_news == 3)
+                {
+                    UpdateNews($id_cate,$title,$slug,$image_title,$decribe,$id_user,$status,$date_setup);
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'><span class='text-success'>Chỉnh sửa thành công.</span></div>";
+                }
+            }
         }
 
         if(isset($_REQUEST['upload']))
@@ -635,7 +730,7 @@ $f_alert = '</div>
                 if($verify_news == 4)
                 {
                     AddNews($id_cate,$title,$slug,$image_title,$decribe,$id_user,$status,$date_setup);
-                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'><span class='text-success'>Sửa thành công slide</span></div>";
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'><span class='text-success'>Tạo bài viết thành công</span></div>";
                 }
             }
         }

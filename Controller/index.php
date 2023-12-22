@@ -60,6 +60,18 @@ if(!empty($_SESSION['dangnhap']))
         else{
                 require_once('404.html'); exit;
         }
+        case "admin-edit-news":
+                $_SESSION['alert'] = "";
+                if(defined('_ADMIN'))
+                {
+                include "./../View/header-admin.php";
+                include "./../View/admin/edit_news.php";
+                // include "./../View/admin/footer-admin.php";
+                break;
+        }
+        else{
+                require_once('404.html'); exit;
+        }
         case "admin-news":
                 $_SESSION['alert'] = "";
                 if(defined('_ADMIN'))
