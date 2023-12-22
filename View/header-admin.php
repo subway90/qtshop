@@ -146,6 +146,14 @@ $f_alert = '</div>
                     restart_review($id);
                 }
             }
+            if($_REQUEST['del'] == 6) {
+                if($_REQUEST['stt'] == 1)
+                {
+                    on_cate_news($id);
+                }else{
+                    off_cate_news($id);
+                }
+            }
             
         }
         if(isset($_REQUEST['edit']))

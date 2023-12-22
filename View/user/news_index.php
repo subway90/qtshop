@@ -1,25 +1,17 @@
 <?php
-    $records=12; //số sản phẩm trên 1 trang
-    $page=1; //số trang đang thực thi
-    if(isset($_REQUEST['txtPage'])){
-        $page = $_REQUEST['txtPage']; //thực thi trang thứ $page
-    }	
-//lây danh sach san pham
-    $listitems = danhsachsp($select_product);
-    $tongsp = count($listitems);
-     $mode = $tongsp%$records; //mode = phần dư (bội của số sản phẩm trên 1 trang)
-    if($mode>0){
-        $pages=floor($tongsp/$records)+1; //hàm floor: chia lấy số nguyên
-    }else{
-        $pages=$tongsp/$records; //pages = tổng số trang của shop
+if(isset($_REQUEST['id']))
+{
+    $list_news = SelectAllNewsInCate($_REQUEST['id']);
+    if(empty($list_news))
+    {
+        require_once('404.html');
+        exit;
     }
-    if($page>$pages){ //nếu trang request lớn hơn giá trị tổng số trang của shop
-        $page=1;
-    }
-    $limits=$records*$page;	
-    $st = $limits - $records;
-    $listitems = danhsachsp_limit($st,$records,$select_product); // danh sách sản phẩm cho trang thứ $page
-    //bắt đầu bằng sản phẩm thứ $st, select $records sản phẩm
+}else
+{
+    require_once('404.html');
+    exit;
+}
 ?>
 <!-- form start-->
 <form  name="adminForm" method="post" enctype="multipart/form-data"> 

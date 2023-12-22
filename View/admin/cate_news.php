@@ -13,11 +13,11 @@ if(!defined('_CODE'))
                                 <div class="col">
                                     <nav class="mb-2" aria-label="breadcrumb">
                                         <ol class="breadcrumb breadcrumb-sa-simple">
-                                            <li class="breadcrumb-item"><a href="index.html">Quản lí</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Loại hàng</li>
+                                            <li class="breadcrumb-item"><a href="index.php?act=admin-dashboard">Quản lí</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Loại tin tức</li>
                                         </ol>
                                     </nav>
-                                    <h1 class="h3 m-0">Danh sách loại hàng</h1>
+                                    <h1 class="h3 m-0">Danh sách loại tin tức</h1>
                                 </div>
                                 <div class="col-auto d-flex"><a href="index.php?act=admin-upload-cate-news" class="btn btn-primary">Thêm mới</a></div>
                             </div>
@@ -66,7 +66,7 @@ if(!defined('_CODE'))
                                         </td>
                                         <td>
                                             <?php
-                                            if($list_cate['status']==1)
+                                            if($list_cate['status']==2)
                                             {
                                             ?>
                                         <div class="badge badge-sa-success">Đang hiện</div> 
@@ -101,7 +101,19 @@ if(!defined('_CODE'))
                                                     <li>
                                                         <hr class="dropdown-divider" />
                                                     </li>
-                                                    <li><a class="dropdown-item text-danger" href="#">Ẩn / hiện</a></li>
+                                                    <?php
+                                                    if($list_cate['status'] == 2)
+                                                    {
+                                                        ?>
+                                                    <li><a class="dropdown-item text-danger" href="index.php?act=admin-cate-news&del=6&id=<?=$list_cate['id_cate']?>&stt=2">Ẩn</a></li>
+                                                    <?php
+                                                    }else
+                                                    {
+                                                    ?>
+                                                    <li><a class="dropdown-item text-info" href="index.php?act=admin-cate-news&del=6&id=<?=$list_cate['id_cate']?>&stt=1">Hiện</a></li>
+                                                    <?php
+                                                    }
+                                                    ?>
                                                 </ul>
                                             </div>
                                         </td>

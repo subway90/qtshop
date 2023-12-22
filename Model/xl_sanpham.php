@@ -116,6 +116,18 @@
         $conn->query($sql);
         header('Location: index.php?act=admin-category-v1'); 
     }
+    function on_cate_news($id){
+        $conn = connection_database();
+        $sql = " UPDATE cate_news SET status = 2 where id_cate =" . $id;
+        $conn->query($sql);
+        header('Location: index.php?act=admin-cate-news'); 
+    }
+    function off_cate_news($id){
+        $conn = connection_database();
+        $sql = " UPDATE cate_news SET status = 1 where id_cate =" . $id;
+        $conn->query($sql);
+        header('Location: index.php?act=admin-cate-news'); 
+    }
     function on_review($id){
         $conn = connection_database();
         $sql = " UPDATE review SET status = 2 where id_review =" . $id;
