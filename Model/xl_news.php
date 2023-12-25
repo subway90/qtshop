@@ -6,6 +6,13 @@ function SelectOneNews($slug){
     $news = $result->fetch();
     return $news;
 }
+function SelectOneCateNews($id){
+    $conn = connection_database();
+    $sql = "SELECT * FROM cate_news WHERE id_cate = ".$id;
+    $result = $conn->query($sql);
+    $news = $result->fetch();
+    return $news;
+}
 function SelectAllNewsInCate($id_cate){
     $conn = connection_database();
     $sql = "SELECT slug, date_setup, status, title, image_title, decribe FROM news WHERE id_cate = ".$id_cate." AND status > 1";

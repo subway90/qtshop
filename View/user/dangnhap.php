@@ -6,33 +6,23 @@ if(!defined('_CODE'))
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>Đăng nhập</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
-
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
     <!-- Libraries Stylesheet -->
     <link href="../View/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../View/css/style.css" rel="stylesheet">
-
-
-
-
     <!-- template mẫu chuẩn -->
     <link rel="icon" type="../t_admin_t/image/png" href="../t_user_t/images/favicon.png" /><!-- fonts -->
     <link rel="stylesheet"
@@ -56,12 +46,7 @@ if(!defined('_CODE'))
 
         gtag('config', 'UA-97489509-8');
     </script>
-
-
-
-
 </head>
-
 <body>
     <!-- Topbar Start -->
    
@@ -186,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <span class="form-check-label">Ghi Nhớ</span>
                         </label>
                     </div>
-                    <div class="col-auto d-flex align-items-center"><a href="index.php?act=test">Quên Mật khẩu
+                    <div class="col-auto d-flex align-items-center"><a href="index.php?act=forget-pass">Quên Mật khẩu
                            </a></div>
                 </div>
                 <div><button type="submit" class="btn btn-primary btn-lg w-100">ĐĂNG NHẬP</button></div>
@@ -207,36 +192,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
        
     </div><!-- scripts -->
-    
- 
 <!-- template chuẩn -->
-
-
-
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
-
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
-
-
-
-
-
-
     <!-- js của template chuẩn -->
     <script src="../template/admin_t/vendor/jquery/jquery.min.js"></script>
     <script src="../template/admin_t/vendor/feather-icons/feather.min.js"></script>
@@ -259,5 +227,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="../template/admin_t/js/demo.js"></script>
     <script src="../template/admin_t/js/demo-chart-js.js"></script>
 </body>
-
 </html>

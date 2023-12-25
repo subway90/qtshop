@@ -391,6 +391,38 @@ $f_alert = '</div>
                     $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'><span class='text-success'>Chỉnh sửa thành công.</span></div>";
                 }
             }
+            if($edit == 9)
+            {
+                $verify_edit_cate_news = 0;
+                $status = $_POST['status'];
+                $name = $_POST['name'];
+                $decribe = $_POST['decribe'];
+                if(!empty($name))
+                {
+                    $verify_edit_cate_news++;
+                    $valid_name = "is-valid";
+                }else
+                {
+                    $valid_name = "is-invalid";
+                    $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'>Tên loại tin tức chưa được nhập</div>";
+
+                }
+                if(!empty($decribe))
+                {
+                    $verify_edit_cate_news++;
+                    $valid_decribe = "is-valid";
+                }else
+                {
+                    $valid_decribe = "is-invalid";
+                    $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'>Tên loại tin tức chưa được nhập</div>";
+
+                }
+                if($verify_edit_cate_news == 2)
+                {
+                $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'><span class='text-success'>Sửa thành công loại tin tức</span></div>";
+                AddCateNews($status,$name,$decribe);
+                }
+            }
         }
 
         if(isset($_REQUEST['upload']))

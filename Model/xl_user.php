@@ -24,29 +24,21 @@ function mot_user($username){
         $conn = connection_database();
         $sql = "SELECT username FROM taikhoan where username = '".$test_user."'";
         $r_c_u = $conn->query($sql);
-        $l_r_c_u = $r_c_u->fetchAll();
+        $l_r_c_u = $r_c_u->fetch();
         return $l_r_c_u;
     }
     function check_email($test_email){
         $conn = connection_database();
-        $sql = "SELECT email FROM taikhoan where email = '".$test_email."'";
+        $sql = "SELECT email, username FROM taikhoan where email = '".$test_email."'";
         $result = $conn->query($sql);
-        $danhsach = $result->fetchAll();
+        $danhsach = $result->fetch();
         return $danhsach;
     }
     function change_pass($new_pass,$email){
         $umd = md5($new_pass);
         $conn = connection_database();
-        $sql = "UPDATE taikhoan SET password = '".$umd."' where email ='".$email."'";
+        $sql = "UPDATE taikhoan SET password = '".$umd."' WHERE email ='".$email."'";
         $conn->query($sql);
-        echo'
-        <script type="text/javascript">
-        function confirm_alert(node) {
-            return confirm("Nhấn OK để quay lại.");
-        }
-        </script>
-        <br>Mật khẩu mới của bạn là: <strong>'.$new_pass.'</strong><br>
-        <a href="index.php?act=dangnhap" onclick="return confirm_alert(this);">Vui lòng quay lại trang ĐĂNG NHẬP để đổi mật khẩu!<br></a>';
     }
     function capnhat_user($id_user, $name_user,$phone_user,$address_user,$sex_user,$image){
         $conn = connection_database();
