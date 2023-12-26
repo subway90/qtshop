@@ -1,4 +1,9 @@
 <?php
+if(!defined('_CODE'))
+{
+        require_once('404.html'); exit;
+}
+require_once ('env.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -14,8 +19,8 @@ function SendOTP($otp,$email)
             $mail->isSMTP();// gửi mail SMTP
             $mail->Host = 'smtp.gmail.com';// Set the SMTP server to send through
             $mail->SMTPAuth = true;// Enable SMTP authentication
-            $mail->Username = 'hieunmps33151@fpt.edu.vn';// SMTP username
-            $mail->Password = 'wcbdxylyfovuyxum'; // SMTP password
+            $mail->Username = _EMAIL_SMTP;// SMTP username
+            $mail->Password = _CODE_SMTP; // SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;// Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $mail->Port = 587; // TCP port to connect to
             $mail->setFrom('hieunmps33151@fpt.edu.vn', 'THOI TRANG QT shop');
@@ -33,6 +38,7 @@ function SendOTP($otp,$email)
                 </script>';
         }
 }
+
 function SendNP($newpass,$email)
 {
         $mail = new PHPMailer(true);
@@ -42,8 +48,8 @@ function SendNP($newpass,$email)
             $mail->isSMTP();// gửi mail SMTP
             $mail->Host = 'smtp.gmail.com';// Set the SMTP server to send through
             $mail->SMTPAuth = true;// Enable SMTP authentication
-            $mail->Username = 'hieunmps33151@fpt.edu.vn';// SMTP username
-            $mail->Password = 'wcbdxylyfovuyxum'; // SMTP password
+            $mail->Username =  _EMAIL_SMTP;// SMTP username
+            $mail->Password =  _CODE_SMTP; // SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;// Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $mail->Port = 587; // TCP port to connect to
             $mail->setFrom('hieunmps33151@fpt.edu.vn', 'THOI TRANG QT shop');
