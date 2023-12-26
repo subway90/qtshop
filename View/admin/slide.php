@@ -112,12 +112,12 @@ $slide = $result[$i];
                                             if(!empty($slide['background']))
                                             {
                                                 ?>
-                                                <div class="sa-price"><div class="badge badge-sa-success">Đang bật</div>
+                                                <div class="sa-price"><div class="badge badge-sa-secondary">Đang tắt</div>
                                                 <?php
                                             }else
                                             {
                                                 ?>
-                                                <div class="sa-price"><div class="badge badge-sa-secondary">Đang tắt</div>
+                                                <div class="sa-price"><div class="badge badge-sa-success">Đang bật</div>
                                                 <?php
                                             }
                                             ?>
@@ -164,12 +164,12 @@ $slide = $result[$i];
                                                         if(!empty($slide['background']))
                                                         {
                                                         ?>
-                                                        <a class="dropdown-item text-primary" href="#">Tắt làm mờ Background</a>
+                                                        <a class="dropdown-item text-success" href="index.php?act=admin-slide&del=7&id=<?=$slide['id_slide']?>&stt=1">Bật làm mờ Background</a>
                                                         <?php
                                                         }else
                                                         {
                                                             ?>
-                                                        <a class="dropdown-item text-success" href="#">Bật làm mờ Background</a>
+                                                        <a class="dropdown-item text-primary" href="index.php?act=admin-slide&del=7&id=<?=$slide['id_slide']?>&stt=2">Tắt làm mờ Background</a>
                                                         <?php
                                                         }
                                                         ?>

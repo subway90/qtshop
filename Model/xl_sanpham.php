@@ -128,6 +128,16 @@
         $conn->query($sql);
         header('Location: index.php?act=admin-cate-news'); 
     }
+    function on_background_slide($id){
+        $conn = connection_database();
+        $sql = " UPDATE slide SET background = NULL where id_slide =" . $id;
+        $conn->query($sql);
+    }
+    function off_background_slide($id){
+        $conn = connection_database();
+        $sql = " UPDATE slide SET background ='background: none' where id_slide =" . $id;
+        $conn->query($sql);
+    }
     function on_review($id){
         $conn = connection_database();
         $sql = " UPDATE review SET status = 2 where id_review =" . $id;

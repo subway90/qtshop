@@ -17,6 +17,11 @@ $size = "";
 $color = "";
 $code = "";
 $title = "";
+$title1 = "";
+$title2 = "";
+$name_link = "";
+$link = "";
+$background = 2;
 $slug = "";
 $tipforslug = "";
 $amount = "";
@@ -152,6 +157,14 @@ $f_alert = '</div>
                     on_cate_news($id);
                 }else{
                     off_cate_news($id);
+                }
+            }
+            if($_REQUEST['del'] == 7) {
+                if($_REQUEST['stt'] == 1)
+                {
+                    on_background_slide($id);
+                }else{
+                    off_background_slide($id);
                 }
             }
             
@@ -772,6 +785,76 @@ $f_alert = '</div>
                     AddNews($id_cate,$title,$slug,$image_title,$decribe,$id_user,$status,$date_setup);
                     $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'><span class='text-success'>Tạo bài viết thành công</span></div>";
                 }
+            }
+            if($upload == 6)
+            {
+                $verify_upload_slide = 0;
+                    if(!empty($_POST['title1']))
+                    {
+                        $title1 = $_POST['title1'];
+                        $valid_title1 = "is-valid";
+                    }else
+                    {
+                        $title1 = "";
+                        $valid_title1 = "";
+                    }
+                    if(!empty($_POST['title2']))
+                    {
+                        $title2 = $_POST['title2'];
+                        $valid_title2 = "is-valid";
+            
+                    }else{
+                        $title2 = "";
+                        $valid_title2 = "";
+                    }
+                    if(!empty($_POST['link']))
+                    {
+                        $link = $_POST['link'];
+                        $valid_link = "is-valid";
+                        if(!empty($_POST['name_link']))
+                        {
+                            $bool =1;
+                            $name_link = $_POST['name_link'];
+                            $valid_name_link = "is-valid";
+                        }else{
+                            $verify_upload_slide--;
+                            $_SESSION['alert'] .= 'Tên button link chưa được nhập.<br>';
+                            $valid_name_link = "";
+                        }
+                    }else{
+                        $valid_link = "";
+                        $name_link = "";
+                        $valid_name_link = "";
+                    }
+                    $status = $_POST['status'];
+                    $background = $_POST['background'];
+                    if(basename($_FILES['image']['name']) !== "")
+                    {
+                        if(in_array($_FILES['image']['type'],$auth_image) === false)
+                        {
+                            $_SESSION['alert'] .= "Vui lòng chọn đúng file ảnh (.png/ .jpg/ .jpeg/ .gif)<br>";
+                        }else
+                        {
+                            if($_FILES['image']['size'] >= 5120000) // đơn vị: byte
+                            {
+                                $_SESSION['alert'] .= "Vui lòng chọn file ảnh có kích thước dưới 5MB<br>";
+                            }else
+                            {
+                                $verify_upload_slide++;
+                                $image = basename($_FILES['image']['name']);
+                                $path = __DIR__ . './../View/img/';
+                                $target_file = $path . $image;
+                                move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
+                            }
+                        }
+                    }else
+                    {
+                        $_SESSION['alert'] .= 'Hình ảnh chưa được nhập.<br>';
+                    }
+                    if($verify_upload_slide == 1)
+                    {
+                        themslide($title1,$title2,$image,$link,$name_link,$status,$background); //xl_search
+                    }
             }
         }
 

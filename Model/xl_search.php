@@ -30,10 +30,15 @@
         $slide = $rc_s->fetchAll();
         return $slide;
     }
-    function themslide($title1, $title2, $link, $status, $image)
+    function themslide($title1,$title2,$image,$link,$name_link,$status,$background)
     {
+        if(empty($title1)) $title1 = NULL;
+        if(empty($title2)) $title2 = NULL;
+        if(empty($link)) $link = NULL;
+        if(empty($name_link)) $name_link = NULL;
+        if($background == 1) $background = "background: none"; elseif($background == 2) $background = NULL;
         $conn = connection_database();
-        $sql = " INSERT INTO slide VALUES (NULL, '".$title1."', '".$title2."', '".$image."', '".$link."',".$status.",current_timestamp)";
+        $sql = " INSERT INTO slide VALUES (NULL, '".$title1."', '".$title2."', '".$image."', '".$link."','".$name_link."',".$status.",'".$background."',current_timestamp)";
         $conn->query($sql);
         echo '<script type="text/javascript">
 

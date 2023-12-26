@@ -28,13 +28,13 @@
                                     if(!empty($slide_1[0]['title1']))
                                     {
                                     ?>
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?=$slide_1[0]['title2']?></h1>
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?=$slide_1[0]['title1']?></h1>
                                     <?php
                                     }
                                     if(!empty($slide_1[0]['title2']))
                                     {
                                     ?>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"><?=$slide_1[0]['title1']?></p>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"><?=$slide_1[0]['title2']?></p>
                                     <?php
                                     }
                                     if(!empty($slide_1[0]['link']))
@@ -61,13 +61,13 @@
                                     if(!empty($slide['title1']))
                                     {
                                     ?>
-                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?=$slide['title2']?></h1>
+                                    <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown"><?=$slide['title1']?></h1>
                                     <?php
                                     }
                                     if(!empty($slide['title2']))
                                     {
                                     ?>
-                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"><?=$slide['title1']?></p>
+                                    <p class="mx-md-5 px-5 animate__animated animate__bounceIn"><?=$slide['title2']?></p>
                                     <?php
                                     }
                                     if(!empty($slide['link']))
