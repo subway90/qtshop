@@ -323,14 +323,6 @@ if(isset($_REQUEST['act']))
                 include "./../View/user/footer1.php";
                 break;
 
-        case "check":
-                include "./../View/user/check.php";
-                break;
-
-        case "reset_pass":
-                include "./../View/user/mail_checked.php";
-                break;
-
         case "donhang-chitiet":
                 if(defined('_ADMIN'))
                 {
@@ -354,17 +346,6 @@ if(isset($_REQUEST['act']))
                 require_once('404.html'); exit;
                 }
 
-        case "mailer":
-                include "./../View/header-admin.php";
-                include "./../View/admin/mail.php";
-                include "./../View/admin/footer-admin.php";
-                break;
-
-        case "goiemail":
-                include "./../View/admin/header-admin.php";
-                include "./../View/admin/goiemail.php";
-                include "./../View/admin/footer-admin.php";
-                break;
 
         // chuc nang user
         case "update_info":
@@ -384,10 +365,6 @@ if(isset($_REQUEST['act']))
 
         case "taouser":
                 include "./../View/user/taouser.php";
-                break;
-
-        case "mail_pass":
-                include "./../View/user/mail_password.php";
                 break;
 
         case "history":

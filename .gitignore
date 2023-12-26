@@ -1,3 +1,2 @@
-#demo chức năng 6 - 12.11.2023
-View/user/testcode6.php
-git status
+#hide PHP Mailer SMTP
+Model/xl_mail.php
