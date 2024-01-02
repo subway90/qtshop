@@ -622,10 +622,10 @@
             $danhsach = $result->fetch();
             return $danhsach;
         }
-        function sum_total_month($month){
+        function sum_total_month($date_month){
             $date_year = getdate();
             $conn = connection_database();
-            $sql = "SELECT sum(tongdh) as sum, count(tongdh) as count FROM donhang WHERE ngaydat LIKE '".$date_year['year']."-".$month."%' AND thanhtoan = 2";
+            $sql = "SELECT sum(tongdh) as sum, count(tongdh) as count FROM donhang WHERE ngaydat LIKE '".$date_year['year']."-".$date_month."%' AND thanhtoan = 1";
             $result = $conn->query($sql);
             $total = $result->fetch();
             return $total;

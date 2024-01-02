@@ -4,6 +4,7 @@ if(!defined('_CODE'))
         require_once('404.html'); exit;
 }
 $date = getdate();
+$date_month = "";
 ?>
 <div id="top" class="sa-app__body px-2 px-lg-4">
 <div class="container pb-6">
@@ -24,7 +25,9 @@ $date = getdate();
                                     <h2 class="sa-widget-header__title">Doanh thu tháng <?=$date['mon']?></h2>
                                 </div>
                                 <?php
-                                $month_1 = sum_total_month($date['mon']);
+                                $date_month = $date['mon'];
+                                if(strlen($date['mon'])==1) $date_month = "0".$date_month;
+                                $month_1 = sum_total_month($date_month);
                                 $ave_mon_1 = $month_1['sum']/$month_1['count'];
                                 ?>
                                 <div class="saw-indicator__body">
