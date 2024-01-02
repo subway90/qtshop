@@ -3,8 +3,7 @@ if(!defined('_CODE'))
 {
         require_once('404.html'); exit;
 }
-$date = getdate();
-$date_month = "";
+$year_month = date('Y-m');
 ?>
 <div id="top" class="sa-app__body px-2 px-lg-4">
 <div class="container pb-6">
@@ -22,12 +21,10 @@ $date_month = "";
                             <div class="card saw-indicator flex-grow-1"
                                 data-sa-container-query="{&quot;340&quot;:&quot;saw-indicator--size--lg&quot;}">
                                 <div class="sa-widget-header saw-indicator__header">
-                                    <h2 class="sa-widget-header__title">Doanh thu tháng <?=$date['mon']?></h2>
+                                    <h2 class="sa-widget-header__title">Doanh thu năm <?=$year_month?></h2>
                                 </div>
                                 <?php
-                                $date_month = $date['mon'];
-                                if(strlen($date['mon'])==1) $date_month = "0".$date_month;
-                                $month_1 = sum_total_month($date_month);
+                                $month_1 = sum_total_month($year_month);
                                 $ave_mon_1 = $month_1['sum']/$month_1['count'];
                                 ?>
                                 <div class="saw-indicator__body">
