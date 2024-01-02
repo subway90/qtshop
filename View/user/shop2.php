@@ -145,7 +145,7 @@
                             <div class="product-img position-relative overflow-hidden">
                                 <img class="img-fluid w-100" src="../View/img/<?=$rc['image']?>" alt="">
                                 <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href="index.php?act=giohang&id=<?=$rc['id_sp']?>&tensp=<?=$rc['Name']?>&dongia=<?=$rc['Price']?>&hinh=<?=$rc['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
+                                    <a class="btn btn-outline-dark btn-square" href="index.php?act=giohang&id=<?=$rc['id_sp']?>&tensp=<?=$rc['Name']?>&dongia=<?=$rc['Sale']?>&hinh=<?=$rc['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">
                                         <i class="fa fa-shopping-cart"></i>
                                     </a>
                                     <a class="btn btn-outline-dark btn-square" href="index.php?act=yeuthich&id=<?=$rc['id_sp']?>&tensp=<?=$rc['Name']?>&dongia=<?=$rc['Price']?>&giagoc=<?=$rc['Price']?>&hinh=<?=$rc['image']?>&size=<?=strtoupper($arr_size[0])?>&color=<?=$arr_color[0]?>">

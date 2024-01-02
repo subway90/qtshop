@@ -4,7 +4,6 @@ if(!defined('_CODE'))
         require_once('404.html'); exit;
 }
 ?>
-
     <!-- template -->
 <div id="top" class="sa-app__body">
 <form action="index.php?act=admin-upload-product&upload=1" method="post" enctype="multipart/form-data">

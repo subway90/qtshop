@@ -116,14 +116,14 @@ if($count_review == 0)
                         </div>
                         <small class="pt-1"><?=$count_review?> đánh giá</small>
                     </div>
-                    <h3 class="font-weight-semi-bold mb-4"><?=$sp[0][2]?></h3>
+                    <h3 class="font-weight-semi-bold mb-4"><?=number_format($sp[0]['Sale'],0,',','.')?> <span style="text-decoration: underline">đ</span></h3>
                     <p class="mb-4">
-                        <?=$sp[0][14]?>
+                        Mô tả: <?=$sp[0][14]?>
                     </p>
                     <form action="index.php?act=giohang" method="post">
                         <input hidden name="id" type="text" value="<?=$sp[0][0]?>">
                         <input hidden name="name" type="text" value="<?=$sp[0][1]?>">
-                        <input hidden name="price" type="number" value="<?=$sp[0][2]?>">
+                        <input hidden name="price" type="number" value="<?=$sp[0]['Sale']?>">
                         <input hidden name="sl" type="number" value="1">
                         <input hidden name="image" type="text" value="<?=$sp[0][8]?>">
 

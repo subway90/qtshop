@@ -36,7 +36,7 @@ if(!isset($_REQUEST['edit']))
                                     <h1 class="h3 m-0">Chỉnh sửa loại tin tức</h1>
                                 </div>
                                 <div class="col-auto d-flex">
-                                    <a href="index.php?act=admin-products" class="btn btn-secondary me-3">Hủy</a>
+                                    <a href="index.php?act=admin-cate-news" class="btn btn-secondary me-3">Hủy</a>
                                     <button type="submit" class="btn btn-primary">Lưu</button>
                                 </div>
                             </div>
@@ -76,11 +76,11 @@ if(!isset($_REQUEST['edit']))
                                             </div>
                                             <div class="mb-4">
                                                 <label class="form-label">Tên tin tức</label>
-                                                <input type="text" class="form-control" value="<?=$name?>" name="name" />
+                                                <input type="text" class="form-control <?=$valid_name?>" value="<?=$name?>" name="name" />
                                             </div>
                                             <div>
                                                 <label class="form-label">Ghi chú</label>
-                                                <textarea name="decribe" id="form-product/short-description" class="form-control"
+                                                <textarea name="decribe" id="form-product/short-description" class="form-control <?=$valid_decribe?>"
                                                     rows="2"><?=$decribe?></textarea>
                                             </div>
                                         </div>

@@ -43,12 +43,12 @@ if(!defined('_CODE'))
                                             </div>
                                             <div class="mb-4">
                                                 <label class="form-label">Tên tin tức</label>
-                                                <input type="text" class="form-control" value="" name="name" />
+                                                <input type="text" class="form-control <?=$valid_name?>" value="<?=$name?>" name="name" />
                                             </div>
                                             <div>
                                                 <label class="form-label">Ghi chú</label>
-                                                <textarea name="decribe" id="form-product/short-description" class="form-control"
-                                                    rows="2"></textarea>
+                                                <textarea name="decribe" id="form-product/short-description" class="form-control <?=$valid_decribe?>"
+                                                    rows="2"><?=$decribe?></textarea>
                                             </div>
                                         </div>
                                     </div>

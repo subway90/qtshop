@@ -1,17 +1,17 @@
 <?php
-if(isset($_REQUEST['id']))
-{
-    $list_news = SelectAllNewsInCate($_REQUEST['id']);
-    if(empty($list_news))
-    {
-        require_once('404.html');
-        exit;
-    }
-}else
-{
-    require_once('404.html');
-    exit;
-}
+// if(isset($_REQUEST['id']))
+// {
+//     $list_news = SelectAllNewsInCate($_REQUEST['id']);
+//     if(empty($list_news))
+//     {
+//         require_once('404.html');
+//         exit;
+//     }
+// }else
+// {
+//     require_once('404.html');
+//     exit;
+// }
 ?>
 <!-- form start-->
 <form  name="adminForm" method="post" enctype="multipart/form-data"> 

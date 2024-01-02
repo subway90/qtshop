@@ -400,12 +400,13 @@ $f_alert = '</div>
                 }
                 if($verify_news == 3)
                 {
-                    UpdateNews($id_cate,$title,$slug,$image_title,$decribe,$id_user,$status,$date_setup);
+                    UpdateNews($id_cate,$title,$slug,$image_title,$decribe,$id_user,$status,$date_setup,$id_news);
                     $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'><span class='text-success'>Chỉnh sửa thành công.</span></div>";
                 }
             }
             if($edit == 9)
             {
+                $id_cate = $_REQUEST['id'];
                 $verify_edit_cate_news = 0;
                 $status = $_POST['status'];
                 $name = $_POST['name'];
@@ -417,7 +418,7 @@ $f_alert = '</div>
                 }else
                 {
                     $valid_name = "is-invalid";
-                    $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'>Tên loại tin tức chưa được nhập</div>";
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Tên loại tin tức chưa được nhập</div>";
 
                 }
                 if(!empty($decribe))
@@ -427,13 +428,13 @@ $f_alert = '</div>
                 }else
                 {
                     $valid_decribe = "is-invalid";
-                    $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'>Tên loại tin tức chưa được nhập</div>";
+                    $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Ghi chú tin tức chưa được nhập</div>";
 
                 }
                 if($verify_edit_cate_news == 2)
                 {
                 $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'><span class='text-success'>Sửa thành công loại tin tức</span></div>";
-                AddCateNews($status,$name,$decribe);
+                updateCateNews($name,$decribe,$status,$id_cate);
                 }
             }
         }

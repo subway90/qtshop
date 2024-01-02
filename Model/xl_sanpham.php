@@ -396,6 +396,21 @@
         </script>';
         $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'><span class='text-success'>Thêm thành công !</span></div>";
     }
+    function updateCateNews($name,$decribe,$status,$id_cate){
+        $conn = connection_database();
+        $sql =  "UPDATE cate_news
+                    SET name='". $name."', 
+                    decribe='". $decribe."',
+                    status=".$status.",
+                    date_submit = current_timestamp
+                    WHERE id_cate = ".$id_cate;
+           $conn->query($sql);
+           echo '<script type="text/javascript">
+
+            window.onload = function () { alert("chỉnh sửa thành công loại tin tức !"); }
+
+        </script>';
+          }
     function themvoucher($code,$condition,$number,$datestart,$dateend,$amount,$status,$decribe)
     {
         $conn = connection_database();
@@ -471,7 +486,7 @@
     }
     function ListCateNewsForCreate(){
         $conn = connection_database();
-        $sql = "SELECT id_cate as id, name FROM cate_news";
+        $sql = "SELECT id_cate as id, name FROM cate_news WHERE status = 2";
         $result = $conn->query($sql);
         $list = $result->fetchAll();
         return $list;
@@ -545,9 +560,9 @@
                 where id_sp = ".$masp;
        $conn->query($sql);
       }
-          function upload_cate($name_cate,$decribe_cate,$id_cate,$image_cate,$v1){
-            $conn = connection_database();
-            $sql =  "UPDATE loaihang 
+    function upload_cate($name_cate,$decribe_cate,$id_cate,$image_cate,$v1){
+        $conn = connection_database();
+        $sql =  "UPDATE loaihang 
                     Set name='". $name_cate ."', 
                     decribe='". $decribe_cate ."',
                     image='".$image_cate."',

@@ -236,149 +236,6 @@
                                     <div class="card mt-5">
                                         <div
                                             class="card-body px-5 py-4 d-flex align-items-center justify-content-between">
-                                            <h2 class="mb-0 fs-exact-18 me-4">Thông tin giao hàng</h2>
-                                            <div>
-                                            <?php
-                                            if($gh==1)
-                                            {
-                                            ?>
-                                            <span class="badge badge-sa-success">Đã giao hàng</span>
-                                            <?php
-                                            }elseif($gh==2)
-                                            {
-                                            ?>
-                                            <span class="badge badge-sa-danger">Chưa giao hàng</span>
-                                            <?php
-                                            }elseif($gh==3)
-                                            {
-                                            ?>
-                                            <span class="badge badge-sa-warning">Đang giao hàng</span>
-                                            <?php
-                                            }else
-                                            {
-                                            ?>
-                                            <span class="badge badge-sa-dark">Đã hủy</span>
-                                            <?php
-                                            }
-                                            ?>
-                                            </div>
-                                        </div>
-                                        <div class="table-responsive">
-                                            <table class="sa-table text-nowrap">
-                                                <tbody>
-                                                    <tr>
-                                                        <td><strong>Họ và tên</strong></div>
-                                                        </td>
-                                                        <td class="text-end"><?=$name?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong>Số điện thoại</strong></div>
-                                                        </td>
-                                                        <td class="text-end"><?='0'.number_format($phone,0,',',' ')?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong>Địa chỉ</strong></div>
-                                                        </td>
-                                                        <td class="text-end"><?=$address?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong>Email</strong></div>
-                                                        </td>
-                                                        <td class="text-end"><?=$email?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong>Khu vực giao hàng</strong></div>
-                                                        </td>
-                                                        <td class="text-end">Khu vực <?=$area?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong>Mã bưu điện</strong></div>
-                                                        </td>
-                                                        <td class="text-end"><?=$zip?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><strong>Facebook</strong></div>
-                                                        </td>
-                                                        <td class="text-end"><?=$fb?></td>
-                                                    </tr>
-                                                </tbody>
-                                                    <?php
-                                                    if($pay==2)
-                                                    {
-                                                        if($tt==1)
-                                                        {
-                                                            if($gh==1)//đã thanh toán, đã giao hàng
-                                                            {
-                                                        ?>
-                                                        <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã được giao, cảm ơn quý khách ! Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
-                                                        </tr>
-                                                        <?php
-                                                            }
-                                                            elseif($gh==2)//đã thanh toán, chưa giao hàng
-                                                            {
-                                                        ?>
-                                                        <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đang được sắp xếp để giao cho bạn, trễ nhất là 24h sau khi có trạng thái <span class="text-success">Thanh toán Thành công</span><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
-                                                        </tr>
-                                                        <?php
-                                                            }elseif($gh==3)//đã thanh toán, đang giao hàng
-                                                            {
-                                                        ?>
-                                                        <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đang được giao đến cho bạn. Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
-                                                        </tr>
-                                                        <?php
-                                                            }
-                                                        }elseif($tt==2)
-                                                        {
-                                                        ?>
-                                                        <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Quý khách vui lòng thanh toán để được nhận hàng.</span></td>
-                                                        </tr>
-                                                        <?php
-                                                        }
-                                                    }elseif($pay==1)
-                                                    {
-                                                        if($gh==1)//giao thành công
-                                                        {
-                                                    ?>
-                                                        <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã được <span class="text-success">Giao thành công</span>, cảm ơn quý khách ! Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
-                                                        </tr>
-                                                        
-                                                    <?php
-                                                        }elseif($gh==2)//chưa giao
-                                                        {
-                                                    ?>
-                                                        <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đang được sắp xếp để giao cho bạn. Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
-                                                        </tr>
-                                                    <?php
-                                                        }elseif($gh==3)//đang giao
-                                                        {
-                                                    ?>
-                                                        <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng <span class="text-warning">Đang được giao</span> đến cho bạn. Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
-                                                        </tr>
-                                                    <?php
-                                                        }else
-                                                        {
-                                                    ?>
-                                                        <tr>
-                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã hủy vì bạn chưa được xác nhận. Thời gian cập nhật trạng thái: <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
-                                                        </tr>
-                                                    <?php
-                                                        }
-                                                    }
-                                                    ?>
-                                            </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="card mt-5">
-                                        <div
-                                            class="card-body px-5 py-4 d-flex align-items-center justify-content-between">
                                             <h2 class="mb-0 fs-exact-18 me-4">Thông tin thanh toán</h2>
                                             <div>
                                             <?php
@@ -554,6 +411,150 @@
                                             ?>
                                         </table>
                                     </div>
+                                    <div class="card mt-5">
+                                        <div
+                                            class="card-body px-5 py-4 d-flex align-items-center justify-content-between">
+                                            <h2 class="mb-0 fs-exact-18 me-4">Thông tin giao hàng</h2>
+                                            <div>
+                                            <?php
+                                            if($gh==1)
+                                            {
+                                            ?>
+                                            <span class="badge badge-sa-success">Đã giao hàng</span>
+                                            <?php
+                                            }elseif($gh==2)
+                                            {
+                                            ?>
+                                            <span class="badge badge-sa-danger">Chưa giao hàng</span>
+                                            <?php
+                                            }elseif($gh==3)
+                                            {
+                                            ?>
+                                            <span class="badge badge-sa-warning">Đang giao hàng</span>
+                                            <?php
+                                            }else
+                                            {
+                                            ?>
+                                            <span class="badge badge-sa-dark">Đã hủy</span>
+                                            <?php
+                                            }
+                                            ?>
+                                            </div>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="sa-table text-nowrap">
+                                                <tbody>
+                                                    <tr>
+                                                        <td><strong>Họ và tên</strong></div>
+                                                        </td>
+                                                        <td class="text-end"><?=$name?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Số điện thoại</strong></div>
+                                                        </td>
+                                                        <td class="text-end"><?='0'.number_format($phone,0,',',' ')?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Địa chỉ</strong></div>
+                                                        </td>
+                                                        <td class="text-end"><?=$address?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Email</strong></div>
+                                                        </td>
+                                                        <td class="text-end"><?=$email?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Khu vực giao hàng</strong></div>
+                                                        </td>
+                                                        <td class="text-end">Khu vực <?=$area?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Mã bưu điện</strong></div>
+                                                        </td>
+                                                        <td class="text-end"><?=$zip?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Facebook</strong></div>
+                                                        </td>
+                                                        <td class="text-end"><?=$fb?></td>
+                                                    </tr>
+                                                </tbody>
+                                                    <?php
+                                                    if($pay==2)
+                                                    {
+                                                        if($tt==1)
+                                                        {
+                                                            if($gh==1)//đã thanh toán, đã giao hàng
+                                                            {
+                                                        ?>
+                                                        <tr>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã được giao, cảm ơn quý khách ! Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                        </tr>
+                                                        <?php
+                                                            }
+                                                            elseif($gh==2)//đã thanh toán, chưa giao hàng
+                                                            {
+                                                        ?>
+                                                        <tr>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đang được sắp xếp để giao cho bạn, trễ nhất là 24h sau khi có trạng thái <span class="text-success">Thanh toán Thành công</span><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                        </tr>
+                                                        <?php
+                                                            }elseif($gh==3)//đã thanh toán, đang giao hàng
+                                                            {
+                                                        ?>
+                                                        <tr>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đang được giao đến cho bạn. Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                        </tr>
+                                                        <?php
+                                                            }
+                                                        }elseif($tt==2)
+                                                        {
+                                                        ?>
+                                                        <tr>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Quý khách vui lòng thanh toán để được nhận hàng.</span></td>
+                                                        </tr>
+                                                        <?php
+                                                        }
+                                                    }elseif($pay==1)
+                                                    {
+                                                        if($gh==1)//giao thành công
+                                                        {
+                                                    ?>
+                                                        <tr>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã được <span class="text-success">Giao thành công</span>, cảm ơn quý khách ! Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                        </tr>
+                                                        
+                                                    <?php
+                                                        }elseif($gh==2)//chưa giao
+                                                        {
+                                                    ?>
+                                                        <tr>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đang được sắp xếp để giao cho bạn. Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                        </tr>
+                                                    <?php
+                                                        }elseif($gh==3)//đang giao
+                                                        {
+                                                    ?>
+                                                        <tr>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng <span class="text-warning">Đang được giao</span> đến cho bạn. Thời gian cập nhật trạng thái Giao hàng : <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                        </tr>
+                                                    <?php
+                                                        }else
+                                                        {
+                                                    ?>
+                                                        <tr>
+                                                            <td colSpan="2" style="text-align:center"><span class="text-muted">Đơn hàng đã hủy vì bạn chưa được xác nhận. Thời gian cập nhật trạng thái: <strong><?=$date_update['date_update_giaohang']?></strong><br>Hotline liên hệ hỗ trợ <strong><?=$info['web_phone']?></strong> | 08h00 - 20h00</span></td>
+                                                        </tr>
+                                                    <?php
+                                                        }
+                                                    }
+                                                    ?>
+                                            </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
