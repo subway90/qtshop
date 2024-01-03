@@ -1,17 +1,23 @@
 <?php
-// if(isset($_REQUEST['id']))
-// {
-//     $list_news = SelectAllNewsInCate($_REQUEST['id']);
-//     if(empty($list_news))
-//     {
-//         require_once('404.html');
-//         exit;
-//     }
-// }else
-// {
-//     require_once('404.html');
-//     exit;
-// }
+if(isset($_REQUEST['type']))
+{
+
+    $count_news = SelectCountNews($_REQUEST['type']);
+    if($count_news == 0)
+    {
+        require_once('404.html');
+        exit;
+    }else
+    {
+        $NameCateNews = SelectOneCateNews($_REQUEST['type']);
+        $ListNewsHot = SelectNewsHot($_REQUEST['type']);
+        $ListNews = SelectNews($_REQUEST['type']);
+    }
+}else
+{
+    require_once('404.html');
+    exit;
+}
 ?>
 <!-- form start-->
 <form  name="adminForm" method="post" enctype="multipart/form-data"> 
@@ -23,7 +29,7 @@
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="index.php">Trang chủ</a>
-                    <span class="breadcrumb-item active">Tin tức thời trang</span>
+                    <span class="breadcrumb-item active"><?=$NameCateNews['name']?></span>
                 </nav>
             </div>
         </div>

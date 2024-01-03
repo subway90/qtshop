@@ -13,9 +13,23 @@ function SelectOneCateNews($id){
     $news = $result->fetch();
     return $news;
 }
-function SelectAllNewsInCate($id_cate){
+function SelectCountNews($id_cate){
     $conn = connection_database();
-    $sql = "SELECT slug, date_setup, status, title, image_title, decribe FROM news WHERE id_cate = ".$id_cate." AND status > 1";
+    $sql = "SELECT count(id_news) FROM news WHERE id_cate = ".$id_cate." AND status > 1";
+    $result = $conn->query($sql); 
+    $count_news = $result->fetch();
+    return $count_news;
+}
+function SelectNewsHot($id_cate){
+    $conn = connection_database();
+    $sql = "SELECT slug, date_setup, status, title, image_title, decribe FROM news WHERE id_cate = ".$id_cate." AND status = 3";
+    $result = $conn->query($sql); 
+    $news = $result->fetchAll();
+    return $news;
+}
+function SelectNews($id_cate){
+    $conn = connection_database();
+    $sql = "SELECT slug, date_setup, status, title, image_title, decribe FROM news WHERE id_cate = ".$id_cate." AND status = 2";
     $result = $conn->query($sql); 
     $news = $result->fetchAll();
     return $news;

@@ -3,9 +3,9 @@ if(!defined('_CODE'))
 {
         require_once('404.html'); exit;
 }
-if(!isset($_REQUEST['edit']))
+if(isset($_REQUEST['id']) && !isset($_REQUEST['edit']))
 {
-    if(isset($_REQUEST['id']) && !empty($_REQUEST['id']))
+    if(!empty($_REQUEST['id']))
     {
         $id = $_REQUEST['id'];
         $cate_news = SelectOneCateNews($id);    
@@ -23,9 +23,48 @@ if(!isset($_REQUEST['edit']))
         require_once('404.html'); exit;
     }
 }
+if(isset($_REQUEST['id']) && isset($_REQUEST['edit-cate-news']))
+{
+    if(!empty($_REQUEST['id']))
+    {
+        $id_cate = $_REQUEST['id'];
+        $verify_edit_cate_news = 0;
+        $status = $_POST['status'];
+        $name = $_POST['name'];
+        $decribe = $_POST['decribe'];
+        if(!empty($name))
+        {
+            $verify_edit_cate_news++;
+            $valid_name = "is-valid";
+        }else
+        {
+            $valid_name = "is-invalid";
+            $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Tên loại tin tức chưa được nhập</div>";
+
+        }
+        if(!empty($decribe))
+        {
+            $verify_edit_cate_news++;
+            $valid_decribe = "is-valid";
+        }else
+        {
+            $valid_decribe = "is-invalid";
+            $_SESSION['alert'] .= "<div class='alert alert-sa-danger-card'>Ghi chú tin tức chưa được nhập</div>";
+
+        }
+        if($verify_edit_cate_news == 2)
+        {
+        $_SESSION['alert'] = "<div class='alert alert-sa-danger-card'><span class='text-success'>Sửa thành công loại tin tức ! <a href='index.php?act=admin-cate-news' class='alert-link'>Quay về</a></span></div>";
+        updateCateNews($name,$decribe,$status,$id_cate);
+        }
+    }else
+    {
+        require_once('404.html'); exit;
+    }
+}
 ?>
 </html>
-<form action="index.php?act=admin-edit-cate-news&id=<?=$id?>&edit=9" method="post" enctype="multipart/form-data">
+<form action="index.php?act=admin-edit-cate-news&id=<?=$id?>&edit-cate-news" method="post" enctype="multipart/form-data">
            <!-- sa-app__body -->
             <div id="top" class="sa-app__body">
                 <div class="mx-sm-2 px-2 px-sm-3 px-xxl-4 pb-6">
@@ -61,14 +100,14 @@ if(!isset($_REQUEST['edit']))
                                             if($status == 2)
                                             {
                                             ?>
-                                                <option selected value="1">Hiển thị</option>
-                                                <option value="2">Ẩn</option>
+                                                <option value="1">Ẩn</option>
+                                                <option selected value="2">Hiển thị</option>
                                             <?php
                                             }else
                                             {
                                             ?>
-                                                <option value="1">Hiển thị</option>
-                                                <option selected  value="2">Ẩn</option>
+                                                <option selected value="1">Ẩn</option>
+                                                <option value="2">Hiển thị</option>
                                             <?php
                                             }
                                             ?>
