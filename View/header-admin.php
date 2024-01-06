@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 $datenow = date('Y-m-d');
-$timenow = date('Y-m-d H:i:s');
+$timenow = date('Y/m/d H:i:s');
 $number_second_now = strtotime($timenow);
 $auth_image = array('image/jpeg','image/jpg', 'image/png');
 $bool_name = 2;
