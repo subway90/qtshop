@@ -414,7 +414,7 @@
     function themvoucher($code,$condition,$number,$datestart,$dateend,$amount,$status,$decribe)
     {
         $conn = connection_database();
-        $sql = " INSERT INTO vourcher  VALUES (NULL,'".$code."',".$condition.",".$number.",".$datestart.",".$dateend.",".$amount.",current_timestamp,".$status.",'".$decribe."')";
+        $sql = " INSERT INTO vourcher  VALUES (NULL,'".$code."',".$condition.",".$number.",'".$datestart."','".$dateend."',".$amount.",current_timestamp,".$status.",'".$decribe."')";
         $conn->query($sql);
         echo '<script type="text/javascript">
 

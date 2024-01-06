@@ -87,7 +87,7 @@ $rc = $result[$i];
                                                 }elseif($rc['status']==3)
                                                 {
                                                 ?>
-                                                <div class="badge badge-sa-info"><?=$rc['condition_voucher']?> %</div>
+                                                <div class="badge badge-sa-info"><?=$rc['condition_voucher']?> vnđ</div>
                                                 <?php
                                                 }elseif($rc['status']==2)
                                                 {
